@@ -1,17 +1,17 @@
-# TheBus - Documentación de Arranque Local (Windows)
+# TheBus - Local Startup Documentation (Windows)
 
-Este proyecto es un monorepo que gestiona por separado el servidor de la API (`backend`) y la Landing Page (`frontend`). A continuación, encontrarás los comandos exactos que necesitas ejecutar en tu consola (PowerShell) para levantar el proyecto en tu entorno local con PostgreSQL.
+This project is a monorepo that manages the API server (`backend`) and the Landing Page (`frontend`) separately. Below you will find the exact commands you need to run in your console (PowerShell) to start the project in your local environment using PostgreSQL.
 
-## Requisitos Previos
-1. Tener **PostgreSQL** instalado y ejecutándose en el puerto `5432`.
-2. Tus credenciales por defecto configuradas son `postgres` (usuario) y `postgres` (contraseña).
-3. Asegúrate de estar en la carpeta raíz del proyecto (`e:\TheBus`) al ejecutar estos comandos.
+## Prerequisites
+1. Have **PostgreSQL** installed and running on port `5432`.
+2. Your default credentials configured are `postgres` (user) and `postgres` (password).
+3. Make sure you are in the project's root folder (`e:\TheBus`) when running these commands.
 
 ---
 
-## 1. Instalación de Dependencias
+## 1. Install Dependencies
 
-Si es la primera vez que clonas el proyecto o acabas de descargar una actualización, instala las dependencias usando `pnpm`:
+If this is your first time cloning the project or you just pulled an update, install the dependencies using `pnpm`:
 
 ```powershell
 pnpm install
@@ -19,9 +19,9 @@ pnpm install
 
 ---
 
-## 2. Inicializar la Base de Datos (Migraciones)
+## 2. Initialize the Database (Migrations)
 
-Si existen cambios en la estructura de la base de datos (nuevas tablas o columnas en Drizzle), necesitas sincronizarlas con PostgreSQL:
+If there are any database schema changes (new tables or columns in Drizzle), you need to sync them with PostgreSQL:
 
 ```powershell
 $env:DATABASE_URL="postgres://postgres:postgres@localhost:5432/postgres"; pnpm --filter @workspace/db run push
@@ -29,33 +29,33 @@ $env:DATABASE_URL="postgres://postgres:postgres@localhost:5432/postgres"; pnpm -
 
 ---
 
-## 3. Levantar el Backend (API Server)
+## 3. Start the Backend (API Server)
 
-El servidor principal maneja la API y se conecta a la base de datos. Se ejecutará en el puerto **4000**. **Nota:** Asegúrate de abrir una pestaña nueva en tu terminal para dejar este comando corriendo en segundo plano:
+The main server handles the API and connects to the database. It will run on port **4000**. **Note:** Make sure to open a new terminal tab to leave this command running in the background:
 
 ```powershell
 $env:DATABASE_URL="postgres://postgres:postgres@localhost:5432/postgres"; $env:PORT=4000; $env:NODE_ENV="development"; pnpm --filter @workspace/api-server run dev
 ```
 
-*Para comprobar que funciona, puedes entrar en: [http://localhost:4000/api/healthz](http://localhost:4000/api/healthz)*
+*To check that it is working, you can go to: [http://localhost:4000/api/healthz](http://localhost:4000/api/healthz)*
 
 ---
 
-## 4. Levantar el Frontend (Landing Page)
+## 4. Start the Frontend (Landing Page)
 
-La página web principal fue construida con Vite y se ejecutará en el puerto **3030**. **Nota:** Abre otra pestaña en tu terminal para ejecutar este comando:
+The main page was built with Vite and will run on port **3030**. **Note:** Open another terminal tab to run this command:
 
 ```powershell
 $env:PORT=3030; $env:BASE_PATH="/"; pnpm --filter @workspace/landing run dev
 ```
 
-*Para ver la web, visita: [http://localhost:3030/](http://localhost:3030/)*
+*To view the website, visit: [http://localhost:3030/](http://localhost:3030/)*
 
 ---
 
-## Comandos Rápidos (Resumen)
+## Quick Commands (Cheat Sheet)
 
-Si quieres copiar y pegar rápido, aquí los tienes resumidos:
+If you just want to quickly copy and paste, here is the summary:
 
 **Terminal 1 (Backend):**
 `$env:DATABASE_URL="postgres://postgres:postgres@localhost:5432/postgres"; $env:PORT=4000; $env:NODE_ENV="development"; pnpm --filter @workspace/api-server run dev`
