@@ -31,23 +31,31 @@ export default function Navbar() {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
+        isScrolled 
+          ? "bg-background/95 backdrop-blur-md border-b border-white/5" 
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-serif font-bold tracking-tighter uppercase z-10 hover-trigger">
-          Noomo<span className="text-primary">.</span>
-        </Link>
+      <div className={`w-full h-20 flex items-center transition-all duration-500 ${isScrolled ? "container mx-auto px-6" : "pr-6"}`}>
+        
+        {/* Cambia su contenedor de centrado rígido (sobre la barra turquesa) a alineación fluida natural al scrollear */}
+        <div className={`transition-all duration-500 ${isScrolled ? "w-auto" : "w-[30%] lg:w-[25%] flex justify-center"}`}>
+          <Link href="/" className="text-xl md:text-2xl font-serif font-bold tracking-tighter uppercase z-10 hover-trigger text-white drop-shadow-md">
+            {isScrolled ? "THE BUS" : "LEXICONLORE"}<span className={isScrolled ? "text-primary" : "text-white"}>.</span>
+          </Link>
+        </div>
+
+        <div className="flex-1" />
         
         <nav className="hidden md:flex items-center gap-8">
           {["Work", "Expertise", "Agency", "Contact"].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-medium tracking-wide uppercase hover:text-primary transition-colors hover-trigger">
+            <a key={item} href={`#${item.toLowerCase()}`} className="text-base md:text-lg font-medium tracking-wide uppercase text-white/90 hover:text-white drop-shadow-md transition-colors hover-trigger">
               {item}
             </a>
           ))}
         </nav>
 
-        <button className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 hover-trigger">
+        <button aria-label="Menu" type="button" className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 hover-trigger">
           <span className="w-6 h-[2px] bg-foreground block transition-all" />
           <span className="w-6 h-[2px] bg-foreground block transition-all" />
         </button>

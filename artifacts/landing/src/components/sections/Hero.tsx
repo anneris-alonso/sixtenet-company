@@ -3,9 +3,12 @@ import { useRef, useState, useEffect } from "react";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, 300]);
-  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   const [mousePos, setMousePosition] = useState({ x: 0, y: 0 });
 

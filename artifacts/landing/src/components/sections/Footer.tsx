@@ -34,7 +34,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pt-12 border-t border-white/10 text-sm">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="font-serif font-bold text-2xl mb-4 tracking-tight">Noomo<span className="text-primary">.</span></h3>
+            <h3 className="font-serif font-bold text-2xl mb-4 tracking-tight">The Bus<span className="text-primary">.</span></h3>
             <p className="text-muted-foreground max-w-xs">
               A digital creative agency crafting uncompromising web experiences for the bold.
             </p>
@@ -54,7 +54,7 @@ export default function Footer() {
           <div>
             <h4 className="font-medium tracking-widest uppercase mb-6 text-xs text-muted-foreground">Contact</h4>
             <ul className="flex flex-col gap-3">
-              <li><a href="mailto:hello@noomo.com" className="hover:text-primary transition-colors hover-trigger">hello@noomo.com</a></li>
+              <li><a href="mailto:hello@thebus.com" className="hover:text-primary transition-colors hover-trigger">hello@thebus.com</a></li>
               <li><a href="tel:+1234567890" className="hover:text-primary transition-colors hover-trigger">+1 (234) 567-890</a></li>
               <li className="mt-4 text-muted-foreground">
                 123 Creative Studio<br/>
@@ -65,7 +65,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-24 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Noomo Agency. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} The Bus Agency. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-foreground transition-colors hover-trigger">Privacy Policy</a>
             <a href="#" className="hover:text-foreground transition-colors hover-trigger">Terms of Service</a>

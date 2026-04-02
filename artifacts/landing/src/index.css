@@ -84,8 +84,8 @@
   --popover-foreground: 0 0% 98%;
   --popover-border: 240 10% 12%;
   
-  --primary: 22 100% 55%; /* Bold Neon Orange */
-  --primary-foreground: 0 0% 100%;
+  --primary: 192 73% 70%; /* Branding #7BD4EA */
+  --primary-foreground: 240 10% 4%; /* Dark text on light blue for contrast */
   
   --secondary: 240 10% 12%;
   --secondary-foreground: 0 0% 98%;
@@ -93,23 +93,23 @@
   --muted: 240 5% 16%;
   --muted-foreground: 240 5% 65%;
   
-  --accent: 22 100% 55%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 192 73% 70%;
+  --accent-foreground: 240 10% 4%;
   
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
   
   --input: 240 10% 12%;
-  --ring: 22 100% 55%;
+  --ring: 192 73% 70%;
 
   --sidebar: 240 10% 4%;
   --sidebar-foreground: 0 0% 98%;
   --sidebar-border: 240 10% 12%;
-  --sidebar-primary: 22 100% 55%;
-  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-primary: 192 73% 70%;
+  --sidebar-primary-foreground: 240 10% 4%;
   --sidebar-accent: 240 10% 12%;
   --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-ring: 22 100% 55%;
+  --sidebar-ring: 192 73% 70%;
 
   --app-font-sans: 'Space Grotesk', sans-serif;
   --app-font-serif: 'Syne', sans-serif;
