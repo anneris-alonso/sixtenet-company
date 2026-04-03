@@ -1,18 +1,30 @@
 import { motion, useScroll, useMotionValue } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
-// === LAYOUT CONSTANTS — deben coincidir con las clases CSS abajo ===
+/**
+ * LAYOUT DESIGN
+ * ─────────────────────────────────────────────────────────────
+ * START state  (x = 0):
+ *   [PL] [Card 1] [gap] [Card 2] [gap] [Card 3 partial] ...off screen
+ *
+ * END state  (x = -scrollDist):
+ *   [PL] [Card 3] [gap] [Card 4] [PR]
+ *
+ * scrollDist = 2 × (CARD_W + GAP)  — two card positions
+ *
+ * Right padding (PR) must fill the viewport after card 4:
+ *   PR = viewport − (PL + CARD + GAP + CARD)
+ *      = vw×(1−PL_VW−2×CARD_VW) − GAP_PX
+ *      = calc(15vw − 40px)
+ * ─────────────────────────────────────────────────────────────
+ */
 const CARD_VW = 0.40;   // w-[40vw]
 const GAP_PX  = 40;     // gap-[40px]
 const PL_VW   = 0.05;   // pl-[5vw]
-const PR_VW   = 0.05;   // pr-[5vw]
-const N       = 4;      // número de cartas
 
-function getScrollDist(vw: number) {
-  // track total = PL + N*CARD + (N-1)*GAP + PR
-  // scrollDist = track - viewport
-  const trackPx = (PL_VW + N * CARD_VW + PR_VW) * vw + (N - 1) * GAP_PX;
-  return Math.max(0, Math.round(trackPx - vw));
+// scrollDist for any viewport width
+function getScrollDist(vw: number): number {
+  return Math.round(2 * (CARD_VW * vw + GAP_PX));
 }
 
 const projects = [
@@ -23,52 +35,57 @@ const projects = [
 ];
 
 export default function Work() {
-  const sectionRef  = useRef<HTMLDivElement>(null);
-  const [scrollDist, setScrollDist] = useState(() =>
-    typeof window !== "undefined" ? getScrollDist(window.innerWidth) : 1464
-  );
-
-  const x = useMotionValue(0);
-  const { scrollY } = useScroll();
-
-  // Cache the TRUE top of the section in the document.
-  // offsetTop is relative to the nearest positioned parent — WRONG.
-  // getBoundingClientRect().top + scrollY = true document offset — CORRECT.
+  const sectionRef    = useRef<HTMLDivElement>(null);
   const sectionTopRef = useRef(0);
 
+  const [scrollDist, setScrollDist] = useState(() =>
+    typeof window !== "undefined" ? getScrollDist(window.innerWidth) : 1616
+  );
+
+  const x        = useMotionValue(0);
+  const { scrollY } = useScroll();
+
+  // Measure section's true top in the document after mount
   useEffect(() => {
-    const measureTop = () => {
+    const measure = () => {
       if (sectionRef.current) {
         sectionTopRef.current =
           sectionRef.current.getBoundingClientRect().top + window.scrollY;
       }
     };
-    measureTop();
-    window.addEventListener("resize", measureTop);
-    return () => window.removeEventListener("resize", measureTop);
+    measure();
+    // Re-measure when other sections above change (resize or font-load)
+    window.addEventListener("resize", measure);
+    // Also re-measure once after a short delay to catch late-rendering above
+    const t = setTimeout(measure, 300);
+    return () => { window.removeEventListener("resize", measure); clearTimeout(t); };
   }, []);
 
-  const calcDist = () => setScrollDist(getScrollDist(window.innerWidth));
+  // Recalculate scrollDist on resize
   useEffect(() => {
-    calcDist();
-    window.addEventListener("resize", calcDist);
-    return () => window.removeEventListener("resize", calcDist);
+    const onResize = () => setScrollDist(getScrollDist(window.innerWidth));
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // Drive x directly from raw scrollY — zero ambiguity
   useEffect(() => {
     const unsub = scrollY.on("change", (y) => {
       const top      = sectionTopRef.current;
       const progress = (y - top) / scrollDist;
-      const clamped  = Math.max(0, Math.min(1, progress));
-      x.set(-scrollDist * clamped);
+      x.set(-scrollDist * Math.max(0, Math.min(1, progress)));
     });
     return unsub;
   }, [scrollY, scrollDist, x]);
 
   return (
-    // Altura exacta: 100vh (para que el sticky sea visible) + scrollDist
-    // Cuando el usuario ha scrolleado (scrollDist) px desde el tope de la seccion,
-    // el ultimo card es completamente visible Y la seccion termina. Cero gap negro.
+    /**
+     * Section height = 100vh + scrollDist
+     * When the user scrolls scrollDist px from sectionTop:
+     *   – x reaches −scrollDist  →  Card 3 & 4 fully visible
+     *   – section bottom hits viewport bottom  →  next section enters
+     * Zero black gap.
+     */
     <section
       ref={sectionRef}
       id="work"
@@ -77,6 +94,7 @@ export default function Work() {
     >
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
 
+        {/* Title — absolutely positioned, DOES NOT move with x */}
         <div className="absolute top-20 left-8 md:left-16 z-10 pointer-events-none mix-blend-difference">
           <h2 className="text-3xl md:text-6xl font-serif font-bold uppercase tracking-tighter text-white">
             THE BUS
@@ -87,9 +105,15 @@ export default function Work() {
           </h2>
         </div>
 
+        {/*
+          Track — only THIS moves horizontally.
+          pl = 5vw   (matches PL_VW = 0.05 in the formula)
+          pr = calc(15vw − 40px)  (fills viewport exactly at end state)
+          gap = 40px  (matches GAP_PX = 40 in the formula)
+        */}
         <motion.div
           style={{ x }}
-          className="flex gap-[40px] pl-[5vw] pr-[5vw]"
+          className="flex gap-[40px] pl-[5vw] pr-[calc(15vw-40px)]"
         >
           {projects.map((project, index) => (
             <div
