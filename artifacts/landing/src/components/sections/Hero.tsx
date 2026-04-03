@@ -25,7 +25,9 @@ export default function Hero() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const text = "DIGITAL CRAFT.";
+  // Two separate words so we can style them individually
+  const word1 = "SHAPING";
+  const word2 = "IMPACT.";
 
   return (
     <section 
@@ -46,14 +48,16 @@ export default function Hero() {
         style={{ y, opacity }}
         className="container px-4 md:px-6 relative z-10 flex flex-col items-center justify-center text-center mt-16"
       >
+        {/* Title — mouse parallax with the original smooth spring settings */}
         <motion.div
           animate={{ x: mousePos.x, y: mousePos.y }}
           transition={{ type: "spring", stiffness: 40, damping: 30 }}
-          className="mb-8 overflow-hidden flex flex-wrap justify-center max-w-6xl"
+          className="mb-8 overflow-hidden flex flex-wrap justify-center items-baseline gap-x-[0.2em] max-w-[95vw]"
         >
-          {text.split("").map((letter, i) => (
+          {/* SHAPING — solid white */}
+          {word1.split("").map((letter, i) => (
             <motion.span
-              key={i}
+              key={`w1-${i}`}
               initial={{ y: 120, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -62,9 +66,31 @@ export default function Hero() {
                 duration: 0.9,
                 ease: [0.21, 0.47, 0.32, 0.98]
               }}
-              className="text-[14vw] md:text-[11vw] lg:text-[9vw] font-serif font-bold leading-none tracking-tight text-foreground uppercase"
+              className="text-[10vw] md:text-[9vw] lg:text-[7.5vw] font-serif font-bold leading-none tracking-tight text-foreground uppercase inline-block"
             >
-              {letter === " " ? "\u00A0" : letter}
+              {letter}
+            </motion.span>
+          ))}
+
+          {/* Spacer between words */}
+          <span className="inline-block w-[0.25em]" />
+
+          {/* IMPACT. — outline style */}
+          {word2.split("").map((letter, i) => (
+            <motion.span
+              key={`w2-${i}`}
+              initial={{ y: 120, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: 0.1 + (word1.length + 1 + i) * 0.04,
+                duration: 0.9,
+                ease: [0.21, 0.47, 0.32, 0.98]
+              }}
+              className="text-[10vw] md:text-[9vw] lg:text-[7.5vw] font-serif font-bold leading-none tracking-tight uppercase inline-block text-transparent"
+              style={{ WebkitTextStroke: "1.5px white" }}
+            >
+              {letter}
             </motion.span>
           ))}
         </motion.div>
@@ -77,8 +103,8 @@ export default function Hero() {
             transition={{ delay: 0.3, duration: 0.9, ease: "easeOut" }}
             className="text-lg md:text-2xl text-muted-foreground max-w-2xl font-light leading-relaxed"
           >
-            We build digital experiences that refuse to be ignored. <br className="hidden md:block"/>
-            Confident design, bold engineering, and zero compromises.
+            We support the business ecosystem by architecting narrative-driven digital flagships and 
+            high-end content that elevate the stories of today. From story to impact.
           </motion.p>
         </div>
       </motion.div>
