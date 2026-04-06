@@ -4,17 +4,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const teamMembers = [
   { id: "01", name: "ALEXANDER WOOD", role: "FOUNDER & CEO", image: "/team/alexander.png" },
-  { id: "02", name: "ANGELICA BAÑARES", role: "2D DESIGNER", image: "/team/angelica.jpg" },
-  { id: "03", name: "CHRISTIAN PASCUAL", role: "TECHNICAL ARCHITECT", image: "/team/chris.jpg" },
-  { id: "04", name: "DAMIAN RODRIGUEZ", role: "SOFTWARE ENGINEER", image: "/team/damian.jpg" },
-  { id: "05", name: "IRIS ABUSO", role: "OPERATIONS MANAGER", image: "/team/iris.jpg" },
+  { id: "02", name: "ANGELICA BAÑARES", role: "CONTENT PRODUCER", image: "/team/angelica.jpg" },
+  { id: "03", name: "CHRISTIAN PASCUAL", role: "PRODUCTION COORDINATOR", image: "/team/chris.jpg" },
+  { id: "04", name: "DAMIAN RODRIGUEZ", role: "AI SPECIALIST", image: "/team/damian.jpg" },
+  { id: "05", name: "IRIS ABUSO", role: "PRODUCTION MANAGER", image: "/team/iris.jpg" },
   { id: "06", name: "JADE MARTINEZ", role: "3D DESIGNER", image: "/team/jade.jpg" },
-  { id: "07", name: "MALAKA PRABATH", role: "SOUND ENGINEER", image: "/team/malaka.jpg" },
+  { id: "07", name: "MALAKA PRABATH", role: "LEAD STUDIO PRODUCER", image: "/team/malaka.jpg" },
   { id: "08", name: "PAUL CAJIUAT", role: "IT SPECIALIST", image: "/team/paul.jpg" },
   { id: "09", name: "PETER MAGHARI", role: "CONTENT ASSOCIATE", image: "/team/pete.jpg" },
-  { id: "10", name: "ROMAN ROMANO", role: "SENIOR EDITOR", image: "/team/roman.jpg" },
-  { id: "11", name: "SIMRAN HEMNANI", role: "PRODUCTION ASSISTANT", image: "/team/simra.jpg" },
-  { id: "12", name: "TOM NAUW", role: "LIGHTING GAFFER", image: "/team/tom.jpg" },
+  { id: "10", name: "ROMAN ROMANO", role: "STUDIO DIRECTOR", image: "/team/roman.jpg" },
+  { id: "11", name: "SIMRAN HEMNANI", role: "CREATIVE", image: "/team/simra.jpg" },
+  { id: "12", name: "TOM NAUW", role: "COMMERCIAL DIRECTOR", image: "/team/tom.jpg" },
   { id: "13", name: "VICTOR ORTEGA", role: "GRAPHIC DESIGNER", image: "/team/victor.jpg" },
   { id: "14", name: "BINARA ABAYAWARDANA", role: "GRAPHIC DESIGNER", image: "/team/binara.jpg" },
   { id: "15", name: "ANNE ALONSO", role: "SOFTWARE ENGINEER", image: "/team/anne.jpeg" },
@@ -166,13 +166,12 @@ export default function Team() {
               <div className="flex items-center gap-12 flex-grow">
                 {/* Arrows */}
                 <div className="flex gap-4">
-                  <button
-                    onClick={prevSlide}
+                  <button title="previous"
                     className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors cursor-none group"
                   >
                     <ChevronLeft className="w-5 h-5 text-white/40 group-hover:text-primary transition-colors" />
                   </button>
-                  <button
+                  <button title="next"
                     onClick={() => nextSlide()}
                     className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors cursor-none group"
                   >
