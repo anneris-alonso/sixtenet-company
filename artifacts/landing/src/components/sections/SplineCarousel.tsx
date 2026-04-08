@@ -38,7 +38,7 @@ export default function SplineCarousel() {
             style={{ top: "-18%", height: "calc(118% + 60px)" }}
           >
             <iframe
-              src="https://my.spline.design/herocopy-kfNEEpXzBxV3dYzQltVBQAy3-5DI/"
+              src="https://my.spline.design/herocopy-Z9SSpCtmegFgXqAI2bBOD5Mg-jZD/"
               frameBorder="0"
               width="100%"
               height="100%"
