@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-background pt-0 pb-8 overflow-hidden border-t border-white/10" id="contact">
+    <footer className="relative w-full bg-background pt-0 pb-8 overflow-hidden border-t border-foreground/10" id="contact">
 
       {/* ─── SECCIÓN CTA: Let's Talk / Ideas. con fondo de imagen ─── */}
-      <div className="relative w-full py-32 md:py-40 flex flex-col items-center justify-center overflow-hidden bg-black">
+      <div className="relative w-full py-32 md:py-40 flex flex-col items-center justify-center overflow-hidden bg-background">
 
         {/* Fondo negro con la imagen grid_bg.png superpuesta */}
         <div className="absolute inset-0 z-0">
@@ -22,7 +22,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="relative z-10 block font-sans font-black uppercase text-white tracking-tighter leading-none"
+          className="relative z-10 block font-sans font-black uppercase text-foreground tracking-tighter leading-none"
           style={{ fontSize: "clamp(3rem, 11vw, 13rem)", lineHeight: 0.9 }}
         >
           LET'S TALK
@@ -51,7 +51,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative z-10 inline-block border-2 border-white text-white font-bold uppercase tracking-widest text-xs md:text-sm px-14 py-5 hover:bg-primary hover:border-primary hover:text-background transition-all duration-300"
+          className="relative z-10 inline-block border-2 border-foreground text-foreground font-bold uppercase tracking-widest text-xs md:text-sm px-14 py-5 hover:bg-primary hover:border-primary hover:text-background transition-all duration-300"
         >
           Contact Us
         </motion.a>
@@ -59,9 +59,9 @@ export default function Footer() {
 
       {/* Footer links y copyright */}
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pt-12 border-t border-white/10 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pt-12 border-t border-foreground/10 text-sm">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="font-serif font-bold text-2xl mb-4 tracking-tight">SixTenet<span className="text-primary">.</span></h3>
+            <h3 className="font-sans font-bold text-2xl mb-4 tracking-tight">SixTenet<span className="text-primary">.</span></h3>
             <p className="text-muted-foreground max-w-xs">
               Eliminating friction and engineering growth systems for high-performance businesses.
             </p>
@@ -91,7 +91,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground py-6 border-t border-white/5">
+        <div className="mt-16 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground py-6 border-t border-foreground/5">
           <p>© {new Date().getFullYear()} SixTenet. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-foreground transition-colors hover-trigger">Privacy Policy</a>

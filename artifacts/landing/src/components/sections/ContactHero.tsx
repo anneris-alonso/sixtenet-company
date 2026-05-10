@@ -24,7 +24,7 @@ export default function ContactHero() {
           className="w-full h-full object-cover"
         />
         {/* Overlay oscuro para que el texto sea legible */}
-        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0 bg-background/65" />
       </div>
 
       {/* Contenido encima del video */}
@@ -36,7 +36,7 @@ export default function ContactHero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="block font-sans font-black uppercase text-white leading-none tracking-tighter"
+          className="block font-sans font-black uppercase text-foreground leading-none tracking-tighter"
           style={{ fontSize: "clamp(3.5rem, 12vw, 14rem)", lineHeight: 0.9 }}
         >
           LET'S TALK
@@ -65,7 +65,7 @@ export default function ContactHero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 inline-block border-2 border-white text-white font-bold uppercase tracking-widest text-xs md:text-sm px-12 py-5 hover:bg-primary hover:border-primary hover:text-background transition-all duration-300"
+          className="mt-12 inline-block border-2 border-foreground text-foreground font-bold uppercase tracking-widest text-xs md:text-sm px-12 py-5 hover:bg-primary hover:border-primary hover:text-background transition-all duration-300"
         >
           Start a Project
         </motion.a>

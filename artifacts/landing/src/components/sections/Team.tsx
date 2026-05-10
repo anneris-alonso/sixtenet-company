@@ -49,7 +49,7 @@ export default function Team() {
   };
 
   return (
-    <section className="py-32 bg-background border-t border-white/5 relative overflow-hidden" id="team">
+    <section className="py-32 bg-background border-t border-foreground/5 relative overflow-hidden" id="team">
       <motion.div 
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
@@ -83,7 +83,7 @@ export default function Team() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="relative aspect-[3/4] w-full overflow-hidden border border-white/10 glassmorphism shadow-2xl grayscale"
+                className="relative aspect-[3/4] w-full overflow-hidden border border-foreground/10 glassmorphism shadow-2xl grayscale"
               >
                 <img
                   src={activeMember.image}
@@ -113,10 +113,10 @@ export default function Team() {
                     {activeMember.role}
                   </span>
                   <div className="flex flex-col leading-none">
-                    <h3 className="text-5xl md:text-8xl font-serif font-bold text-white tracking-tighter uppercase mb-2">
+                    <h3 className="text-5xl md:text-8xl font-sans font-bold text-foreground tracking-tighter uppercase mb-2">
                       {firstName}
                     </h3>
-                    <h3 className="text-5xl md:text-8xl font-serif font-bold tracking-tighter uppercase text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)]">
+                    <h3 className="text-5xl md:text-8xl font-sans font-bold tracking-tighter uppercase text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)]">
                       {lastName}
                     </h3>
                   </div>
@@ -137,7 +137,7 @@ export default function Team() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className="flex-none w-[calc(33.33%-16px)] aspect-[3/4] relative overflow-hidden group border border-white/5 grayscale hover:grayscale-0 transition-all duration-700 cursor-none"
+                    className="flex-none w-[calc(33.33%-16px)] aspect-[3/4] relative overflow-hidden group border border-foreground/5 grayscale hover:grayscale-0 transition-all duration-700 cursor-none"
                   >
                     <img
                       src={member.image}
@@ -151,7 +151,7 @@ export default function Team() {
             </div>
 
             {/* BOTTOM: Editorial Controls - Aligned with bottom of image */}
-            <div className="flex items-center justify-between gap-8 pt-8 border-t border-white/10">
+            <div className="flex items-center justify-between gap-8 pt-8 border-t border-foreground/10">
 
               {/* Navigation & Progress */}
               <div className="flex items-center gap-12 flex-grow">
@@ -159,25 +159,25 @@ export default function Team() {
                 <div className="flex gap-4">
                   <button title="previous"
                     onClick={() => prevSlide()}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors cursor-none group"
+                    className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/10 transition-colors cursor-none group"
                   >
-                    <ChevronLeft className="w-5 h-5 text-white/40 group-hover:text-primary transition-colors" />
+                    <ChevronLeft className="w-5 h-5 text-foreground/40 group-hover:text-primary transition-colors" />
                   </button>
                   <button title="next"
                     onClick={() => nextSlide()}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors cursor-none group"
+                    className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/10 transition-colors cursor-none group"
                   >
-                    <ChevronRight className="w-5 h-5 text-white/40 group-hover:text-primary transition-colors" />
+                    <ChevronRight className="w-5 h-5 text-foreground/40 group-hover:text-primary transition-colors" />
                   </button>
                 </div>
 
                 {/* Progress Bar Container */}
                 <div className="hidden lg:flex flex-col gap-2 flex-grow max-w-[300px]">
-                  <div className="flex justify-between items-center text-[10px] font-mono tracking-widest text-white/40 uppercase">
+                  <div className="flex justify-between items-center text-[10px] font-mono tracking-widest text-foreground/40 uppercase">
                     <span>{activeIndex + 1}</span>
                     <span>{teamMembers.length}</span>
                   </div>
-                  <div className="h-[2px] bg-white/10 w-full relative">
+                  <div className="h-[2px] bg-foreground/10 w-full relative">
                     <motion.div
                       className="absolute top-0 left-0 h-full bg-primary"
                       animate={{ width: `${progress}%` }}
@@ -189,7 +189,7 @@ export default function Team() {
 
               {/* Current Slide Number (Large Indicator) */}
               <div className="flex items-baseline gap-1">
-                <span className="text-6xl md:text-8xl font-serif font-bold text-white/10 leading-none select-none">
+                <span className="text-6xl md:text-8xl font-sans font-bold text-foreground/10 leading-none select-none">
                   {activeMember.id}
                 </span>
                 <span className="text-xl font-mono text-primary/40 font-bold">

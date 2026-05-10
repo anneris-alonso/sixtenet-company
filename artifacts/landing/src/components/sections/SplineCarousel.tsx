@@ -60,7 +60,7 @@ export default function SplineCarousel() {
       >
         {/* LEFT — iframe */}
         <div
-          className="relative bg-[#050505] overflow-hidden"
+          className="relative bg-card overflow-hidden"
           style={{ width: "80%", height: "100%" }}
         >
           <div
@@ -123,7 +123,7 @@ export default function SplineCarousel() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="font-serif font-bold uppercase text-background block"
+              className="font-sans font-bold uppercase text-background block"
               style={{ fontSize: "clamp(3.5rem, 7vw, 12rem)", lineHeight: 1 }}
             >
               IN
@@ -133,7 +133,7 @@ export default function SplineCarousel() {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 1.1, duration: 1 }}
-              className="font-serif font-bold uppercase text-transparent block [writing-mode:vertical-rl] rotate-180 mt-4"
+              className="font-sans font-bold uppercase text-transparent block [writing-mode:vertical-rl] rotate-180 mt-4"
               style={{
                 fontSize: "clamp(2.8rem, 5vw, 7rem)",
                 lineHeight: 1,
@@ -150,7 +150,7 @@ export default function SplineCarousel() {
 
       {/* ── TICKER ── */}
       <div
-        className="w-full bg-black border-t border-white/10 overflow-hidden flex items-center"
+        className="w-full bg-background border-t border-foreground/10 overflow-hidden flex items-center"
         style={{ height: `${TICKER_H}px`, position: "relative", zIndex: 10 }}
       >
         <motion.div
@@ -161,7 +161,7 @@ export default function SplineCarousel() {
           {items.map((item, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-6 px-8 text-[11px] tracking-[0.35em] uppercase text-white/40 font-mono shrink-0"
+              className="inline-flex items-center gap-6 px-8 text-[11px] tracking-[0.35em] uppercase text-foreground/40 font-mono shrink-0"
             >
               {item}
               <span className="w-1 h-1 bg-primary/60 inline-block" />

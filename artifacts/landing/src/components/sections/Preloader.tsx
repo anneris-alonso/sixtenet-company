@@ -37,7 +37,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.2 
               }}
-              className="text-[12vw] md:text-[8vw] font-sans font-black tracking-tighter text-white leading-none"
+              className="text-[12vw] md:text-[8vw] font-sans font-black tracking-tighter text-foreground leading-none"
             >
               SIX
             </motion.span>

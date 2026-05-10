@@ -45,7 +45,7 @@ export default function Work() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-[#0a0a0a]" id="work">
+    <section ref={targetRef} className="relative h-[300vh] bg-card" id="work">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         
         {/* Label Header */}
@@ -64,7 +64,7 @@ export default function Work() {
               className="group relative flex-none w-[70vw] md:w-[60vw] h-[60vh] flex flex-col justify-end cursor-none"
             >
               {/* Image Container */}
-              <div className="absolute inset-0 overflow-hidden bg-white/5 grayscale group-hover:grayscale-0 transition-all duration-700 border border-white/10">
+              <div className="absolute inset-0 overflow-hidden bg-foreground/5 grayscale group-hover:grayscale-0 transition-all duration-700 border border-foreground/10">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -78,7 +78,7 @@ export default function Work() {
                 <p className="text-primary text-xs tracking-[0.3em] uppercase mb-3 opacity-60 group-hover:opacity-100 transition-opacity">
                   {String(index + 1).padStart(2, "0")} // {project.category}
                 </p>
-                <h3 className="text-2xl md:text-4xl font-serif font-bold text-white uppercase tracking-tight max-w-xl leading-tight">
+                <h3 className="text-2xl md:text-4xl font-sans font-bold text-foreground uppercase tracking-tight max-w-xl leading-tight">
                   {project.title}
                 </h3>
               </div>
@@ -88,14 +88,14 @@ export default function Work() {
 
         {/* Scroll Progress Indicator at bottom */}
         <div className="absolute bottom-10 left-8 md:left-16 right-8 md:right-16 flex items-center gap-4">
-            <div className="text-[10px] font-mono text-white/20 uppercase tracking-widest">01</div>
-            <div className="flex-1 h-[1px] bg-white/10 relative">
+            <div className="text-[10px] font-mono text-foreground/20 uppercase tracking-widest">01</div>
+            <div className="flex-1 h-[1px] bg-foreground/10 relative">
                 <motion.div 
                     style={{ scaleX: scrollYProgress }} 
                     className="absolute inset-0 bg-primary origin-left"
                 />
             </div>
-            <div className="text-[10px] font-mono text-white/20 uppercase tracking-widest">04</div>
+            <div className="text-[10px] font-mono text-foreground/20 uppercase tracking-widest">04</div>
         </div>
       </div>
     </section>

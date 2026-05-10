@@ -30,7 +30,7 @@ function Counter({ from, to, label, suffix = "" }: { from: number, to: number, l
       transition={{ duration: 0.7 }}
       className="flex flex-col gap-3 border-l-2 border-primary pl-6"
     >
-      <div className="text-5xl md:text-7xl font-serif font-bold tabular-nums">
+      <div className="text-5xl md:text-7xl font-sans font-bold tabular-nums">
         {count}{suffix}
       </div>
       <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-bold">
@@ -85,7 +85,7 @@ export default function About() {
         >
           <p className="text-xs uppercase tracking-[0.3em] text-primary font-bold mb-8">About Us</p>
           
-          <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight mb-10 overflow-hidden">
+          <h2 className="text-5xl md:text-7xl font-sans font-bold leading-tight mb-10 overflow-hidden">
             {headlineLines.map((line, i) => (
               <div key={i} className="overflow-hidden">
                  <motion.span
@@ -116,7 +116,7 @@ export default function About() {
             className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-12 space-y-6"
           >
             <p>
-              Sixtenet is a systems engineering studio focused on one thing: <span className="text-white italic">eliminating the friction that limits business growth.</span>
+              Sixtenet is a systems engineering studio focused on one thing: <span className="text-foreground italic">eliminating the friction that limits business growth.</span>
             </p>
             <p>
               We operate at the intersection of software, data, and marketing execution. Instead of offering disconnected services, we design and build integrated systems that connect acquisition, operations, and revenue into a single, scalable engine.
@@ -137,7 +137,7 @@ export default function About() {
           >
             <Link
               href="/#work"
-              className="inline-block border-2 border-white text-white font-bold uppercase tracking-widest text-sm px-10 py-5 hover:bg-primary hover:border-primary hover:text-background transition-all duration-400 cursor-none"
+              className="inline-block border-2 border-foreground text-foreground font-bold uppercase tracking-widest text-sm px-10 py-5 hover:bg-primary hover:border-primary hover:text-background transition-all duration-400 cursor-none"
             >
               See Our Work
             </Link>

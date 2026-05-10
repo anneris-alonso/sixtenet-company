@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -59,63 +59,71 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-holographic: holographic 8s ease infinite;
+
+  @keyframes holographic {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 }
 
-:root, .dark {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
+:root {
+  --button-outline: rgba(0,0,0, .05);
+  --badge-outline: rgba(0,0,0, .03);
 
-  --opaque-button-border-intensity: 9;
+  --opaque-button-border-intensity: -9;
 
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
+  --elevate-1: rgba(0,0,0, .02);
+  --elevate-2: rgba(0,0,0, .05);
 
-  /* Dark cinematic theme */
-  --background: 240 10% 4%;
-  --foreground: 0 0% 98%;
+  /* Light airy holographic theme */
+  --background: 210 40% 98%;
+  --foreground: 220 20% 10%;
   
-  --border: 240 10% 12%;
+  --border: 210 20% 90%;
   
-  --card: 240 10% 6%;
-  --card-foreground: 0 0% 98%;
-  --card-border: 240 10% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 10%;
+  --card-border: 210 20% 90%;
   
-  --popover: 240 10% 6%;
-  --popover-foreground: 0 0% 98%;
-  --popover-border: 240 10% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 20% 10%;
+  --popover-border: 210 20% 90%;
   
-  --primary: 192 73% 70%; /* Branding #7BD4EA */
-  --primary-foreground: 240 10% 4%; /* Dark text on light blue for contrast */
+  --primary: 192 73% 60%; /* Slightly more saturated for light theme */
+  --primary-foreground: 210 40% 98%;
   
-  --secondary: 240 10% 12%;
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 210 20% 95%;
+  --secondary-foreground: 220 20% 15%;
   
-  --muted: 240 5% 16%;
-  --muted-foreground: 240 5% 65%;
+  --muted: 210 20% 96%;
+  --muted-foreground: 210 10% 40%;
   
-  --accent: 192 73% 70%;
-  --accent-foreground: 240 10% 4%;
+  --accent: 280 80% 90%; /* Soft lavender accent */
+  --accent-foreground: 280 40% 20%;
   
   --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
+  --destructive-foreground: 210 40% 98%;
   
-  --input: 240 10% 12%;
-  --ring: 192 73% 70%;
+  --input: 210 20% 90%;
+  --ring: 192 73% 60%;
 
-  --sidebar: 240 10% 4%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-border: 240 10% 12%;
-  --sidebar-primary: 192 73% 70%;
-  --sidebar-primary-foreground: 240 10% 4%;
-  --sidebar-accent: 240 10% 12%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-ring: 192 73% 70%;
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 220 20% 10%;
+  --sidebar-border: 210 20% 90%;
+  --sidebar-primary: 192 73% 60%;
+  --sidebar-primary-foreground: 210 40% 98%;
+  --sidebar-accent: 210 20% 95%;
+  --sidebar-accent-foreground: 220 20% 10%;
+  --sidebar-ring: 192 73% 60%;
 
-  --app-font-sans: 'Space Grotesk', sans-serif;
-  --app-font-serif: 'Syne', sans-serif;
+  --app-font-sans: 'Comfortaa', cursive;
+  --app-font-serif: 'Comfortaa', cursive;
   --app-font-mono: ui-monospace, monospace;
   
-  --radius: 0rem; /* Sharp edges */
+  --radius: 1rem; /* Rounded edges for the new vibe */
   
   --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
   --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
@@ -133,19 +141,43 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(192, 73%, 90%, 0.5) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(280, 80%, 90%, 0.5) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(150, 70%, 90%, 0.5) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(320, 80%, 90%, 0.5) 0px, transparent 50%);
+    background-attachment: fixed;
     overflow-x: hidden;
   }
   
   html {
     scroll-behavior: smooth;
-    cursor: none; /* Hide default cursor */
-  }
-  
-  a, button, input, select, textarea {
-    cursor: none; /* Keep cursor hidden for interactive elements too */
+    /* Keeping custom cursor if they have it, but usually light themes use standard or themed ones */
   }
 
   section {
     scroll-margin-top: 5rem;
   }
+}
+
+.dynamic-gradient-text {
+  background: linear-gradient(
+    to right,
+    #7BD4EA,
+    #B39DDB,
+    #F48FB1,
+    #81C784,
+    #7BD4EA
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holographic 8s ease infinite;
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }

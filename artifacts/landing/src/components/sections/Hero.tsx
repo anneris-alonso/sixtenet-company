@@ -25,36 +25,36 @@ export default function Hero() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Two separate words so we can style them individually
   const word1 = "SHAPING";
   const word2 = "IMPACT.";
 
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-[100dvh] flex items-center justify-center overflow-hidden"
+      className="relative w-full h-[100dvh] flex items-center justify-center overflow-hidden bg-background"
     >
-      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.2)_0%,transparent_60%)] mix-blend-screen" />
-        <svg className="absolute inset-0 w-full h-full opacity-40 mix-blend-overlay" xmlns="http://www.w3.org/2000/svg">
-          <filter id="noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#noise)" />
-        </svg>
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-40 mix-blend-multiply"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
       </div>
 
       <motion.div 
         style={{ y, opacity }}
         className="container px-4 md:px-6 relative z-10 flex flex-col items-center justify-center text-center mt-16"
       >
-        {/* Title — mouse parallax with the original smooth spring settings */}
         <motion.div
           animate={{ x: mousePos.x, y: mousePos.y }}
           transition={{ type: "spring", stiffness: 40, damping: 30 }}
           className="mb-8 overflow-hidden flex flex-wrap justify-center items-baseline gap-x-[0.2em] max-w-[95vw]"
         >
-          {/* SHAPING — solid white */}
           {word1.split("").map((letter, i) => (
             <motion.span
               key={`w1-${i}`}
@@ -66,16 +66,14 @@ export default function Hero() {
                 duration: 0.9,
                 ease: [0.21, 0.47, 0.32, 0.98]
               }}
-              className="text-[10vw] md:text-[9vw] lg:text-[7.5vw] font-serif font-bold leading-none tracking-tight text-foreground uppercase inline-block"
+              className="text-[10vw] md:text-[9vw] lg:text-[7.5vw] font-bold leading-none tracking-tight text-foreground uppercase inline-block"
             >
               {letter}
             </motion.span>
           ))}
 
-          {/* Spacer between words */}
           <span className="inline-block w-[0.25em]" />
 
-          {/* IMPACT. — outline style */}
           {word2.split("").map((letter, i) => (
             <motion.span
               key={`w2-${i}`}
@@ -87,8 +85,8 @@ export default function Hero() {
                 duration: 0.9,
                 ease: [0.21, 0.47, 0.32, 0.98]
               }}
-              className="text-[10vw] md:text-[9vw] lg:text-[7.5vw] font-serif font-bold leading-none tracking-tight uppercase inline-block text-transparent"
-              style={{ WebkitTextStroke: "1.5px white" }}
+              className="text-[10vw] md:text-[9vw] lg:text-[7.5vw] font-bold leading-none tracking-tight uppercase inline-block text-transparent"
+              style={{ WebkitTextStroke: "2px hsl(var(--primary))" } as any}
             >
               {letter}
             </motion.span>
@@ -101,7 +99,7 @@ export default function Hero() {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.9, ease: "easeOut" }}
-            className="text-lg md:text-2xl text-muted-foreground max-w-2xl font-light leading-relaxed"
+            className="text-lg md:text-2xl max-w-2xl font-bold leading-relaxed dynamic-gradient-text px-4"
           >
             We don't deliver services.<br />
             We engineer growth systems based on operational principles.
@@ -115,7 +113,7 @@ export default function Hero() {
         transition={{ delay: 1.8, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
       >
-        <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
+        <div className="w-[1px] h-16 bg-foreground/10 relative overflow-hidden">
           <motion.div 
             animate={{ y: [-64, 64] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}

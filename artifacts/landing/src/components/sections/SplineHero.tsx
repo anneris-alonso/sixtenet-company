@@ -44,7 +44,7 @@ export default function SplineHero() {
       {/* 
         BLOQUE DERECHO (ESCENA 3D)
       */}
-      <div className="w-full md:w-[70%] lg:w-[75%] h-[100dvh] relative z-10 bg-[#050505] overflow-hidden ml-auto">
+      <div className="w-full md:w-[70%] lg:w-[75%] h-[100dvh] relative z-10 bg-card overflow-hidden ml-auto">
 
         {/* Sombra exclusiva para el menú superior */}
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
@@ -73,7 +73,7 @@ export default function SplineHero() {
           transition={{ delay: 2, duration: 1 }}
           className="absolute top-24 right-8 z-30 hidden md:block mix-blend-difference pointer-events-none"
         >
-          <p className="text-white/50 text-xs tracking-[0.4em] uppercase font-mono text-right">
+          <p className="text-foreground/50 text-xs tracking-[0.4em] uppercase font-mono text-right">
             Interactive_01
             <br />
             <span className="text-primary tracking-widest">v.26</span>

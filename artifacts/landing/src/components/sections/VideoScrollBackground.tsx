@@ -32,7 +32,7 @@ export default function VideoScrollBackground() {
   }, [scrollYProgress]);
 
   return (
-    <div className="fixed inset-0 z-[-1] bg-[#050505] overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 z-[-1] bg-card overflow-hidden pointer-events-none">
       <video
         ref={videoRef}
         src="/bus.mp4"

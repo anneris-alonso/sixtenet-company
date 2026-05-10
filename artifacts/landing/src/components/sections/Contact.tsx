@@ -108,7 +108,7 @@ export default function Contact() {
               <span className="w-8 h-[1px] bg-primary"></span>
               Get in Touch
             </h2>
-            <h3 className="text-4xl md:text-5xl font-serif font-bold leading-tight mb-8">
+            <h3 className="text-4xl md:text-5xl font-sans font-bold leading-tight mb-8">
               Let's build something <span className="text-primary">extraordinary.</span>
             </h3>
 
@@ -121,8 +121,8 @@ export default function Contact() {
                 whileHover={{ x: 10 }}
                 className="flex items-center gap-6 group cursor-none"
               >
-                <div className="w-14 h-14 border-2 border-white/20 flex items-center justify-center bg-transparent group-hover:bg-primary group-hover:border-primary transition-all duration-300 rounded-none transform group-hover:rotate-6">
-                  <Mail className="w-6 h-6 text-white/70 group-hover:text-background transition-colors duration-300" />
+                <div className="w-14 h-14 border-2 border-foreground/20 flex items-center justify-center bg-transparent group-hover:bg-primary group-hover:border-primary transition-all duration-300 rounded-none transform group-hover:rotate-6">
+                  <Mail className="w-6 h-6 text-foreground/70 group-hover:text-background transition-colors duration-300" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-1 uppercase tracking-[0.2em] font-bold">Email Us</p>
@@ -136,8 +136,8 @@ export default function Contact() {
                 whileHover={{ x: 10 }}
                 className="flex items-center gap-6 group cursor-none"
               >
-                <div className="w-14 h-14 border-2 border-white/20 flex items-center justify-center bg-transparent group-hover:bg-primary group-hover:border-primary transition-all duration-300 rounded-none transform group-hover:rotate-6">
-                  <MapPin className="w-6 h-6 text-white/70 group-hover:text-background transition-colors duration-300" />
+                <div className="w-14 h-14 border-2 border-foreground/20 flex items-center justify-center bg-transparent group-hover:bg-primary group-hover:border-primary transition-all duration-300 rounded-none transform group-hover:rotate-6">
+                  <MapPin className="w-6 h-6 text-foreground/70 group-hover:text-background transition-colors duration-300" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-1 uppercase tracking-[0.2em] font-bold">Visit Us</p>
@@ -159,7 +159,7 @@ export default function Contact() {
             className="relative"
           >
             {/* Editorial Form Container */}
-            <div className="bg-[#0a0a0a] border-t-2 border-l-2 border-r-2 border-[#111] p-8 md:p-12 relative overflow-hidden group shadow-[20px_20px_0px_0px_rgba(123,212,234,0.1)] transition-transform hover:-translate-y-2 hover:-translate-x-2 duration-500">
+            <div className="bg-card border-t-2 border-l-2 border-r-2 border-[#111] p-8 md:p-12 relative overflow-hidden group shadow-[20px_20px_0px_0px_rgba(123,212,234,0.1)] transition-transform hover:-translate-y-2 hover:-translate-x-2 duration-500">
 
               <AnimatePresence mode="wait">
                 {isSuccess ? (
@@ -170,7 +170,7 @@ export default function Contact() {
                     className="flex flex-col items-center justify-center py-20 text-center"
                   >
                     <CheckCircle2 className="w-20 h-20 text-primary mb-6 animate-pulse" />
-                    <h4 className="text-3xl font-serif font-bold mb-4">Securely Received.</h4>
+                    <h4 className="text-3xl font-sans font-bold mb-4">Securely Received.</h4>
                     <p className="text-muted-foreground">Our team will process your vision shortly.</p>
                   </motion.div>
                 ) : (
@@ -190,7 +190,7 @@ export default function Contact() {
                             {...register("name")}
                             placeholder="ALICE WONDERLAND"
                             disabled={isSubmitting}
-                            className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 h-14 rounded-none font-serif text-xl placeholder:text-white/20 transition-all duration-300 ${errors.name ? 'border-red-500/50' : 'border-white/20 focus-visible:border-primary'
+                            className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 h-14 rounded-none font-sans text-xl placeholder:text-foreground/20 transition-all duration-300 ${errors.name ? 'border-red-500/50' : 'border-foreground/20 focus-visible:border-primary'
                               }`}
                           />
                           {errors.name && (
@@ -211,7 +211,7 @@ export default function Contact() {
                             type="email"
                             placeholder="hello@example.com"
                             disabled={isSubmitting}
-                            className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 h-14 rounded-none font-serif text-xl placeholder:text-white/20 transition-all duration-300 ${errors.email ? 'border-red-500/50' : 'border-white/20 focus-visible:border-primary'
+                            className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 h-14 rounded-none font-sans text-xl placeholder:text-foreground/20 transition-all duration-300 ${errors.email ? 'border-red-500/50' : 'border-foreground/20 focus-visible:border-primary'
                               }`}
                           />
                           {errors.email && (
@@ -232,7 +232,7 @@ export default function Contact() {
                           {...register("message")}
                           placeholder="Tell us about the scope, timeline, and vision..."
                           disabled={isSubmitting}
-                          className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 pt-4 min-h-[120px] rounded-none font-serif text-xl placeholder:text-white/20 resize-none transition-all duration-300 ${errors.message ? 'border-red-500/50' : 'border-white/20 focus-visible:border-primary'
+                          className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 pt-4 min-h-[120px] rounded-none font-sans text-xl placeholder:text-foreground/20 resize-none transition-all duration-300 ${errors.message ? 'border-red-500/50' : 'border-foreground/20 focus-visible:border-primary'
                             }`}
                         />
                         {errors.message && (

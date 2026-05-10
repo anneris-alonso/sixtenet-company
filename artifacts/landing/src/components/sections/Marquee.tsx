@@ -20,7 +20,7 @@ export default function Marquee() {
   ];
 
   return (
-    <section className="w-full py-12 overflow-hidden bg-white/5 border-y border-white/5 flex items-center">
+    <section className="w-full py-12 overflow-hidden bg-foreground/5 border-y border-foreground/5 flex items-center">
       <div className="relative flex whitespace-nowrap overflow-hidden w-full">
         <motion.div
           className="flex gap-8 items-center"
@@ -34,10 +34,10 @@ export default function Marquee() {
           {words.map((word, i) => (
             <span
               key={i}
-              className={`text-4xl md:text-6xl font-serif font-bold uppercase ${
+              className={`text-4xl md:text-6xl font-sans font-bold uppercase ${
                 word === "·" ? "text-primary" : "text-transparent"
               }`}
-              style={word !== "·" ? { WebkitTextStroke: "1px rgba(255,255,255,0.8)" } : {}}
+              style={word !== "·" ? ({ WebkitTextStroke: "1px hsl(var(--foreground)/0.2)" } as any) : {}}
             >
               {word}
             </span>
@@ -46,10 +46,10 @@ export default function Marquee() {
           {words.map((word, i) => (
             <span
               key={`dup-${i}`}
-              className={`text-4xl md:text-6xl font-serif font-bold uppercase ${
+              className={`text-4xl md:text-6xl font-sans font-bold uppercase ${
                 word === "·" ? "text-primary" : "text-transparent"
               }`}
-              style={word !== "·" ? { WebkitTextStroke: "1px rgba(255,255,255,0.8)" } : {}}
+              style={word !== "·" ? ({ WebkitTextStroke: "1px hsl(var(--foreground)/0.2)" } as any) : {}}
             >
               {word}
             </span>

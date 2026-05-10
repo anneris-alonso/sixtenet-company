@@ -104,7 +104,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-32 border-t border-white/5" id="expertise">
+    <section className="py-32 border-t border-foreground/5" id="expertise">
       <div className="container mx-auto px-4 md:px-8">
 
         {/* Header */}
@@ -124,7 +124,7 @@ export default function Services() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: "easeOut" }}
-              className="text-3xl md:text-5xl font-serif font-bold max-w-3xl leading-tight"
+              className="text-3xl md:text-5xl font-sans font-bold max-w-3xl leading-tight"
             >
               <span className="italic text-primary">Full-spectrum systems. </span>
               We build what growth actually requires.
@@ -133,7 +133,7 @@ export default function Services() {
         </div>
 
         {/* Service cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/5">
           {services.map((service, i) => (
             <motion.div
               key={service.id}
@@ -141,19 +141,19 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group bg-[#0a0a0a] p-7 flex flex-col gap-6 hover:bg-white/[0.04] transition-colors duration-500"
+              className="group bg-card p-7 flex flex-col gap-6 hover:bg-foreground/[0.04] transition-colors duration-500"
             >
               {/* Icon + number */}
               <div className="flex items-center justify-between">
                 <service.icon className="text-primary" size={24} strokeWidth={1.5} />
-                <span className="text-xs font-mono text-white/20 group-hover:text-primary/50 transition-colors duration-500">
+                <span className="text-xs font-mono text-foreground/20 group-hover:text-primary/50 transition-colors duration-500">
                   {service.id}
                 </span>
               </div>
 
               {/* Title */}
               <div>
-                <h3 className="text-base font-serif font-bold uppercase tracking-wide text-white leading-tight group-hover:text-primary transition-colors duration-500">
+                <h3 className="text-base font-sans font-bold uppercase tracking-wide text-foreground leading-tight group-hover:text-primary transition-colors duration-500">
                   {service.title}
                 </h3>
                 {service.sub && (

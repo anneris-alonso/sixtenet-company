@@ -52,7 +52,7 @@ const packages = [
 
 export default function Packages() {
   return (
-    <section className="py-32 border-t border-white/5" id="packages">
+    <section className="py-32 border-t border-foreground/5" id="packages">
       <div className="container mx-auto px-4 md:px-8">
 
         {/* Header */}
@@ -72,7 +72,7 @@ export default function Packages() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: "easeOut" }}
-              className="text-3xl md:text-5xl font-serif font-bold max-w-3xl leading-tight"
+              className="text-3xl md:text-5xl font-sans font-bold max-w-3xl leading-tight"
             >
               Choose your{" "}
               <span className="italic text-primary">growth system.</span>
@@ -81,7 +81,7 @@ export default function Packages() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-foreground/5">
           {packages.map((pkg, i) => (
             <motion.div
               key={pkg.id}
@@ -92,7 +92,7 @@ export default function Packages() {
               className={`relative flex flex-col p-8 md:p-10 ${
                 pkg.highlight
                   ? "bg-primary/10 border border-primary/30"
-                  : "bg-[#0a0a0a]"
+                  : "bg-card"
               }`}
             >
               {pkg.highlight && (
@@ -106,28 +106,28 @@ export default function Packages() {
               )}
 
               {/* Package number */}
-              <p className="text-xs font-mono text-white/20 mb-6">{pkg.id}</p>
+              <p className="text-xs font-mono text-foreground/20 mb-6">{pkg.id}</p>
 
               {/* Name */}
-              <h3 className={`text-xl md:text-2xl font-serif font-bold uppercase tracking-tight mb-2 leading-tight ${pkg.highlight ? "text-primary" : "text-white"}`}>
+              <h3 className={`text-xl md:text-2xl font-sans font-bold uppercase tracking-tight mb-2 leading-tight ${pkg.highlight ? "text-primary" : "text-foreground"}`}>
                 {pkg.name}
               </h3>
 
               {/* Price */}
               <div className="mb-2">
-                <span className="text-3xl md:text-4xl font-serif font-black text-white">{pkg.price}</span>
+                <span className="text-3xl md:text-4xl font-sans font-black text-foreground">{pkg.price}</span>
               </div>
               <p className="text-xs font-mono text-primary/60 uppercase tracking-[0.2em] mb-6">{pkg.tag}</p>
 
               {/* Description */}
-              <p className="text-sm text-muted-foreground leading-relaxed mb-8 pb-8 border-b border-white/10">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-8 pb-8 border-b border-foreground/10">
                 {pkg.description}
               </p>
 
               {/* Items */}
               <ul className="space-y-4 flex-1">
                 {pkg.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-3 text-base text-white/80 leading-relaxed">
+                  <li key={j} className="flex items-start gap-3 text-base text-foreground/80 leading-relaxed">
                     <Check
                       size={14}
                       className={`shrink-0 mt-0.5 ${pkg.highlight ? "text-primary" : "text-primary/60"}`}
@@ -143,7 +143,7 @@ export default function Packages() {
                 className={`mt-10 inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-mono uppercase tracking-widest transition-all duration-300 ${
                   pkg.highlight
                     ? "bg-primary text-black hover:bg-primary/90"
-                    : "border border-white/20 text-white hover:border-primary hover:text-primary"
+                    : "border border-foreground/20 text-foreground hover:border-primary hover:text-primary"
                 }`}
               >
                 Contact Us
