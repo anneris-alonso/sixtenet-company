@@ -40,7 +40,7 @@ export default function Process() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-4"
+            className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground mb-4"
           >
             How We Work
           </motion.p>
@@ -53,7 +53,7 @@ export default function Process() {
               className="text-3xl md:text-5xl font-sans font-bold max-w-3xl leading-tight"
             >
               A repeatable system,{" "}
-              <span className="italic text-primary">not a one-off project.</span>
+              <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent">not a one-off project.</span>
             </motion.p>
           </div>
         </div>

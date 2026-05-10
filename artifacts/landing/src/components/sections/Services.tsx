@@ -114,7 +114,7 @@ export default function Services() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-4"
+            className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground mb-4"
           >
             Our Services
           </motion.p>
@@ -126,7 +126,7 @@ export default function Services() {
               transition={{ duration: 0.9, ease: "easeOut" }}
               className="text-3xl md:text-5xl font-sans font-bold max-w-3xl leading-tight"
             >
-              <span className="italic text-primary">Full-spectrum systems. </span>
+              <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">Full-spectrum systems.</span>
               We build what growth actually requires.
             </motion.h2>
           </div>

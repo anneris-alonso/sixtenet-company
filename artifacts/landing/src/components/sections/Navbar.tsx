@@ -75,19 +75,19 @@ export default function Navbar() {
                 animate={{ opacity: 1, width: "auto", scale: 1 }}
                 exit={{ opacity: 0, width: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
-                className="overflow-hidden flex items-center"
+                className="flex items-center"
               >
                 <Link href="/">
                   <div 
-                    className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:scale-105 transition-transform shrink-0"
+                    className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:scale-110 transition-all duration-500 shrink-0 shadow-[0_0_15px_rgba(63,166,236,0.5)]"
                     style={{
-                      background: "linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(217, 249, 157, 0.3) 100%)",
+                      background: "#3fa6ec",
                       backdropFilter: "blur(12px)",
                       WebkitBackdropFilter: "blur(12px)",
                       border: "1px solid rgba(255, 255, 255, 0.4)",
                     }}
                   >
-                    <Home size={18} className="text-emerald-900" strokeWidth={2.5} />
+                    <Home size={18} className="text-white" strokeWidth={2.5} />
                   </div>
                 </Link>
               </motion.div>

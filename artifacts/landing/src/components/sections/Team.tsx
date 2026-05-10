@@ -65,7 +65,7 @@ export default function Team() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-xs font-bold tracking-[0.3em] uppercase text-primary"
+            className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground"
           >
             Our Team
           </motion.p>
@@ -109,7 +109,7 @@ export default function Team() {
                   transition={{ duration: 0.5 }}
                   className="flex flex-col items-start"
                 >
-                  <span className="text-xs font-mono tracking-[0.3em] text-primary mb-4 block uppercase">
+                  <span className="text-xs font-mono tracking-[0.3em] text-muted-foreground mb-4 block uppercase">
                     {activeMember.role}
                   </span>
                   <div className="flex flex-col leading-none">

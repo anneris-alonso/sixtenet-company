@@ -104,12 +104,12 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             className="flex flex-col justify-center"
           >
-            <h2 className="text-sm font-medium tracking-widest uppercase text-primary mb-4 flex items-center gap-2">
-              <span className="w-8 h-[1px] bg-primary"></span>
+            <h2 className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-4 flex items-center gap-2">
+              <span className="w-8 h-[1px] bg-muted-foreground"></span>
               Get in Touch
             </h2>
             <h3 className="text-4xl md:text-5xl font-sans font-bold leading-tight mb-8">
-              Let's build something <span className="text-primary">extraordinary.</span>
+              Let's build something <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">extraordinary.</span>
             </h3>
 
             <p className="text-muted-foreground text-lg md:text-xl max-w-md mb-12 font-light">

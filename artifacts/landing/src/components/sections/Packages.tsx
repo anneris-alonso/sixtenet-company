@@ -62,9 +62,9 @@ export default function Packages() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-4"
+            className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground mb-4"
           >
-            Investment
+            Packages
           </motion.p>
           <div className="overflow-hidden">
             <motion.h2
@@ -75,7 +75,7 @@ export default function Packages() {
               className="text-3xl md:text-5xl font-sans font-bold max-w-3xl leading-tight"
             >
               Choose your{" "}
-              <span className="italic text-primary">growth system.</span>
+              <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent">growth system.</span>
             </motion.h2>
           </div>
         </div>

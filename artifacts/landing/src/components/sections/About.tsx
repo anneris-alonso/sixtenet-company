@@ -83,7 +83,7 @@ export default function About() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut" }}
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-primary font-bold mb-8">About Us</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-bold mb-8">About Us</p>
           
           <h2 className="text-5xl md:text-7xl font-sans font-bold leading-tight mb-10 overflow-hidden">
             {headlineLines.map((line, i) => (
@@ -101,7 +101,7 @@ export default function About() {
                        {line}
                      </span>
                    ) : i === 2 ? (
-                     <span className="text-primary italic">{line}</span>
+                     <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">{line}</span>
                    ) : line}
                  </motion.span>
               </div>
@@ -122,7 +122,7 @@ export default function About() {
               We operate at the intersection of software, data, and marketing execution. Instead of offering disconnected services, we design and build integrated systems that connect acquisition, operations, and revenue into a single, scalable engine.
             </p>
             <p>
-              Our approach is based on a simple principle: <span className="text-primary font-bold">growth is not a campaign problem — it's a systems problem.</span>
+              Our approach is based on a simple principle: <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent font-bold">growth is not a campaign problem — it's a systems problem.</span>
             </p>
             <p>
               With experience across SaaS platforms, AI-driven automation, and high-performance digital infrastructure, we work with businesses that need more than execution. They need control, visibility, and the ability to scale without breaking.

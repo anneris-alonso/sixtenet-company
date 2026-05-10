@@ -46,7 +46,7 @@ export default function Tenets() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-4"
+            className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground mb-4"
           >
             Our Framework
           </motion.p>
@@ -58,7 +58,8 @@ export default function Tenets() {
               transition={{ duration: 0.9, ease: "easeOut" }}
               className="text-3xl md:text-5xl font-sans font-bold max-w-3xl leading-tight"
             >
-              <span className="italic text-primary">Our Six Tenets. </span>
+              <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">Our Six Tenets.</span>
+              <br className="hidden md:block" />
               One operating system for growth.
             </motion.h2>
           </div>
@@ -82,10 +83,10 @@ export default function Tenets() {
 
               {/* Top: number + optional sub-label */}
               <div>
-                <p className="text-xs font-mono text-primary/60 uppercase tracking-[0.3em] mb-6">
+                <p className="text-xs font-mono text-muted-foreground uppercase tracking-[0.3em] mb-6">
                   {tenet.sub ? tenet.sub : `Tenet ${tenet.id}`}
                 </p>
-                <h3 className="text-2xl md:text-3xl font-sans font-bold uppercase tracking-tight text-foreground group-hover:text-primary transition-colors duration-500 leading-tight">
+                <h3 className="text-2xl md:text-3xl font-sans font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-500 leading-tight">
                   {tenet.name}
                 </h3>
               </div>

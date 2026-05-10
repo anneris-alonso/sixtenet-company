@@ -42,85 +42,88 @@ export default function Work() {
 
   return (
     <section className="relative py-32 bg-background overflow-hidden" id="work">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-[90vw] mx-auto px-4 md:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-16 md:mb-24">
-          <p className="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-4">
+        <div className="mb-16 md:mb-20">
+          <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground mb-4">
             Case Studies
           </p>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground">
-            Significant Work.
+            Significant <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">Work.</span>
           </h2>
         </div>
 
-        {/* Feature Switcher Layout */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+        {/* Feature Switcher Layout - Wrapped in a Container */}
+        <div className="bg-foreground/5 rounded-[2.5rem] p-6 md:p-12 flex flex-col lg:flex-row gap-10 lg:gap-20 items-stretch">
           
           {/* Left Column: Interactive Tabs */}
-          <div className="w-full lg:w-5/12 flex flex-col gap-4">
+          <div className="w-full lg:w-5/12 flex flex-col gap-2 relative">
             {projects.map((project, index) => {
               const isActive = index === activeIndex;
               return (
-                <button
-                  key={project.id}
-                  onClick={() => setActiveIndex(index)}
-                  className={`text-left p-6 md:p-8 rounded-[2rem] transition-all duration-500 relative overflow-hidden ${
-                    isActive 
-                      ? "bg-foreground/5 shadow-sm border border-foreground/10" 
-                      : "hover:bg-foreground/5 border border-transparent opacity-60 hover:opacity-100"
-                  }`}
-                >
-                  <p className="text-primary text-xs tracking-widest uppercase mb-3">
-                    {project.category}
-                  </p>
-                  <h3 className="text-xl md:text-3xl font-bold text-foreground mb-2">
-                    {project.title}
-                  </h3>
-                  
-                  {/* Expandable Content Area */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-foreground/70 text-sm md:text-base leading-relaxed mt-4 mb-6">
-                          {project.description}
-                        </p>
-                        <Link 
-                          href={`/case-study/${project.slug}`}
-                          className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary hover:text-emerald-500 transition-colors"
-                        >
-                          Read Case Study <span>&rarr;</span>
-                        </Link>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Active Indicator Line */}
+                <div key={project.id} className="relative">
+                  {/* Gliding Active Background */}
                   {isActive && (
                     <motion.div 
-                      layoutId="activeTabIndicator"
-                      className="absolute left-0 top-0 bottom-0 w-1.5 bg-primary rounded-r-full"
+                      layoutId="activeTabBg"
+                      className="absolute inset-0 bg-background shadow-lg rounded-3xl border border-foreground/5"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
-                </button>
+                  
+                  <button
+                    onClick={() => setActiveIndex(index)}
+                    className={`relative w-full text-left p-6 md:p-8 transition-opacity duration-300 z-10 ${
+                      isActive 
+                        ? "opacity-100" 
+                        : "opacity-40 hover:opacity-70"
+                    }`}
+                  >
+                    <p className={`text-xs tracking-widest uppercase mb-3 transition-colors duration-300 ${isActive ? 'text-muted-foreground' : 'text-foreground/40'}`}>
+                      {project.category}
+                    </p>
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-foreground/80 text-sm md:text-base leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {/* Read More Link */}
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                          animate={{ opacity: 1, height: "auto", marginTop: 24 }}
+                          exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                          transition={{ duration: 0.4, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <Link 
+                            href={`/case-study/${project.slug}`}
+                            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary hover:text-emerald-500 transition-colors"
+                          >
+                            Read Case Study <span>&rarr;</span>
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </button>
+                </div>
               );
             })}
           </div>
 
           {/* Right Column: Media Display Container */}
-          <div className="w-full lg:w-7/12 h-[50vh] md:h-[60vh] lg:h-[75vh] relative rounded-[2.5rem] overflow-hidden bg-foreground/5 border border-foreground/10 shadow-2xl">
-            <AnimatePresence>
+          <div className="w-full lg:w-7/12 min-h-[50vh] lg:min-h-[75vh] relative rounded-[2rem] overflow-hidden bg-background shadow-2xl flex-1">
+            <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 1.05, filter: "blur(8px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0"
               >
@@ -129,8 +132,6 @@ export default function Work() {
                   alt={projects[activeIndex].title}
                   className="w-full h-full object-cover"
                 />
-                {/* Subtle gradient overlay to enhance contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-50" />
               </motion.div>
             </AnimatePresence>
           </div>

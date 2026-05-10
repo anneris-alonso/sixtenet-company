@@ -33,8 +33,8 @@ export default function Landing() {
       <Navbar />
       <main>
         <Hero />
-        <Impact />
         <Tenets />
+        <Impact />
         <Services />
         <Packages />
         <Process />
