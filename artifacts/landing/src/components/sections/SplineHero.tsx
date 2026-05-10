@@ -14,10 +14,10 @@ export default function SplineHero() {
         initial={{ x: "-100%" }}
         animate={{ x: 0 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="w-[30%] md:w-[30%] lg:w-[25%] h-full bg-primary flex flex-col items-center justify-between z-20 shadow-[20px_0_50px_rgba(0,0,0,0.5)] absolute top-0 left-0 md:relative py-8 md:py-16"
+        className="w-[30%] md:w-[30%] lg:w-[25%] h-full bg-primary flex flex-col items-center justify-center z-20 shadow-[20px_0_50px_rgba(0,0,0,0.5)] absolute top-0 left-0 md:relative"
       >
 
-        <div className="flex flex-col gap-1 md:gap-2 items-center leading-none font-sans font-black tracking-tighter uppercase select-none mt-10 md:mt-16">
+        <div className="flex flex-col gap-1 md:gap-2 items-center leading-none font-sans font-black tracking-tighter uppercase select-none">
           {/* Palabra SIX horizontal grande */}
           <motion.span
             initial={{ y: 20, opacity: 0 }}
@@ -39,20 +39,6 @@ export default function SplineHero() {
             TENET
           </motion.span>
         </div>
-
-        {/* Espaciador flexible */}
-        <div className="flex-1 min-h-[60px] md:min-h-[80px] w-full"></div>
-
-        {/* Botón hacia la sección Contact al fondo de la barra */}
-        <motion.a
-          href="#contact"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
-          className="mb-10 w-[80%] max-w-[200px] text-center border-2 border-background text-background font-bold uppercase tracking-widest text-xs md:text-sm py-4 hover:bg-background hover:text-primary transition-all duration-300 hover:scale-105"
-        >
-          Contact Us
-        </motion.a>
       </motion.div>
 
       {/* 

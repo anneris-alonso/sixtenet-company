@@ -80,7 +80,7 @@ export default function Process() {
               <h3 className="text-2xl md:text-3xl font-serif font-bold uppercase tracking-tight mb-4 group-hover:text-primary transition-colors duration-500">
                 {step.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 {step.body}
               </p>
             </motion.div>

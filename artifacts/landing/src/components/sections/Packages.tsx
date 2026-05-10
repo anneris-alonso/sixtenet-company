@@ -127,7 +127,7 @@ export default function Packages() {
               {/* Items */}
               <ul className="space-y-4 flex-1">
                 {pkg.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-3 text-sm text-white/80 leading-relaxed">
+                  <li key={j} className="flex items-start gap-3 text-base text-white/80 leading-relaxed">
                     <Check
                       size={14}
                       className={`shrink-0 mt-0.5 ${pkg.highlight ? "text-primary" : "text-primary/60"}`}

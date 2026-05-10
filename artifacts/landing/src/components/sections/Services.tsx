@@ -167,7 +167,7 @@ export default function Services() {
               {/* Items list */}
               <ul className="space-y-2 flex-1">
                 {service.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed">
+                  <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed">
                     <span className="text-primary/50 mt-0.5 shrink-0">—</span>
                     {item}
                   </li>
