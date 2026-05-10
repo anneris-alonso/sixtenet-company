@@ -1,20 +1,13 @@
 import { useState, useEffect, MouseEvent } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
+import { Home } from "lucide-react";
 
 export default function Navbar() {
   const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    if (latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-    
     if (latest > (window.innerHeight * 0.8)) {
       setIsScrolled(true);
     } else {
@@ -38,29 +31,68 @@ export default function Navbar() {
 
   return (
     <motion.header
-      variants={{
-        visible: { y: 0 },
-        hidden: { y: "-100%" },
-      }}
-      animate={hidden ? "hidden" : "visible"}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-background/95 backdrop-blur-md border-b border-foreground/5" 
+          ? "border-b border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.05)]" 
           : "bg-transparent"
       }`}
+      style={isScrolled ? {
+        background: "rgba(255, 255, 255, 0.15)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)"
+      } : {}}
     >
-      <div className={`w-full h-20 flex items-center transition-all duration-500 ${isScrolled ? "container mx-auto px-6" : "pr-6"}`}>
+      <div className={`w-full h-20 flex items-center transition-all duration-500 ${isScrolled ? "container mx-auto px-6" : "px-8"}`}>
         
-        <div className={`transition-all duration-500 ${isScrolled ? "w-auto opacity-100" : "w-auto px-6 flex justify-center opacity-100"}`}>
-          <Link href="/" className="text-xl md:text-2xl font-sans font-bold tracking-tighter uppercase z-10 text-foreground">
-            SIXTENET<span className="text-primary">.</span>
+        {/* Logo and Name */}
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center gap-3 text-xl md:text-2xl font-sans font-bold tracking-tighter uppercase z-10 text-foreground hover:opacity-80 transition-opacity">
+            {/* <img src="/logo.png" alt="Sixtenet Logo" className="h-8 w-auto object-contain" />*/}
+            <span className="tracking-[0.4em]">SIX<span className="font-semibold">TENET</span></span>
           </Link>
         </div>
 
         <div className="flex-1" />
         
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Navigation */}
+        <nav 
+          className={`hidden md:flex items-center gap-6 px-4 py-2.5 transition-all duration-500 ${
+            !isScrolled ? "rounded-full" : ""
+          }`}
+          style={!isScrolled ? {
+            background: "rgba(255, 255, 255, 0.15)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+          } : {}}
+        >
+          {/* Premium Green Glass Circle */}
+          <AnimatePresence>
+            {!isScrolled && (
+              <motion.div
+                initial={{ opacity: 0, width: 0, scale: 0.8 }}
+                animate={{ opacity: 1, width: "auto", scale: 1 }}
+                exit={{ opacity: 0, width: 0, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden flex items-center"
+              >
+                <Link href="/">
+                  <div 
+                    className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:scale-105 transition-transform shrink-0"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(217, 249, 157, 0.3) 100%)",
+                      backdropFilter: "blur(12px)",
+                      WebkitBackdropFilter: "blur(12px)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                    }}
+                  >
+                    <Home size={18} className="text-emerald-900" strokeWidth={2.5} />
+                  </div>
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
           {[
             { name: "Services", href: "/#expertise" },
             { name: "Process", href: "/#process" },
@@ -74,14 +106,15 @@ export default function Navbar() {
               key={item.name} 
               href={item.href} 
               onClick={(e) => handleNavClick(e as any, item.href)}
-              className="text-sm md:text-base font-bold tracking-wide uppercase text-foreground/80 hover:text-primary transition-colors"
+              className="text-base font-semibold tracking-wide uppercase text-foreground/90 hover:text-primary transition-colors"
             >
               {item.name}
             </Link>
           ))}
         </nav>
 
-        <button aria-label="Menu" type="button" className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5">
+        {/* Mobile Menu Button */}
+        <button aria-label="Menu" type="button" className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 ml-auto">
           <span className="w-6 h-[2px] bg-foreground block transition-all" />
           <span className="w-6 h-[2px] bg-foreground block transition-all" />
         </button>

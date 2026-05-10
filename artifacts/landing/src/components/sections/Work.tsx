@@ -1,5 +1,5 @@
-import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { Link } from "wouter";
 
 const projects = [
@@ -8,94 +8,133 @@ const projects = [
     title: "Eliminating Revenue Friction", 
     category: "Revenue Systems", 
     image: "/potfolio/mycosmetic.avif",
-    slug: "my-cosmetic-surgery"
+    slug: "my-cosmetic-surgery",
+    description: "An end-to-end overhaul of the checkout and booking infrastructure, resulting in a 40% reduction in cart abandonment and significantly accelerated revenue cycles."
   },
   { 
     id: 2, 
     title: "AI-Driven Logistics Platform", 
     category: "System Architecture", 
     image: "/potfolio/nurox.png",
-    slug: "nurox"
+    slug: "nurox",
+    description: "Architected a custom machine learning logistics platform to predict supply chain bottlenecks, streamlining operations for nationwide delivery networks."
   },
   { 
     id: 3, 
     title: "High-Impact Interactive Experience", 
     category: "Digital Storytelling", 
     image: "/potfolio/thebus.png",
-    slug: "the-bus"
+    slug: "the-bus",
+    description: "Designed a deeply immersive 3D web experience that elevated brand perception and doubled average session duration through strategic micro-interactions."
   },
   { 
     id: 4, 
     title: "Scaling Event Operations", 
     category: "Operational Systems", 
     image: "/potfolio/lexiconlore.png",
-    slug: "lexiconlore"
+    slug: "lexiconlore",
+    description: "Developed a comprehensive management dashboard bridging ticketing, CRM, and live analytics for large-scale international conventions."
   },
 ];
 
 export default function Work() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  // Calculate the horizontal move. 
-  // We have 4 projects of 75vw each = 300vw total track width roughly.
-  // We want to scroll from 0% to -(trackWidth - 100vw).
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-card" id="work">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+    <section className="relative py-32 bg-background overflow-hidden" id="work">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Label Header */}
-        <div className="absolute top-20 left-8 md:left-16 z-10 pointer-events-none">
-          <p className="text-xs font-bold tracking-[0.3em] uppercase text-primary">
+        {/* Section Header */}
+        <div className="mb-16 md:mb-24">
+          <p className="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-4">
             Case Studies
           </p>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground">
+            Significant Work.
+          </h2>
         </div>
 
-        {/* Horizontal Track */}
-        <motion.div style={{ x }} className="flex gap-[40px] pl-[10vw]">
-          {projects.map((project, index) => (
-            <Link 
-              href={`/case-study/${project.slug}`} 
-              key={project.id}
-              className="group relative flex-none w-[70vw] md:w-[60vw] h-[60vh] flex flex-col justify-end cursor-none"
-            >
-              {/* Image Container */}
-              <div className="absolute inset-0 overflow-hidden bg-foreground/5 grayscale group-hover:grayscale-0 transition-all duration-700 border border-foreground/10">
+        {/* Feature Switcher Layout */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column: Interactive Tabs */}
+          <div className="w-full lg:w-5/12 flex flex-col gap-4">
+            {projects.map((project, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={project.id}
+                  onClick={() => setActiveIndex(index)}
+                  className={`text-left p-6 md:p-8 rounded-[2rem] transition-all duration-500 relative overflow-hidden ${
+                    isActive 
+                      ? "bg-foreground/5 shadow-sm border border-foreground/10" 
+                      : "hover:bg-foreground/5 border border-transparent opacity-60 hover:opacity-100"
+                  }`}
+                >
+                  <p className="text-primary text-xs tracking-widest uppercase mb-3">
+                    {project.category}
+                  </p>
+                  <h3 className="text-xl md:text-3xl font-bold text-foreground mb-2">
+                    {project.title}
+                  </h3>
+                  
+                  {/* Expandable Content Area */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <p className="text-foreground/70 text-sm md:text-base leading-relaxed mt-4 mb-6">
+                          {project.description}
+                        </p>
+                        <Link 
+                          href={`/case-study/${project.slug}`}
+                          className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary hover:text-emerald-500 transition-colors"
+                        >
+                          Read Case Study <span>&rarr;</span>
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Active Indicator Line */}
+                  {isActive && (
+                    <motion.div 
+                      layoutId="activeTabIndicator"
+                      className="absolute left-0 top-0 bottom-0 w-1.5 bg-primary rounded-r-full"
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right Column: Media Display Container */}
+          <div className="w-full lg:w-7/12 h-[50vh] md:h-[60vh] lg:h-[75vh] relative rounded-[2.5rem] overflow-hidden bg-foreground/5 border border-foreground/10 shadow-2xl">
+            <AnimatePresence>
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0"
+              >
                 <img
-                  src={project.image}
-                  alt={project.title}
-                  className="object-cover w-full h-full transform transition-transform duration-1000 group-hover:scale-110"
+                  src={projects[activeIndex].image}
+                  alt={projects[activeIndex].title}
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              </div>
+                {/* Subtle gradient overlay to enhance contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-50" />
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-              {/* Text Content */}
-              <div className="relative z-10 p-6 md:p-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <p className="text-primary text-xs tracking-[0.3em] uppercase mb-3 opacity-60 group-hover:opacity-100 transition-opacity">
-                  {String(index + 1).padStart(2, "0")} // {project.category}
-                </p>
-                <h3 className="text-2xl md:text-4xl font-sans font-bold text-foreground uppercase tracking-tight max-w-xl leading-tight">
-                  {project.title}
-                </h3>
-              </div>
-            </Link>
-          ))}
-        </motion.div>
-
-        {/* Scroll Progress Indicator at bottom */}
-        <div className="absolute bottom-10 left-8 md:left-16 right-8 md:right-16 flex items-center gap-4">
-            <div className="text-[10px] font-mono text-foreground/20 uppercase tracking-widest">01</div>
-            <div className="flex-1 h-[1px] bg-foreground/10 relative">
-                <motion.div 
-                    style={{ scaleX: scrollYProgress }} 
-                    className="absolute inset-0 bg-primary origin-left"
-                />
-            </div>
-            <div className="text-[10px] font-mono text-foreground/20 uppercase tracking-widest">04</div>
         </div>
       </div>
     </section>

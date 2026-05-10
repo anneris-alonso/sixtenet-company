@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
+import Impact from "@/components/sections/Impact";
 import Tenets from "@/components/sections/Tenets";
 import Services from "@/components/sections/Services";
 import Packages from "@/components/sections/Packages";
@@ -32,6 +33,7 @@ export default function Landing() {
       <Navbar />
       <main>
         <Hero />
+        <Impact />
         <Tenets />
         <Services />
         <Packages />

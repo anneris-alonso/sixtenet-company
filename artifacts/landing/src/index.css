@@ -181,3 +181,16 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+.bg-gradient-iridescent {
+  background: linear-gradient(
+    135deg,
+    #7BD4EA 0%,
+    #B39DDB 25%,
+    #F48FB1 50%,
+    #81C784 75%,
+    #7BD4EA 100%
+  );
+  background-size: 400% 400%;
+  animation: holographic 12s ease infinite;
+}
