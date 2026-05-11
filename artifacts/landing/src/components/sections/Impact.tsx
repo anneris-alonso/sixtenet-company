@@ -68,7 +68,7 @@ export default function Impact() {
               loop 
               muted 
               playsInline 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-[2rem]"
               src="/impact/website.mp4"
             />
           </motion.div>
@@ -93,7 +93,7 @@ export default function Impact() {
               loop 
               muted 
               playsInline 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-[2.5rem]"
               src="/impact/story.mp4"
             />
             {/* Player controls mock */}
