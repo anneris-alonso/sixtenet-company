@@ -38,7 +38,7 @@ export default function Footer() {
           style={{
             fontSize: "clamp(3rem, 11vw, 13rem)",
             lineHeight: 0.9,
-            WebkitTextStroke: "3px white",
+            WebkitTextStroke: "3px hsl(var(--foreground))",
           }}
         >
           IDEAS.

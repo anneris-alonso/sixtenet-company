@@ -13,7 +13,6 @@ export default function TheBusCaseStudy() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.documentElement.classList.add('dark');
     if (showPreloader) {
       document.body.style.overflow = "hidden";
     } else {
@@ -29,16 +28,9 @@ export default function TheBusCaseStudy() {
       <AnimatePresence>
         {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
       </AnimatePresence>
-      {/* Static Image Background Overlay */}
-      <div className="fixed inset-0 z-[-1] bg-[#050505] overflow-hidden pointer-events-none">
-        <img
-          src="/potfolio/thebus.png"
-          alt="Background"
-          className="w-full h-full object-cover opacity-20 grayscale contrast-[1.1] brightness-[0.7]"
-          style={{ pointerEvents: 'none' }}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_80%,rgba(0,0,0,1)_100%)] z-10" />
-        <div className="absolute inset-0 bg-primary/5 mix-blend-overlay z-20" />
+      {/* Background Overlay - Light and holographic */}
+      <div className="fixed inset-0 z-[-1] bg-background overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-transparent to-primary/5" />
       </div>
       <Navbar />
 
@@ -59,12 +51,12 @@ export default function TheBusCaseStudy() {
               <p className="text-primary font-mono text-sm tracking-[0.4em] uppercase mb-6">Case Study 03</p>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-black leading-[0.9] uppercase tracking-tighter mb-8">
                 Interactive<br />
-                <span className="text-transparent" style={{ WebkitTextStroke: "1px white" }}>Brand Experience</span>
+                <span className="text-transparent" style={{ WebkitTextStroke: "1px hsl(var(--foreground))" }}>Brand Experience</span>
                 <span className="text-primary">.</span>
               </h1>
               <div className="flex flex-wrap gap-4 mb-8">
                 {["Hidden Friction", "Vanity Infrastructure"].map((tenet) => (
-                  <span key={tenet} className="px-4 py-1 border border-white/20 rounded-full text-xs font-mono uppercase tracking-widest text-white/60">
+                  <span key={tenet} className="px-4 py-1 border border-border rounded-full text-xs font-mono uppercase tracking-widest text-muted-foreground">
                     {tenet}
                   </span>
                 ))}
@@ -73,7 +65,7 @@ export default function TheBusCaseStudy() {
                 href="https://thebus.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-3 border border-primary/50 text-primary text-sm font-mono uppercase tracking-widest hover:bg-primary hover:text-black transition-all duration-300 group"
+                className="inline-flex items-center gap-3 px-6 py-3 border border-primary/30 text-primary text-sm font-mono uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300 group glass-morphism"
               >
                 Visit Client Site
                 <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
@@ -83,7 +75,7 @@ export default function TheBusCaseStudy() {
         </section>
 
         {/* OVERVIEW */}
-        <section className="py-40 relative z-10 border-y border-white/5 bg-black/40 backdrop-blur-md">
+        <section className="py-40 relative z-10 border-y border-border glass-morphism">
           <div className="container mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-24">
             <div className="space-y-12">
               <div className="space-y-4">
@@ -113,7 +105,7 @@ export default function TheBusCaseStudy() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-4 text-lg text-white/80"
+                      className="flex items-start gap-4 text-lg text-foreground/80"
                     >
                       <span className="text-primary mt-1.5"><Eye size={18} /></span>
                       {item}
@@ -126,11 +118,11 @@ export default function TheBusCaseStudy() {
         </section>
 
         {/* DIAGNOSIS */}
-        <section className="py-40 relative z-10 border-b border-white/5">
+        <section className="py-40 relative z-10 border-b border-border">
           <div className="container mx-auto px-4 md:px-8">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <p className="text-xs font-bold tracking-[0.3em] uppercase text-primary">The Diagnosis</p>
-              <blockquote className="text-3xl md:text-5xl font-serif italic text-white leading-tight">
+              <blockquote className="text-3xl md:text-5xl font-serif italic text-foreground leading-tight">
                 "The challenge was to remove visual and interaction friction 
                 <span className="block mt-6 text-4xl md:text-6xl text-primary font-bold not-italic">
                   while maintaining high-impact design.
@@ -141,7 +133,7 @@ export default function TheBusCaseStudy() {
         </section>
 
         {/* SOLUTION */}
-        <section className="py-40 relative z-10 bg-black/20">
+        <section className="py-40 relative z-10 bg-muted/30">
           <div className="container mx-auto px-4 md:px-8">
             <div className="mb-20">
               <p className="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-4">The Solution</p>
@@ -157,7 +149,7 @@ export default function TheBusCaseStudy() {
                 { title: "Behavioral Analysis", desc: "Optimizing interaction timing via engagement signals.", icon: MousePointer2 },
                 { title: "Performance Tuning", desc: "High-end visuals without sacrificing load times.", icon: LineChart }
               ].map((feature, i) => (
-                <div key={i} className="p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group">
+                <div key={i} className="p-8 border border-border bg-card/50 backdrop-blur-sm hover:bg-card transition-colors group">
                   <feature.icon className="text-primary mb-6 group-hover:scale-110 transition-transform" size={32} strokeWidth={1.5} />
                   <h4 className="text-xl font-serif font-bold uppercase mb-4 tracking-wider">{feature.title}</h4>
                   <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
@@ -168,7 +160,7 @@ export default function TheBusCaseStudy() {
         </section>
 
         {/* RESULTS */}
-        <section className="py-40 relative z-10 border-t border-white/5">
+        <section className="py-40 relative z-10 border-t border-border">
           <div className="container mx-auto px-4 md:px-8">
             <div className="grid lg:grid-cols-2 gap-24 items-center">
               <div>
@@ -181,16 +173,16 @@ export default function TheBusCaseStudy() {
                     { label: "Brand Perception", value: "Premium" },
                     { label: "Performance", value: "Balanced" }
                   ].map((stat, i) => (
-                    <div key={i} className="border-b border-white/10 pb-6">
-                      <p className="text-5xl md:text-7xl font-serif font-bold text-white mb-2">{stat.value}</p>
+                    <div key={i} className="border-b border-border pb-6">
+                      <p className="text-5xl md:text-7xl font-serif font-bold text-foreground mb-2">{stat.value}</p>
                       <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary">{stat.label}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="bg-primary/5 border border-primary/20 p-12 space-y-8">
+              <div className="bg-primary/10 border border-primary/20 p-12 space-y-8 glass-morphism">
                 <p className="text-xs font-bold tracking-[0.3em] uppercase text-primary">Insight</p>
-                <p className="text-3xl md:text-4xl font-serif font-bold text-white leading-tight">
+                <p className="text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
                   Good design attracts attention. <span className="italic text-primary">Systems design controls it.</span>
                 </p>
               </div>

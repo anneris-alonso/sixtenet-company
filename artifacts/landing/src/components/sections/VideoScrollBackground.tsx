@@ -32,20 +32,20 @@ export default function VideoScrollBackground() {
   }, [scrollYProgress]);
 
   return (
-    <div className="fixed inset-0 z-[-1] bg-card overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 z-[-1] bg-background overflow-hidden pointer-events-none">
       <video
         ref={videoRef}
         src="/bus.mp4"
         muted
         playsInline
         preload="metadata"
-        className="w-full h-full object-cover opacity-60 contrast-[1.05] brightness-[0.85]"
+        className="w-full h-full object-cover opacity-30 grayscale contrast-[1.05] brightness-[1.1]"
         style={{ pointerEvents: 'none' }}
       />
       
-      {/* Editorial Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.5)_80%,rgba(0,0,0,0.9)_100%)] z-10" />
-      <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-20" />
+      {/* Editorial Overlay - Light theme aware */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/80 z-10" />
+      <div className="absolute inset-0 bg-primary/5 mix-blend-overlay z-20" />
     </div>
   );
 }

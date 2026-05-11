@@ -17,8 +17,6 @@ export default function TheBusStory() {
   const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.documentElement.classList.add('dark');
-
     // Lock scroll while preloader is active
     if (showPreloader) {
       document.body.style.overflow = "hidden";
@@ -77,7 +75,7 @@ export default function TheBusStory() {
               className="max-w-4xl"
             >
               <h1 className="text-[12vw] md:text-[10vw] font-serif font-black leading-[0.85] uppercase tracking-tighter mb-8">
-                The<br /><span className="text-transparent" style={{ WebkitTextStroke: "1px white" }}>Bus</span><br />Story<span className="text-primary">.</span>
+                The<br /><span className="text-transparent" style={{ WebkitTextStroke: "1px hsl(var(--foreground))" }}>Bus</span><br />Story<span className="text-primary">.</span>
               </h1>
               <p className="text-xl md:text-3xl font-light text-muted-foreground max-w-2xl leading-relaxed tracking-tight">
                 From a vision on the road to a state-of-the-art mobile production office. This is how we built our sanctuary of creativity.
@@ -87,7 +85,7 @@ export default function TheBusStory() {
         </section>
 
         {/* NARRATIVE BREAK: THE OBJECTIVE & SPECS MERGER */}
-        <section className="py-40 relative z-10 border-y border-white/5 bg-black/30 backdrop-blur-sm">
+        <section className="py-40 relative z-10 border-y border-border glass-morphism">
           <div className="container mx-auto px-4 md:px-8 grid md:grid-cols-1 lg:grid-cols-2 gap-24">
             {/* Left Column: Narrative */}
             <div className="space-y-12">
@@ -139,7 +137,7 @@ export default function TheBusStory() {
                     <spec.icon strokeWidth={1} size={28} />
                   </div>
                   <div className="space-y-2">
-                    <h4 className="text-[20px] font-serif font-bold uppercase tracking-widest text-white leading-tight">{spec.title}</h4>
+                    <h4 className="text-[20px] font-serif font-bold uppercase tracking-widest text-foreground leading-tight">{spec.title}</h4>
                     <p className="text-[15px] text-muted-foreground leading-relaxed">{spec.desc}</p>
                   </div>
                 </motion.div>
@@ -149,7 +147,7 @@ export default function TheBusStory() {
         </section>
 
         {/* THE ARCHITECTURE - REAL EXPERTISE STYLE WITH HOVER REVEAL */}
-        <section className="py-40 relative z-10 border-t border-white/5">
+        <section className="py-40 relative z-10 border-t border-border">
           <div className="container mx-auto px-4 md:px-8">
             <div className="mb-20">
               <motion.p
@@ -190,7 +188,7 @@ export default function TheBusStory() {
               ].map((item, index) => (
                 <div
                   key={item.id}
-                  className="border-b border-white/10 relative group"
+                  className="border-b border-border relative group"
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
@@ -237,8 +235,8 @@ export default function TheBusStory() {
               viewport={{ once: true }}
               className="space-y-2"
             >
-              <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter text-white leading-none">GLOBAL AMBITION.</h3>
-              <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter text-transparent leading-none" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}>LOCAL ENTREPRENEURS.</h3>
+              <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter text-foreground leading-none">GLOBAL AMBITION.</h3>
+              <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter text-transparent leading-none" style={{ WebkitTextStroke: "1px hsl(var(--foreground) / 0.2)" }}>LOCAL ENTREPRENEURS.</h3>
               <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter text-primary leading-none">HOMEGROWN IMPACT.</h3>
             </motion.div>
             <div className="w-px h-24 bg-gradient-to-b from-primary to-transparent mx-auto" />
