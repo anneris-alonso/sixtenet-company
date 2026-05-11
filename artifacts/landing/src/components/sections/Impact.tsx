@@ -88,10 +88,13 @@ export default function Impact() {
             <div className="absolute top-4 left-4 right-24 z-10 h-1 bg-white/30 rounded-full overflow-hidden">
                 <div className="w-1/2 h-full bg-white rounded-full" />
             </div>
-            <img 
-              src="/impact/story.png" 
-              alt="Story Simulation" 
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
               className="w-full h-full object-cover"
+              src="/impact/story.mp4"
             />
             {/* Player controls mock */}
             <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center justify-between gap-3 opacity-90">
