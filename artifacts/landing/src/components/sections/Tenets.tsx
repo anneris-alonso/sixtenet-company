@@ -84,7 +84,7 @@ export default function Tenets() {
               {/* Top: number + optional sub-label */}
               <div>
                 <p className="text-xs font-mono text-muted-foreground uppercase tracking-[0.3em] mb-6">
-                  {tenet.sub ? tenet.sub : `Tenet ${tenet.id}`}
+                  Tenet {tenet.id}
                 </p>
                 <h3 className="text-2xl md:text-3xl font-sans font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-500 leading-tight">
                   {tenet.name}
