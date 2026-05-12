@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SectionReveal from "@/components/SectionReveal";
 
 const steps = [
   {
@@ -31,7 +32,7 @@ const steps = [
 export default function Process() {
   return (
     <section className="py-32 border-t border-foreground/5 overflow-hidden" id="process">
-      <div className="container mx-auto px-4 md:px-8">
+      <SectionReveal className="container mx-auto px-4 md:px-8">
 
         {/* Label + heading */}
         <div className="mb-16 md:mb-24">
@@ -86,7 +87,7 @@ export default function Process() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }

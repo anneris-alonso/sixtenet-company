@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import SectionReveal from "@/components/SectionReveal";
 
 const packages = [
   {
@@ -53,7 +54,7 @@ const packages = [
 export default function Packages() {
   return (
     <section className="py-32 border-t border-foreground/5" id="packages">
-      <div className="container mx-auto px-4 md:px-8">
+      <SectionReveal className="container mx-auto px-4 md:px-8">
 
         {/* Header */}
         <div className="mb-16 md:mb-24">
@@ -151,7 +152,7 @@ export default function Packages() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }

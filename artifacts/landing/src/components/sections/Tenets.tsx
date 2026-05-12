@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SectionReveal from "@/components/SectionReveal";
 
 const tenets = [
   {
@@ -37,7 +38,7 @@ const tenets = [
 export default function Tenets() {
   return (
     <section className="py-32 border-t border-foreground/5" id="tenets">
-      <div className="container mx-auto px-4 md:px-8">
+      <SectionReveal className="container mx-auto px-4 md:px-8">
 
         {/* Header */}
         <div className="mb-16 md:mb-24">
@@ -98,7 +99,7 @@ export default function Tenets() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }

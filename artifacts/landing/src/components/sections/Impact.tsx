@@ -130,9 +130,9 @@ export default function Impact() {
 
           {/* Bottom Center Avatar */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="absolute z-30 bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 md:translate-x-0 w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-background shadow-2xl overflow-hidden bg-background"
           >
             <img 
@@ -147,23 +147,6 @@ export default function Impact() {
         {/* Text Area (Right) */}
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left z-10 mt-8 lg:mt-0 lg:pl-16 relative">
           
-          {/* Glass Elements framing the text 
-          <motion.div 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-12 -left-8 md:-top-20 md:-left-12 w-24 h-24 md:w-36 md:h-36 drop-shadow-xl pointer-events-none z-0"
-          >
-            <img src="/glass_elements/glass_icon_1.png" alt="3D Glass Element" className="w-full h-full object-contain opacity-40 md:opacity-100" />
-          </motion.div>
-
-          <motion.div 
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute -top-4 right-0 md:-top-12 md:right-12 w-20 h-20 md:w-28 md:h-28 drop-shadow-lg pointer-events-none z-0 filter blur-[1px] opacity-40"
-          >
-            <img src="/glass_elements/glass_icon_3.png" alt="3D Glass Element" className="w-full h-full object-contain" />
-          </motion.div>*/}
-
           <motion.div 
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -171,20 +154,20 @@ export default function Impact() {
           >
           </motion.div>
           <motion.h1
-            initial={{ opacity: 0, x: 40, filter: "blur(12px)" }}
-            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter text-foreground mb-8 leading-none"
           >
             Architecting<br/><span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">Growth</span>
           </motion.h1>
           
           <motion.div
-            initial={{ opacity: 0, x: 30, filter: "blur(8px)", scale: 0.95 }}
-            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)", scale: 1 }}
+            initial={{ opacity: 0, y: 40, filter: "blur(8px)", scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, delay: 1.0, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="glass-morphism rounded-[2rem] p-8 max-w-xl shadow-2xl relative border border-foreground/5"
           >
             <p className="text-lg md:text-2xl font-bold leading-relaxed text-foreground">

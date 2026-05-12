@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "wouter";
+import SectionReveal from "@/components/SectionReveal";
 
 const projects = [
   { 
@@ -42,7 +43,7 @@ export default function Work() {
 
   return (
     <section className="relative py-32 bg-background overflow-hidden" id="work">
-      <div className="max-w-[90vw] mx-auto px-4 md:px-8 relative z-10">
+      <SectionReveal className="max-w-[90vw] mx-auto px-4 md:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="mb-16 md:mb-20">
@@ -137,7 +138,7 @@ export default function Work() {
           </div>
 
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }

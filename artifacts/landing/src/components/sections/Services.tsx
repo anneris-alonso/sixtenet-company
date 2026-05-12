@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Zap, Code, Globe, BarChart3, Cpu, Target, Megaphone, Video } from "lucide-react";
+import SectionReveal from "@/components/SectionReveal";
 
 const services = [
   {
@@ -105,7 +106,7 @@ const services = [
 export default function Services() {
   return (
     <section className="py-32 border-t border-foreground/5" id="expertise">
-      <div className="container mx-auto px-4 md:px-8">
+      <SectionReveal className="container mx-auto px-4 md:px-8">
 
         {/* Header */}
         <div className="mb-16 md:mb-24">
@@ -176,7 +177,7 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }
