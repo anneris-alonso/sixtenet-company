@@ -130,22 +130,26 @@ export default function NuroxCaseStudy() {
         </section>
 
         {/* OVERVIEW */}
-        <SectionReveal>
-          <section className="py-40 relative z-10 border-y border-border glass-morphism">
-            <div className="container mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-24">
-              <div className="space-y-12">
+        <section className="py-40 relative z-10 border-y border-border glass-morphism">
+          <div className="container mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-24">
+            <div className="space-y-12">
+              <SectionReveal>
                 <div className="space-y-4">
                   <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground">Overview</p>
                   <h2 className="text-4xl md:text-6xl font-sans font-bold tracking-tighter leading-tight">
                     Engineering for <br /> <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">enterprise scale.</span>
                   </h2>
                 </div>
+              </SectionReveal>
+              <SectionReveal delay={0.15}>
                 <p className="text-xl text-muted-foreground font-light leading-relaxed max-w-xl">
                   A jet fuel logistics platform required a highly scalable, fault-tolerant architecture capable of handling massive transaction volumes while integrating with legacy enterprise systems.
                 </p>
-              </div>
+              </SectionReveal>
+            </div>
 
-              <div className="space-y-12">
+            <div className="space-y-12">
+              <SectionReveal delay={0.3}>
                 <div className="space-y-4">
                   <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground">The Problem</p>
                   <ul className="space-y-6">
@@ -162,38 +166,42 @@ export default function NuroxCaseStudy() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </SectionReveal>
             </div>
-          </section>
-        </SectionReveal>
+          </div>
+        </section>
 
 
         {/* DIAGNOSIS */}
-        <SectionReveal>
-          <section className="py-40 relative z-10 border-b border-border">
-            <div className="container mx-auto px-4 md:px-8">
-              <div className="max-w-4xl mx-auto text-center space-y-8">
+        <section className="py-40 relative z-10 border-b border-border">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <SectionReveal>
                 <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground">The Diagnosis</p>
+              </SectionReveal>
+              <SectionReveal delay={0.15}>
                 <blockquote className="text-3xl md:text-5xl font-sans font-bold text-foreground leading-tight">
                   "The system risk wasn’t scale — 
                   <span className="block mt-6 text-3xl md:text-5xl italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">
                     it was rigidity and lack of adaptability under load.
                   </span>"
                 </blockquote>
-              </div>
+              </SectionReveal>
             </div>
-          </section>
-        </SectionReveal>
+          </div>
+        </section>
 
         {/* SOLUTION */}
-        <SectionReveal>
-          <section className="py-40 relative z-10 bg-muted/30">
-            <div className="container mx-auto px-4 md:px-8">
-              <div className="mb-20">
+        <section className="py-40 relative z-10 bg-muted/30">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="mb-20">
+              <SectionReveal>
                 <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground mb-4">The Solution</p>
                 <h2 className="text-4xl md:text-6xl font-sans font-bold tracking-tighter">System <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">Built.</span></h2>
-              </div>
-              
+              </SectionReveal>
+            </div>
+            
+            <SectionReveal delay={0.2}>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
                   { title: "Hexagonal Architecture", desc: "Domain-driven design with CQRS separation.", icon: Layers },
@@ -221,42 +229,46 @@ export default function NuroxCaseStudy() {
                   </div>
                 ))}
               </div>
-            </div>
-          </section>
-        </SectionReveal>
+            </SectionReveal>
+          </div>
+        </section>
 
         {/* RESULTS */}
-        <SectionReveal>
-          <section className="py-40 relative z-10 border-t border-border">
-            <div className="container mx-auto px-4 md:px-8">
-              <div className="grid lg:grid-cols-2 gap-24 items-center">
-                <div>
+        <section className="py-40 relative z-10 border-t border-border">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="grid lg:grid-cols-2 gap-24 items-center">
+              <div>
+                <SectionReveal>
                   <h2 className="text-3xl md:text-5xl font-sans font-bold tracking-tighter mb-8 leading-none">
                     The <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">Impact.</span>
                   </h2>
-                  <div className="space-y-12">
-                    {[
-                      { label: "Operational Costs", value: "-25%" },
-                      { label: "Data Consistency", value: "90%" },
-                      { label: "Log Loss", value: "0.1%" }
-                    ].map((stat, i) => (
-                      <div key={i} className="border-b border-foreground/[0.08] pb-6">
+                </SectionReveal>
+                <div className="space-y-12">
+                  {[
+                    { label: "Operational Costs", value: "-25%" },
+                    { label: "Data Consistency", value: "90%" },
+                    { label: "Log Loss", value: "0.1%" }
+                  ].map((stat, i) => (
+                    <SectionReveal key={i} delay={0.1 * i}>
+                      <div className="border-b border-foreground/[0.08] pb-6">
                         <p className="text-4xl md:text-5xl font-sans font-bold text-foreground mb-2">{stat.value}</p>
                         <p className="text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground">{stat.label}</p>
                       </div>
-                    ))}
-                  </div>
+                    </SectionReveal>
+                  ))}
                 </div>
+              </div>
+              <SectionReveal delay={0.4}>
                 <div className="bg-primary/10 border border-primary/20 p-12 space-y-8 glass-morphism rounded-[20px] shadow-sm">
                   <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground">Insight</p>
                   <p className="text-3xl md:text-5xl font-sans font-bold text-foreground leading-tight">
                     The best systems don’t just scale. They <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">adapt without breaking.</span>
                   </p>
                 </div>
-              </div>
+              </SectionReveal>
             </div>
-          </section>
-        </SectionReveal>
+          </div>
+        </section>
       </motion.main>
       <ProjectMarquee />
       <Footer />
