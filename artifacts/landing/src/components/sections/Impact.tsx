@@ -51,8 +51,38 @@ export default function Impact() {
         {/* Collage Area (Left) */}
         <div className="w-full lg:w-1/2 relative h-[500px] md:h-[700px] flex items-center justify-center mb-16 lg:mb-0">
           
-          {/* Left Square Card (Website Video) */}
+{/* Main Back Card (Story Simulation) */}
           <motion.div 
+            initial={{ opacity: 0, y: 50, rotate: 3 }}
+            whileInView={{ opacity: 1, y: 0, rotate: 3 }}
+            transition={{ duration: 0.8 }}
+            className="absolute z-10 w-48 h-72 md:w-80 md:h-[32rem] rounded-[2.5rem] bg-background border border-foreground/10 overflow-hidden shadow-2xl flex flex-col right-12 md:right-20 top-10 md:top-16"
+          >
+            <div className="absolute top-4 right-4 z-10 bg-primary text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg backdrop-blur-md">
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              16:45
+            </div>
+            {/* Progress bar top */}
+            <div className="absolute top-4 left-4 right-24 z-10 h-1 bg-white/30 rounded-full overflow-hidden">
+                <div className="w-1/2 h-full bg-white rounded-full" />
+            </div>
+            <img 
+              src="/impact/story.png" 
+              alt="Story Simulation" 
+              className="w-full h-full object-cover"
+            />
+            {/* Player controls mock */}
+            <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center justify-between gap-3 opacity-90">
+              <div className="h-1.5 flex-1 bg-background/50 rounded-full overflow-hidden backdrop-blur-sm">
+                <div className="w-1/3 h-full bg-background rounded-full" />
+              </div>
+              <div className="w-6 h-6 rounded-full border-2 border-background shadow-sm" />
+              <div className="w-6 h-6 rounded-full border-2 border-background shadow-sm" />
+            </div>
+          </motion.div>
+
+          {/* Left Square Card (Website Video) */}
+          {/*<motion.div 
             initial={{ opacity: 0, x: -50, rotate: 0 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -71,7 +101,7 @@ export default function Impact() {
               className="w-full h-full object-cover rounded-[2rem]"
               src="/impact/website.mp4"
             />
-          </motion.div>
+          </motion.div>*/}
 
           {/* Main Back Card (Story Simulation) */}
           <motion.div 
