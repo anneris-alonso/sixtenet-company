@@ -46,9 +46,12 @@ export default function Navbar() {
         
         {/* Logo and Name */}
         <div className="flex items-center">
-          <Link href="/" className="flex items-center gap-3 text-xl md:text-2xl font-sans font-bold tracking-tighter uppercase z-10 text-foreground hover:opacity-80 transition-opacity">
-            {/* <img src="/logo.png" alt="Sixtenet Logo" className="h-8 w-auto object-contain" />*/}
-            <span className="tracking-[0.4em]">SIX<span className="font-semibold">TENET</span></span>
+          <Link href="/" className={`text-2xl md:text-3xl font-syne font-bold tracking-tighter uppercase z-10 hover:opacity-80 transition-all duration-500 ${
+            isScrolled 
+              ? "text-black/80 drop-shadow-none" 
+              : "text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]"
+          }`}>
+            SIXTENET
           </Link>
         </div>
 

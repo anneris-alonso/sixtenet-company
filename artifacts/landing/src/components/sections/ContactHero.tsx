@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 /**
  * Sección de llamada a la acción antes del formulario de contacto.
@@ -48,11 +49,10 @@ export default function ContactHero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-          className="block font-sans font-black uppercase text-transparent leading-none tracking-tighter"
+          className="block font-sans font-black uppercase bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent leading-none tracking-tighter"
           style={{
             fontSize: "clamp(3.5rem, 12vw, 14rem)",
             lineHeight: 0.9,
-            WebkitTextStroke: "3px white",
           }}
         >
           IDEAS.
@@ -65,9 +65,15 @@ export default function ContactHero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 inline-block border-2 border-foreground text-foreground font-bold uppercase tracking-widest text-xs md:text-sm px-12 py-5 hover:bg-primary hover:border-primary hover:text-background transition-all duration-300"
         >
-          Start a Project
+          <button className="flex items-center justify-between gap-6 px-6 py-3 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-xl shadow-xl group transition-all">
+            <span className="text-xs font-bold uppercase tracking-widest text-foreground">Start a Project</span>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 shadow-[0_0_15px_rgba(63,166,236,0.5)] group-hover:shadow-[0_0_25px_rgba(63,166,236,0.7)]"
+              style={{ background: "#3fa6ec" }}
+            >
+              <ArrowUpRight size={14} className="text-white" />
+            </div>
+          </button>
         </motion.a>
       </div>
     </section>

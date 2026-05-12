@@ -4,32 +4,20 @@ import { AnimatePresence } from "framer-motion";
 import { Sun, Satellite, Camera, Truck, Monitor, Coffee, Mic } from "lucide-react";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
-import CustomCursor from "@/components/sections/CustomCursor";
 import Preloader from "@/components/sections/Preloader";
 import VideoScrollBackground from "@/components/sections/VideoScrollBackground";
 
 
 export default function TheBusStory() {
-  const [showPreloader, setShowPreloader] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoSectionRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Lock scroll while preloader is active
-    if (showPreloader) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    window.scrollTo(0, 0);
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [showPreloader]);
+    // Scroll handled by ScrollToTop component
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -48,13 +36,7 @@ export default function TheBusStory() {
 
   return (
     <div ref={containerRef} className="text-foreground min-h-screen font-sans selection:bg-primary selection:text-primary-foreground">
-      <CustomCursor />
-
-      <AnimatePresence>
-        {showPreloader && (
-          <Preloader onComplete={() => setShowPreloader(false)} />
-        )}
-      </AnimatePresence>
+      {/* Preloader removed for immediate transition */}
 
       <VideoScrollBackground />
 
@@ -62,8 +44,8 @@ export default function TheBusStory() {
 
       <motion.main
         initial={{ opacity: 0 }}
-        animate={{ opacity: showPreloader ? 0 : 1 }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
       >
         {/* HERO CONTENT - NO STICKY VIDEO HERE AS IT IS NOW GLOBAL */}
         <section ref={videoSectionRef} className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -75,7 +57,7 @@ export default function TheBusStory() {
               className="max-w-4xl"
             >
               <h1 className="text-[12vw] md:text-[10vw] font-serif font-black leading-[0.85] uppercase tracking-tighter mb-8">
-                The<br /><span className="text-transparent" style={{ WebkitTextStroke: "1px hsl(var(--foreground))" }}>Bus</span><br />Story<span className="text-primary">.</span>
+                The<br /><span className="bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent">Bus</span><br />Story<span className="text-primary">.</span>
               </h1>
               <p className="text-xl md:text-3xl font-light text-muted-foreground max-w-2xl leading-relaxed tracking-tight">
                 From a vision on the road to a state-of-the-art mobile production office. This is how we built our sanctuary of creativity.
@@ -126,7 +108,7 @@ export default function TheBusStory() {
                 { title: "Road-Legal", desc: "Cross-border across the Middle East.", icon: Truck }
               ].map((spec, i) => (
                 <motion.div 
-                  key={spec.title}
+                   key={spec.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -192,7 +174,7 @@ export default function TheBusStory() {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <div className="py-8 md:py-12 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-none relative z-10">
+                  <div className="py-8 md:py-12 flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
                     <div className="flex items-center gap-8 md:gap-16">
                       <span className="text-xl md:text-2xl text-muted-foreground font-light tabular-nums group-hover:text-primary transition-colors duration-500">
                         {item.id}
@@ -236,7 +218,7 @@ export default function TheBusStory() {
               className="space-y-2"
             >
               <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter text-foreground leading-none">GLOBAL AMBITION.</h3>
-              <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter text-transparent leading-none" style={{ WebkitTextStroke: "1px hsl(var(--foreground) / 0.2)" }}>LOCAL ENTREPRENEURS.</h3>
+              <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent opacity-30 leading-none">LOCAL ENTREPRENEURS.</h3>
               <h3 className="text-4xl md:text-8xl font-serif font-black tracking-tighter text-primary leading-none">HOMEGROWN IMPACT.</h3>
             </motion.div>
             <div className="w-px h-24 bg-gradient-to-b from-primary to-transparent mx-auto" />

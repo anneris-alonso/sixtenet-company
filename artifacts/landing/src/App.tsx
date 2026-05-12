@@ -9,6 +9,7 @@ import NuroxCaseStudy from "./pages/NuroxCaseStudy";
 import TheBusCaseStudy from "./pages/TheBusCaseStudy";
 import LexiconloreCaseStudy from "./pages/LexiconloreCaseStudy";
 import NotFound from "./pages/not-found";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <ScrollToTop />
         <Router />
         <Toaster />
       </TooltipProvider>

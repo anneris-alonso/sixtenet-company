@@ -164,7 +164,7 @@ export default function SplineCarousel() {
               className="inline-flex items-center gap-6 px-8 text-[11px] tracking-[0.35em] uppercase text-foreground/40 font-mono shrink-0"
             >
               {item}
-              <span className="w-1 h-1 bg-primary/60 inline-block" />
+              <span className="w-1 h-1 bg-primary/60 inline-block rounded-full" />
             </span>
           ))}
         </motion.div>

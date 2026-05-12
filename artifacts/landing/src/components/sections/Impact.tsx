@@ -56,7 +56,7 @@ export default function Impact() {
             initial={{ opacity: 0, x: -50, rotate: 0 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="absolute z-0 left-4 md:left-8 top-12 md:top-24 w-32 h-32 md:w-56 md:h-56 rounded-[2rem] bg-foreground/5 backdrop-blur-md border border-foreground/10 shadow-xl overflow-hidden"
+            className="absolute z-0 left-4 md:left-8 top-12 md:top-24 w-32 h-32 md:w-56 md:h-56 rounded-[20px] bg-foreground/5 backdrop-blur-md border border-foreground/[0.08] shadow-sm overflow-hidden"
           >
             <div className="absolute top-4 left-4 z-10 w-8 h-8 rounded-xl bg-background/50 flex items-center justify-center shadow-sm backdrop-blur-md text-foreground">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -68,7 +68,7 @@ export default function Impact() {
               loop 
               muted 
               playsInline 
-              className="w-full h-full object-cover rounded-[2rem]"
+              className="w-full h-full object-cover rounded-[20px]"
               src="/impact/website.mp4"
             />
           </motion.div>
@@ -78,7 +78,7 @@ export default function Impact() {
             initial={{ opacity: 0, y: 50, rotate: 3 }}
             whileInView={{ opacity: 1, y: 0, rotate: 3 }}
             transition={{ duration: 0.8 }}
-            className="absolute z-10 w-48 h-72 md:w-80 md:h-[32rem] rounded-[2.5rem] bg-background border border-foreground/10 overflow-hidden shadow-2xl flex flex-col right-12 md:right-20 top-10 md:top-16"
+            className="absolute z-10 w-48 h-72 md:w-80 md:h-[32rem] rounded-[20px] bg-background border border-foreground/[0.08] overflow-hidden shadow-sm flex flex-col right-12 md:right-20 top-10 md:top-16"
           >
             <div className="absolute top-4 right-4 z-10 bg-primary text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg backdrop-blur-md">
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -108,7 +108,7 @@ export default function Impact() {
             initial={{ opacity: 0, y: 50, rotate: -3 }}
             whileInView={{ opacity: 1, y: 0, rotate: -3 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="absolute z-20 left-8 md:left-16 bottom-20 md:bottom-32 w-40 h-56 md:w-56 md:h-72 rounded-[2rem] bg-background shadow-2xl border border-foreground/10 flex flex-col overflow-hidden p-3"
+            className="absolute z-20 left-8 md:left-16 bottom-20 md:bottom-32 w-40 h-56 md:w-56 md:h-72 rounded-[20px] bg-background shadow-sm border border-foreground/[0.08] flex flex-col overflow-hidden p-3"
           >
             <div className="flex justify-start mb-2 relative z-10">
               <div className="w-8 h-8 rounded-xl bg-blue-500 flex items-center justify-center text-white shadow-md">
@@ -168,27 +168,27 @@ export default function Impact() {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 1.0, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="glass-morphism rounded-[2rem] p-8 max-w-xl shadow-2xl relative border border-foreground/5"
+            className="glass-morphism rounded-[20px] p-8 max-w-xl shadow-sm relative border border-foreground/[0.08]"
           >
             <p className="text-lg md:text-2xl font-bold leading-relaxed text-foreground">
               We don't deliver services.<br />
               <span className="text-muted-foreground font-normal text-base md:text-xl mt-2 block">We engineer growth systems based on operational principles.</span>
             </p>
 
-            <Link href="/#contact">
+            <a href="#contact">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="mt-8 flex items-center gap-4 px-6 py-3 rounded-full border border-white/30 bg-white/10 backdrop-blur-xl shadow-xl group transition-all cursor-none"
+                className="mt-8 flex items-center justify-between gap-6 px-6 py-3 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-xl shadow-xl group transition-all"
               >
-                <span className="text-sm font-bold uppercase tracking-widest text-foreground">Let's Connect</span>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 shadow-[0_0_15px_rgba(63,166,236,0.5)] group-hover:shadow-[0_0_25px_rgba(63,166,236,0.7)]"
+                <span className="text-xs font-bold uppercase tracking-widest text-foreground">Let's Connect</span>
+                <div className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shadow-[0_0_15px_rgba(63,166,236,0.5)] group-hover:shadow-[0_0_25px_rgba(63,166,236,0.7)]"
                   style={{ background: "#3fa6ec" }}
                 >
-                  <ArrowUpRight size={16} className="text-white" />
+                  <ArrowUpRight size={20} className="text-white" />
                 </div>
               </motion.button>
-            </Link>
+            </a>
           </motion.div>
         </div>
 

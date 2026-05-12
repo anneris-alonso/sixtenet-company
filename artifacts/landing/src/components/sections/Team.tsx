@@ -6,7 +6,7 @@ const teamMembers = [
   { id: "01", name: "ANNE ALONSO", role: "FOUNDER & CEO", image: "/team/anne.png" },
   { id: "02", name: "DAMIAN RODRIGUEZ", role: "SOFTWARE ENGINEER", image: "/team/damian.jpg" },
   { id: "03", name: "VICTOR ORTEGA", role: "GRAPHIC DESIGNER", image: "/team/victor.jpg" },
-  { id: "04", name: "MALAKA PRABATH", role: "STUDIO PRODUCER", image: "/team/malaka.jpg" },
+  { id: "04", name: "MALAKA PRABATH", role: "PRODUCER", image: "/team/malaka.jpg" },
   { id: "05", name: "ANGELICA BAÑARES", role: "CONTENT PRODUCER", image: "/team/angelica.jpg" },
   { id: "06", name: "IMELDA RODRIGO", role: "ASSISTANT", image: "/team/imelda.jpg" },
 ];
@@ -83,7 +83,7 @@ export default function Team() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="relative aspect-[3/4] w-full overflow-hidden border border-foreground/10 glassmorphism shadow-2xl grayscale"
+                className="relative aspect-[3/4] w-full overflow-hidden border border-foreground/10 glassmorphism shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] grayscale rounded-[20px]"
               >
                 <img
                   src={activeMember.image}
@@ -113,10 +113,10 @@ export default function Team() {
                     {activeMember.role}
                   </span>
                   <div className="flex flex-col leading-none">
-                    <h3 className="text-5xl md:text-8xl font-sans font-bold text-foreground tracking-tighter uppercase mb-2">
+                    <h3 className="text-3xl md:text-8xl font-sans font-bold bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter uppercase mb-2">
                       {firstName}
                     </h3>
-                    <h3 className="text-5xl md:text-8xl font-sans font-bold tracking-tighter uppercase text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)]">
+                    <h3 className="text-3xl md:text-8xl font-sans font-bold text-gray-200 tracking-tighter uppercase opacity-50">
                       {lastName}
                     </h3>
                   </div>
@@ -137,7 +137,7 @@ export default function Team() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className="flex-none w-[calc(33.33%-16px)] aspect-[3/4] relative overflow-hidden group border border-foreground/5 grayscale hover:grayscale-0 transition-all duration-700 cursor-none"
+                    className="flex-none w-[calc(33.33%-16px)] aspect-[3/4] relative overflow-hidden group border border-foreground/5 grayscale hover:grayscale-0 transition-all duration-700 rounded-[20px]"
                   >
                     <img
                       src={member.image}
@@ -159,13 +159,13 @@ export default function Team() {
                 <div className="flex gap-4">
                   <button title="previous"
                     onClick={() => prevSlide()}
-                    className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/10 transition-colors cursor-none group"
+                    className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/10 transition-colors group"
                   >
                     <ChevronLeft className="w-5 h-5 text-foreground/40 group-hover:text-primary transition-colors" />
                   </button>
                   <button title="next"
                     onClick={() => nextSlide()}
-                    className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/10 transition-colors cursor-none group"
+                    className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/10 transition-colors group"
                   >
                     <ChevronRight className="w-5 h-5 text-foreground/40 group-hover:text-primary transition-colors" />
                   </button>

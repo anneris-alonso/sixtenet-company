@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, ArrowUpRight } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 
 const packages = [
@@ -8,7 +8,7 @@ const packages = [
     name: "Starter Growth System",
     price: "$3K – $6K",
     tag: "One-time",
-    description: "Para empresas que necesitan una base sólida para crecer.",
+    description: "For businesses that need a solid foundation to grow.",
     highlight: false,
     items: [
       "Website redesign (conversion-focused)",
@@ -23,7 +23,7 @@ const packages = [
     name: "Growth Engine",
     price: "$8K – $20K",
     tag: "Monthly retainer",
-    description: "Un sistema de crecimiento activo y en constante optimización.",
+    description: "An active growth system in constant optimization.",
     highlight: true,
     items: [
       "Everything in Starter",
@@ -39,7 +39,7 @@ const packages = [
     name: "Scale & Automation",
     price: "$20K – $50K+",
     tag: "Custom engagement",
-    description: "Para negocios que necesitan operar, escalar y automatizar sin límites.",
+    description: "For businesses that need to operate, scale and automate without limits.",
     highlight: false,
     items: [
       "Everything in Growth Engine",
@@ -82,7 +82,7 @@ export default function Packages() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-foreground/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {packages.map((pkg, i) => (
             <motion.div
               key={pkg.id}
@@ -90,21 +90,23 @@ export default function Packages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className={`relative flex flex-col p-8 md:p-10 ${
+              className={`group relative flex flex-col p-8 md:p-10 rounded-[20px] shadow-sm border transition-all duration-700 overflow-hidden hover:-translate-y-1 ${
                 pkg.highlight
-                  ? "bg-primary/10 border border-primary/30"
-                  : "bg-card"
+                  ? "bg-primary/10 border-primary/30 shadow-primary/10"
+                  : "bg-card border-foreground/[0.08]"
               }`}
             >
-              {pkg.highlight && (
-                <div className="absolute -top-px left-0 right-0 h-px bg-primary" />
-              )}
-
-              {pkg.highlight && (
-                <span className="absolute top-6 right-6 text-[10px] font-mono uppercase tracking-[0.3em] text-primary bg-primary/10 border border-primary/30 px-3 py-1">
-                  Most Popular
-                </span>
-              )}
+              {/* Internal Mesh Glow - Corner-based iridescent highlights */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                style={{
+                  background: `
+                    radial-gradient(circle at 0% 0%, rgba(123, 212, 234, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, rgba(244, 143, 177, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, rgba(179, 157, 219, 0.1) 0%, transparent 50%)
+                  `
+                }}
+              />
 
               {/* Package number */}
               <p className="text-xs font-mono text-foreground/20 mb-6">{pkg.id}</p>
@@ -114,11 +116,11 @@ export default function Packages() {
                 {pkg.name}
               </h3>
 
-              {/* Price */}
+              {/* Price 
               <div className="mb-2">
                 <span className="text-3xl md:text-4xl font-sans font-black text-foreground">{pkg.price}</span>
               </div>
-              <p className="text-xs font-mono text-primary/60 uppercase tracking-[0.2em] mb-6">{pkg.tag}</p>
+              <p className="text-xs font-mono text-primary/60 uppercase tracking-[0.2em] mb-6">{pkg.tag}</p>*/}
 
               {/* Description */}
               <p className="text-sm text-muted-foreground leading-relaxed mb-8 pb-8 border-b border-foreground/10">
@@ -141,13 +143,14 @@ export default function Packages() {
               {/* CTA */}
               <a
                 href="#contact"
-                className={`mt-10 inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-mono uppercase tracking-widest transition-all duration-300 ${
-                  pkg.highlight
-                    ? "bg-primary text-black hover:bg-primary/90"
-                    : "border border-foreground/20 text-foreground hover:border-primary hover:text-primary"
-                }`}
+                className="mt-10 flex items-center justify-between gap-4 px-6 py-3 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl shadow-sm group transition-all"
               >
-                Contact Us
+                <span className="text-xs font-bold uppercase tracking-widest text-foreground">Contact Us</span>
+                <div className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shadow-[0_0_15px_rgba(63,166,236,0.5)] group-hover:shadow-[0_0_25px_rgba(63,166,236,0.7)]"
+                  style={{ background: "#3fa6ec" }}
+                >
+                  <ArrowUpRight size={20} className="text-white" />
+                </div>
               </a>
             </motion.div>
           ))}

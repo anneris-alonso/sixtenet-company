@@ -1,10 +1,38 @@
 import { Linkedin, Twitter, Instagram, Youtube, Facebook } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence, useTransform } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showCTA, setShowCTA] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.playbackRate = 0.90;
+    }
+  }, []);
+
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Direct state control based on frame-perfect time
+    // We show it at 25s, but start hiding it at 27s so it's GONE before the 28s loop
+    if (video.currentTime >= 25 && video.currentTime < 27) {
+      if (!showCTA) setShowCTA(true);
+    } else {
+      if (showCTA) setShowCTA(false);
+    }
+
+    // Manual loop enforcement
+    if (video.currentTime >= 28) {
+      video.currentTime = 0;
+      video.play();
+    }
+  };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > (window.innerHeight * 0.8)) {
@@ -35,10 +63,12 @@ export default function Hero() {
         }}
       >
         <motion.video
+          ref={videoRef}
           autoPlay
-          loop
           muted
           playsInline
+          onTimeUpdate={handleTimeUpdate}
+          onSeeked={handleTimeUpdate}
           className="w-full h-full object-cover shadow-2xl"
           style={{
             borderRadius: videoBorderRadius,
@@ -46,6 +76,39 @@ export default function Hero() {
         >
           <source src="/hero.mp4" type="video/mp4" />
         </motion.video>
+
+        {/* Branded CTA Overlay for the white segment */}
+        <AnimatePresence>
+          {showCTA && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ 
+                duration: 1.5,
+                exit: { duration: 0.5 } 
+              }}
+              className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/5 backdrop-blur-md"
+            >
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                className="text-6xl md:text-8xl font-syne font-bold tracking-tighter uppercase text-black/80 drop-shadow-sm mb-6 text-center px-6"
+              >
+                SIXTENET
+              </motion.div>
+              <motion.p
+                initial={{ y: 60, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3, duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                className="text-black/60 text-lg md:text-xl font-medium tracking-widest uppercase text-center px-6"
+              >
+                AI SYSTEMS, AUTOMATION & DIGITAL EXPERIENCES
+              </motion.p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       {/* Floating Vertical Glass Bar (Socials) */}

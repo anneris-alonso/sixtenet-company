@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "wouter";
 import SectionReveal from "@/components/SectionReveal";
+import ProjectMarquee from "./ProjectMarquee";
 
 const projects = [
   { 
@@ -10,7 +11,7 @@ const projects = [
     category: "Revenue Systems", 
     image: "/potfolio/mycosmetic.avif",
     slug: "my-cosmetic-surgery",
-    description: "An end-to-end overhaul of the checkout and booking infrastructure, resulting in a 40% reduction in cart abandonment and significantly accelerated revenue cycles."
+    description: "End-to-end overhaul of booking infrastructure, reducing abandonment by 40%."
   },
   { 
     id: 2, 
@@ -18,7 +19,7 @@ const projects = [
     category: "System Architecture", 
     image: "/potfolio/nurox.png",
     slug: "nurox",
-    description: "Architected a custom machine learning logistics platform to predict supply chain bottlenecks, streamlining operations for nationwide delivery networks."
+    description: "Custom ML platform predicting supply chain bottlenecks and streamlining operations."
   },
   { 
     id: 3, 
@@ -26,7 +27,7 @@ const projects = [
     category: "Digital Storytelling", 
     image: "/potfolio/thebus.png",
     slug: "the-bus",
-    description: "Designed a deeply immersive 3D web experience that elevated brand perception and doubled average session duration through strategic micro-interactions."
+    description: "Immersive 3D web experience elevating brand perception and engagement."
   },
   { 
     id: 4, 
@@ -34,7 +35,7 @@ const projects = [
     category: "Operational Systems", 
     image: "/potfolio/lexiconlore.png",
     slug: "lexiconlore",
-    description: "Developed a comprehensive management dashboard bridging ticketing, CRM, and live analytics for large-scale international conventions."
+    description: "Management dashboard bridging ticketing, CRM, and live analytics."
   },
 ];
 
@@ -43,7 +44,7 @@ export default function Work() {
 
   return (
     <section className="relative py-32 bg-background overflow-hidden" id="work">
-      <SectionReveal className="max-w-[90vw] mx-auto px-4 md:px-8 relative z-10">
+      <SectionReveal className="container mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
         <div className="mb-16 md:mb-20">
@@ -56,10 +57,10 @@ export default function Work() {
         </div>
 
         {/* Feature Switcher Layout - Wrapped in a Container */}
-        <div className="bg-foreground/5 rounded-[2.5rem] p-6 md:p-12 flex flex-col lg:flex-row gap-10 lg:gap-20 items-stretch">
+        <div className="bg-foreground/5 rounded-[20px] p-4 md:p-6 flex flex-col lg:flex-row gap-4 items-center border border-foreground/[0.04]">
           
-          {/* Left Column: Interactive Tabs */}
-          <div className="w-full lg:w-5/12 flex flex-col gap-2 relative">
+          {/* Left Column: Interactive Tabs - NARROWER */}
+          <div className="w-full lg:w-[35%] flex flex-col gap-1 relative">
             {projects.map((project, index) => {
               const isActive = index === activeIndex;
               return (
@@ -68,14 +69,14 @@ export default function Work() {
                   {isActive && (
                     <motion.div 
                       layoutId="activeTabBg"
-                      className="absolute inset-0 bg-background shadow-lg rounded-3xl border border-foreground/5"
+                      className="absolute inset-0 bg-background shadow-sm rounded-[20px] border border-foreground/[0.08]"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
                   
                   <button
                     onClick={() => setActiveIndex(index)}
-                    className={`relative w-full text-left p-6 md:p-8 transition-opacity duration-300 z-10 ${
+                    className={`relative w-full text-left p-4 md:p-5 transition-opacity duration-300 z-10 ${
                       isActive 
                         ? "opacity-100" 
                         : "opacity-40 hover:opacity-70"
@@ -104,7 +105,7 @@ export default function Work() {
                         >
                           <Link 
                             href={`/case-study/${project.slug}`}
-                            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary hover:text-emerald-500 transition-colors"
+                            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary hover:text-gray-500 transition-colors"
                           >
                             Read Case Study <span>&rarr;</span>
                           </Link>
@@ -117,26 +118,31 @@ export default function Work() {
             })}
           </div>
 
-          {/* Right Column: Media Display Container */}
-          <div className="w-full lg:w-7/12 min-h-[50vh] lg:min-h-[75vh] relative rounded-[2rem] overflow-hidden bg-background shadow-2xl flex-1">
+          {/* Right Column: Media Display Container - NATURAL DIMENSIONS & SUBTLE OVERFLOW */}
+          <div className="w-full lg:w-[72%] relative flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 1.05, filter: "blur(8px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0"
+                initial={{ opacity: 0, x: 20, filter: "blur(8px)" }}
+                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, x: -20, filter: "blur(4px)" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full lg:w-[108%] lg:-mr-[8%] z-20 rounded-[15px] overflow-hidden bg-background shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] border border-foreground/[0.08]"
               >
                 <img
                   src={projects[activeIndex].image}
                   alt={projects[activeIndex].title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto block grayscale brightness-95 contrast-[1.05]"
                 />
               </motion.div>
             </AnimatePresence>
           </div>
 
+        </div>
+
+        {/* Extended Archive Marquee */}
+        <div className="mt-20">
+          <ProjectMarquee />
         </div>
       </SectionReveal>
     </section>

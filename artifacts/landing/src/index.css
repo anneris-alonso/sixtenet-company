@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -53,6 +53,7 @@
 
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
+  --font-syne: var(--app-font-syne);
   --font-mono: var(--app-font-mono);
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -121,6 +122,7 @@
 
   --app-font-sans: 'Comfortaa', cursive;
   --app-font-serif: 'Comfortaa', cursive;
+  --app-font-syne: 'Syne', sans-serif;
   --app-font-mono: ui-monospace, monospace;
   
   --radius: 1rem; /* Rounded edges for the new vibe */

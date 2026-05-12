@@ -11,7 +11,6 @@ import About from "@/components/sections/About";
 import Team from "@/components/sections/Team";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
-import CustomCursor from "@/components/sections/CustomCursor";
 
 export default function Landing() {
   useEffect(() => {
@@ -29,7 +28,6 @@ export default function Landing() {
 
   return (
     <div className="bg-background text-foreground min-h-screen selection:bg-primary selection:text-primary-foreground font-sans">
-      <CustomCursor />
       <Navbar />
       <main>
         <Hero />

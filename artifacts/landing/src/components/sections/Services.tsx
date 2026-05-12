@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Zap, Code, Globe, BarChart3, Cpu, Target, Megaphone, Video } from "lucide-react";
+import { Zap, Code, Globe, BarChart3, Cpu, Target, Megaphone, Video, Check } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 
 const services = [
@@ -21,12 +21,12 @@ const services = [
     icon: Code,
     title: "Software & Platform Development",
     items: [
-      "Custom Web Platforms (React / Vue / Full-stack)",
+      "Custom Web Platforms",
       "SaaS Product Development",
-      "Internal Business Systems (CRM, Automation Tools)",
+      "Internal Business Systems",
       "API Integrations & Data Pipelines",
       "AI-powered Business Tools",
-      "Workflow Automation (n8n, Zapier, custom pipelines)",
+      "Workflow Automation",
     ],
   },
   {
@@ -34,7 +34,7 @@ const services = [
     icon: Globe,
     title: "Web Experience & Conversion",
     items: [
-      "High-end Website Design (Awwwards-level)",
+      "High-end Website Design",
       "Conversion-focused UX/UI",
       "Interactive Storytelling Websites",
       "Landing Page Systems",
@@ -134,16 +134,27 @@ export default function Services() {
         </div>
 
         {/* Service cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, i) => (
             <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 30 }}
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group bg-card p-7 flex flex-col gap-6 hover:bg-foreground/[0.04] transition-colors duration-500"
+              className="group relative bg-card p-7 flex flex-col gap-6 transition-all duration-700 rounded-[20px] shadow-sm border border-foreground/[0.08] overflow-hidden hover:-translate-y-1"
             >
+              {/* Internal Mesh Glow - Corner-based iridescent highlights */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                style={{
+                  background: `
+                    radial-gradient(circle at 0% 0%, rgba(123, 212, 234, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, rgba(244, 143, 177, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, rgba(179, 157, 219, 0.1) 0%, transparent 50%)
+                  `
+                }}
+              />
               {/* Icon + number */}
               <div className="flex items-center justify-between">
                 <service.icon className="text-primary" size={24} strokeWidth={1.5} />
@@ -169,7 +180,7 @@ export default function Services() {
               <ul className="space-y-2 flex-1">
                 {service.items.map((item, j) => (
                   <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed">
-                    <span className="text-primary/50 mt-0.5 shrink-0">—</span>
+                    <Check size={12} className="text-primary mt-1 shrink-0" />
                     {item}
                   </li>
                 ))}

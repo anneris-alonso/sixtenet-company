@@ -6,7 +6,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, ArrowRight, MapPin, Loader2, CheckCircle2 } from "lucide-react";
+import { Mail, ArrowRight, MapPin, Loader2, CheckCircle2, ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
 
 // Senior Security: Strict Schema Validation
@@ -90,7 +90,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden bg-background" id="contact">
+    <section className="py-32 relative overflow-hidden bg-background" id="contact">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[400px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -119,10 +119,10 @@ export default function Contact() {
             <div className="space-y-8">
               <motion.div
                 whileHover={{ x: 10 }}
-                className="flex items-center gap-6 group cursor-none"
+                className="flex items-center gap-6 group"
               >
-                <div className="w-14 h-14 border-2 border-foreground/20 flex items-center justify-center bg-transparent group-hover:bg-primary group-hover:border-primary transition-all duration-300 rounded-none transform group-hover:rotate-6">
-                  <Mail className="w-6 h-6 text-foreground/70 group-hover:text-background transition-colors duration-300" />
+                <div className="w-14 h-14 border border-foreground/20 flex items-center justify-center bg-transparent group-hover:bg-primary group-hover:border-primary transition-all duration-300 rounded-full transform group-hover:rotate-6">
+                  <Mail strokeWidth={1} className="w-6 h-6 text-foreground/70 group-hover:text-background transition-colors duration-300" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-1 uppercase tracking-[0.2em] font-bold">Email Us</p>
@@ -134,10 +134,10 @@ export default function Contact() {
 
               <motion.div
                 whileHover={{ x: 10 }}
-                className="flex items-center gap-6 group cursor-none"
+                className="flex items-center gap-6 group"
               >
-                <div className="w-14 h-14 border-2 border-foreground/20 flex items-center justify-center bg-transparent group-hover:bg-primary group-hover:border-primary transition-all duration-300 rounded-none transform group-hover:rotate-6">
-                  <MapPin className="w-6 h-6 text-foreground/70 group-hover:text-background transition-colors duration-300" />
+                <div className="w-14 h-14 border border-foreground/20 flex items-center justify-center bg-transparent group-hover:bg-primary group-hover:border-primary transition-all duration-300 rounded-full transform group-hover:rotate-6">
+                  <MapPin strokeWidth={1} className="w-6 h-6 text-foreground/70 group-hover:text-background transition-colors duration-300" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-1 uppercase tracking-[0.2em] font-bold">Visit Us</p>
@@ -159,7 +159,7 @@ export default function Contact() {
             className="relative"
           >
             {/* Editorial Form Container */}
-            <div className="bg-card border-t-2 border-l-2 border-r-2 border-[#111] p-8 md:p-12 relative overflow-hidden group shadow-[20px_20px_0px_0px_rgba(123,212,234,0.1)] transition-transform hover:-translate-y-2 hover:-translate-x-2 duration-500">
+            <div className="bg-card border border-foreground/[0.08] p-8 md:p-12 relative overflow-hidden group shadow-xl transition-all duration-500 rounded-[20px]">
 
               <AnimatePresence mode="wait">
                 {isSuccess ? (
@@ -182,7 +182,7 @@ export default function Contact() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                       <div className="space-y-2 group/input">
-                        <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-black group-focus-within/input:text-primary transition-colors">
+                        <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold group-focus-within/input:text-primary transition-colors">
                           Your Name
                         </label>
                         <div className="relative">
@@ -190,7 +190,7 @@ export default function Contact() {
                             {...register("name")}
                             placeholder="ALICE WONDERLAND"
                             disabled={isSubmitting}
-                            className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 h-14 rounded-none font-sans text-xl placeholder:text-foreground/20 transition-all duration-300 ${errors.name ? 'border-red-500/50' : 'border-foreground/20 focus-visible:border-primary'
+                            className={`bg-transparent border border-foreground/10 focus-visible:ring-1 focus-visible:ring-primary px-6 h-14 rounded-[20px] font-sans text-lg placeholder:text-foreground/20 shadow-none transition-all duration-300 ${errors.name ? 'ring-1 ring-red-500/50' : ''
                               }`}
                           />
                           {errors.name && (
@@ -202,7 +202,7 @@ export default function Contact() {
                       </div>
 
                       <div className="space-y-2 group/input">
-                        <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-black group-focus-within/input:text-primary transition-colors">
+                        <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold group-focus-within/input:text-primary transition-colors">
                           Email Address
                         </label>
                         <div className="relative">
@@ -211,7 +211,7 @@ export default function Contact() {
                             type="email"
                             placeholder="hello@example.com"
                             disabled={isSubmitting}
-                            className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 h-14 rounded-none font-sans text-xl placeholder:text-foreground/20 transition-all duration-300 ${errors.email ? 'border-red-500/50' : 'border-foreground/20 focus-visible:border-primary'
+                            className={`bg-transparent border border-foreground/10 focus-visible:ring-1 focus-visible:ring-primary px-6 h-14 rounded-[20px] font-sans text-lg placeholder:text-foreground/20 shadow-none transition-all duration-300 ${errors.email ? 'ring-1 ring-red-500/50' : ''
                               }`}
                           />
                           {errors.email && (
@@ -224,15 +224,15 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2 group/input">
-                      <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-black group-focus-within/input:text-primary transition-colors">
-                        Project Details
+                      <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold group-focus-within/input:text-primary transition-colors">
+                        MESSAGE
                       </label>
                       <div className="relative">
                         <Textarea
                           {...register("message")}
                           placeholder="Tell us about the scope, timeline, and vision..."
                           disabled={isSubmitting}
-                          className={`bg-transparent border-0 border-b-2 focus-visible:ring-0 px-0 pt-4 min-h-[120px] rounded-none font-sans text-xl placeholder:text-foreground/20 resize-none transition-all duration-300 ${errors.message ? 'border-red-500/50' : 'border-foreground/20 focus-visible:border-primary'
+                          className={`bg-transparent border border-foreground/10 focus-visible:ring-1 focus-visible:ring-primary px-6 pt-6 min-h-[150px] rounded-[20px] font-sans text-lg placeholder:text-foreground/20 shadow-none resize-none transition-all duration-300 ${errors.message ? 'ring-1 ring-red-500/50' : ''
                             }`}
                         />
                         {errors.message && (
@@ -246,21 +246,16 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full h-16 text-lg font-bold bg-primary hover:bg-white text-background rounded-none uppercase tracking-widest transition-all duration-500 hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100"
+                      className="w-full h-16 flex items-center justify-between px-8 bg-foreground/5 border border-foreground/10 hover:bg-white/10 text-foreground rounded-full uppercase tracking-[0.2em] font-bold transition-all duration-500 hover:scale-[1.02] group shadow-xl"
                     >
-                      <span className="flex items-center justify-center gap-4">
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="w-5 h-5 animate-spin" />
-                            Processing Securely
-                          </>
-                        ) : (
-                          <>
-                            Contact Us
-                            <ArrowRight className="w-5 h-5" />
-                          </>
-                        )}
+                      <span className="text-sm">
+                        {isSubmitting ? "Sending..." : "Contact Us"}
                       </span>
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shadow-[0_0_20px_rgba(63,166,236,0.6)] group-hover:shadow-[0_0_30px_rgba(63,166,236,0.8)]"
+                        style={{ background: "#3fa6ec" }}
+                      >
+                        <ArrowUpRight size={20} className="text-white" />
+                      </div>
                     </Button>
                   </form>
                 )}

@@ -1,6 +1,7 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Link } from "wouter";
+import { ArrowUpRight } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 
 // Animación de contador con entrada suave
@@ -90,22 +91,22 @@ export default function About() {
             <h2 className="text-5xl md:text-7xl font-sans font-bold leading-tight mb-10 overflow-hidden">
               {headlineLines.map((line, i) => (
                 <div key={i} className="overflow-hidden">
-                   <motion.span
-                     className="block"
-                     custom={i}
-                     initial="hidden"
-                     whileInView="visible"
-                     viewport={{ once: true }}
-                     variants={lineVariants}
-                   >
-                     {i === 1 ? (
-                       <span className="text-transparent" style={{ WebkitTextStroke: "1px white" }}>
-                         {line}
-                       </span>
-                     ) : i === 2 ? (
-                       <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">{line}</span>
-                     ) : line}
-                   </motion.span>
+                  <motion.span
+                    className="block"
+                    custom={i}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={lineVariants}
+                  >
+                    {i === 1 ? (
+                      <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(0, 0, 0, 0.15)" }}>
+                        {line}
+                      </span>
+                    ) : i === 2 ? (
+                      <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">{line}</span>
+                    ) : line}
+                  </motion.span>
                 </div>
               ))}
             </h2>
@@ -118,7 +119,7 @@ export default function About() {
               className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-12 space-y-6"
             >
               <p>
-                Sixtenet is a systems engineering studio focused on one thing: <span className="text-foreground italic">eliminating the friction that limits business growth.</span>
+                <span className="text-foreground italic">Sixtenet</span> is a systems engineering agency focused on one thing: <span className="text-foreground italic">eliminating the friction that limits business growth.</span>
               </p>
               <p>
                 We operate at the intersection of software, data, and marketing execution. Instead of offering disconnected services, we design and build integrated systems that connect acquisition, operations, and revenue into a single, scalable engine.
@@ -137,11 +138,15 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.6 }}
             >
-              <Link
-                href="/#work"
-                className="inline-block border-2 border-foreground text-foreground font-bold uppercase tracking-widest text-sm px-10 py-5 hover:bg-primary hover:border-primary hover:text-background transition-all duration-400 cursor-none"
-              >
-                See Our Work
+              <Link href="/#work">
+                <button className="flex items-center justify-between gap-6 px-6 py-3 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-xl shadow-xl group transition-all">
+                  <span className="text-xs font-bold uppercase tracking-widest text-foreground">See Our Work</span>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shadow-[0_0_15px_rgba(63,166,236,0.5)] group-hover:shadow-[0_0_25px_rgba(63,166,236,0.7)]"
+                    style={{ background: "#3fa6ec" }}
+                  >
+                    <ArrowUpRight size={20} className="text-white" />
+                  </div>
+                </button>
               </Link>
             </motion.div>
           </motion.div>
@@ -154,9 +159,9 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut" }}
           >
-            <Counter from={0} to={120} suffix="+" label="Projects Delivered" />
+            <Counter from={0} to={20} suffix="+" label="Projects Delivered" />
             <Counter from={0} to={15} suffix="+" label="Industry Awards" />
-            <Counter from={0} to={8} label="Years Active" />
+            <Counter from={0} to={1} label="Years Active" />
             <Counter from={0} to={40} suffix="+" label="Global Clients" />
           </motion.div>
         </div>

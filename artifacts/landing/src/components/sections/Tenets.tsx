@@ -67,7 +67,7 @@ export default function Tenets() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-foreground/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tenets.map((tenet, i) => (
             <motion.div
               key={tenet.id}
@@ -75,15 +75,27 @@ export default function Tenets() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="group relative bg-card p-10 md:p-12 flex flex-col justify-between min-h-[300px] hover:bg-foreground/[0.03] transition-colors duration-500 overflow-hidden"
+              className="group relative bg-card p-10 md:p-12 flex flex-col justify-between min-h-[300px] transition-all duration-700 rounded-[20px] shadow-sm border border-foreground/[0.08] overflow-hidden hover:-translate-y-1"
             >
+              {/* Internal Mesh Glow - Corner-based iridescent highlights */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                style={{
+                  background: `
+                    radial-gradient(circle at 0% 0%, rgba(123, 212, 234, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, rgba(244, 143, 177, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, rgba(179, 157, 219, 0.1) 0%, transparent 50%)
+                  `
+                }}
+              />
+
               {/* Number — large background watermark */}
               <span className="absolute -top-4 right-4 text-[120px] font-sans font-black text-foreground/[0.03] leading-none select-none group-hover:text-foreground/[0.06] transition-colors duration-500">
                 {tenet.id}
               </span>
 
               {/* Top: number + optional sub-label */}
-              <div>
+              <div className="relative z-10">
                 <p className="text-xs font-mono text-muted-foreground uppercase tracking-[0.3em] mb-6">
                   Tenet {tenet.id}
                 </p>
@@ -93,7 +105,7 @@ export default function Tenets() {
               </div>
 
               {/* Bottom: quote */}
-              <p className="text-sm text-muted-foreground leading-relaxed italic mt-8 border-l-2 border-primary/30 pl-4 group-hover:border-primary transition-colors duration-500">
+              <p className="relative z-10 text-sm text-muted-foreground leading-relaxed italic mt-8 border-l-2 border-primary/30 pl-4 group-hover:border-primary transition-colors duration-500">
                 "{tenet.quote}"
               </p>
             </motion.div>
