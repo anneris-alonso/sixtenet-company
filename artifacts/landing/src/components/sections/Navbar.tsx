@@ -48,7 +48,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <Link href="/" className={`text-2xl md:text-3xl font-syne font-bold tracking-tighter uppercase z-10 hover:opacity-80 transition-all duration-500 ${
             isScrolled 
-              ? "text-black/80 drop-shadow-none" 
+              ? "text-foreground/80 drop-shadow-none" 
               : "text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]"
           }`}>
             SIXTENET

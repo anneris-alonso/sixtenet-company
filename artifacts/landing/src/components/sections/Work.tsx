@@ -64,14 +64,26 @@ export default function Work() {
             {projects.map((project, index) => {
               const isActive = index === activeIndex;
               return (
-                <div key={project.id} className="relative">
+                <div key={project.id} className="relative group">
                   {/* Gliding Active Background */}
                   {isActive && (
                     <motion.div 
                       layoutId="activeTabBg"
-                      className="absolute inset-0 bg-background shadow-sm rounded-[20px] border border-foreground/[0.08]"
+                      className="absolute inset-0 bg-background shadow-sm rounded-[20px] border border-foreground/[0.08] overflow-hidden"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
+                    >
+                      {/* Internal Mesh Glow — Iridescent highlights (Vibrant for Light Theme) */}
+                      <div 
+                        className="absolute inset-0 pointer-events-none opacity-70"
+                        style={{
+                          background: `
+                            radial-gradient(circle at 0% 0%, rgba(123, 212, 234, 0.4) 0%, transparent 70%),
+                            radial-gradient(circle at 0% 100%, rgba(244, 143, 177, 0.3) 0%, transparent 70%),
+                            radial-gradient(circle at 100% 100%, rgba(179, 157, 219, 0.25) 0%, transparent 70%)
+                          `
+                        }}
+                      />
+                    </motion.div>
                   )}
                   
                   <button
@@ -85,7 +97,9 @@ export default function Work() {
                     <p className={`text-xs tracking-widest uppercase mb-3 transition-colors duration-300 ${isActive ? 'text-muted-foreground' : 'text-foreground/40'}`}>
                       {project.category}
                     </p>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                    <h3 className={`text-xl md:text-2xl font-bold mb-3 transition-colors duration-500 ${
+                      isActive ? 'text-primary' : 'text-foreground group-hover:text-primary/70'
+                    }`}>
                       {project.title}
                     </h3>
                     

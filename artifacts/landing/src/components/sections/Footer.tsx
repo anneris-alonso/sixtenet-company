@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-background pt-0 pb-8 overflow-hidden border-t border-foreground/10" id="contact">
+    <footer className="relative w-full bg-background pt-0 pb-8 overflow-hidden" id="contact">
 
       {/* ─── SECCIÓN CTA: Let's Talk / Ideas. con fondo de imagen ─── */}
       <div className="relative w-full py-32 md:py-40 flex flex-col items-center justify-center overflow-hidden bg-background">
@@ -27,10 +27,10 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="relative z-10 block font-sans font-black uppercase text-foreground tracking-tighter leading-none"
+          className="relative z-10 block font-sans font-black text-foreground tracking-tighter leading-none"
           style={{ fontSize: "clamp(2.5rem, 8vw, 9rem)", lineHeight: 0.9 }}
         >
-          LET'S TALK
+          Let's Talk
         </motion.span>
 
         {/* IDEAS. — transparente con borde (como "BUS" en SplineHero) */}
@@ -39,13 +39,13 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-          className="relative z-10 block font-sans font-black uppercase bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter leading-none mb-12"
+          className="relative z-10 block font-sans font-black bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter leading-none mb-12"
           style={{
             fontSize: "clamp(2.5rem, 8vw, 9rem)",
             lineHeight: 0.9,
           }}
         >
-          IDEAS.
+          Ideas.
         </motion.span>
 
         {/* Premium Standardized Button — rounded-full, glass-morphism */}
@@ -71,7 +71,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pt-12 border-t border-foreground/10 text-sm">
           <div className="col-span-1 md:col-span-2">
-            <div className="text-3xl md:text-4xl font-syne font-bold tracking-tighter uppercase text-black/80 mb-6">
+            <div className="text-3xl md:text-4xl font-syne font-bold tracking-tighter uppercase text-foreground/80 mb-6">
               SIXTENET
             </div>
             <p className="text-muted-foreground max-w-xs">

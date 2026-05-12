@@ -3,12 +3,12 @@ import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const teamMembers = [
-  { id: "01", name: "ANNE ALONSO", role: "FOUNDER & CEO", image: "/team/anne.png" },
-  { id: "02", name: "DAMIAN RODRIGUEZ", role: "SOFTWARE ENGINEER", image: "/team/damian.jpg" },
-  { id: "03", name: "VICTOR ORTEGA", role: "GRAPHIC DESIGNER", image: "/team/victor.jpg" },
-  { id: "04", name: "MALAKA PRABATH", role: "PRODUCER", image: "/team/malaka.jpg" },
-  { id: "05", name: "ANGELICA BAÑARES", role: "CONTENT PRODUCER", image: "/team/angelica.jpg" },
-  { id: "06", name: "IMELDA RODRIGO", role: "ASSISTANT", image: "/team/imelda.jpg" },
+  { id: "01", name: "Anne Alonso", role: "FOUNDER & CEO", image: "/team/anne.png" },
+  { id: "02", name: "Damián Rodríguez", role: "SOFTWARE ENGINEER", image: "/team/damian.jpg" },
+  { id: "03", name: "Víctor Ortega", role: "GRAPHIC DESIGNER", image: "/team/victor.jpg" },
+  { id: "04", name: "Malaka Prabath", role: "PRODUCER", image: "/team/malaka.jpg" },
+  { id: "05", name: "Angélica Bañares", role: "CONTENT PRODUCER", image: "/team/angelica.jpg" },
+  { id: "06", name: "Imelda Rodrigo", role: "ASSISTANT", image: "/team/imelda.jpg" },
 ];
 
 export default function Team() {
@@ -113,10 +113,10 @@ export default function Team() {
                     {activeMember.role}
                   </span>
                   <div className="flex flex-col leading-none">
-                    <h3 className="text-3xl md:text-8xl font-sans font-bold bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter uppercase mb-2">
+                    <h3 className="text-3xl md:text-8xl font-sans font-bold bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter mb-2">
                       {firstName}
                     </h3>
-                    <h3 className="text-3xl md:text-8xl font-sans font-bold text-gray-200 tracking-tighter uppercase opacity-50">
+                    <h3 className="text-3xl md:text-8xl font-sans font-bold text-gray-200 tracking-tighter opacity-50">
                       {lastName}
                     </h3>
                   </div>

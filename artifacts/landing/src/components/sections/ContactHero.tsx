@@ -37,10 +37,10 @@ export default function ContactHero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="block font-sans font-black uppercase text-foreground leading-none tracking-tighter"
+          className="block font-sans font-black text-foreground leading-none tracking-tighter"
           style={{ fontSize: "clamp(3.5rem, 12vw, 14rem)", lineHeight: 0.9 }}
         >
-          LET'S TALK
+          Let's Talk
         </motion.span>
 
         {/* IDEAS. — transparente con borde blanco, igual que "BUS" en SplineHero */}
@@ -55,7 +55,7 @@ export default function ContactHero() {
             lineHeight: 0.9,
           }}
         >
-          IDEAS.
+          Ideas.
         </motion.span>
 
         {/* CTA button */}

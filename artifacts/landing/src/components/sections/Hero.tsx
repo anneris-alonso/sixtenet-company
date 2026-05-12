@@ -74,6 +74,9 @@ export default function Hero() {
             borderRadius: videoBorderRadius,
           }}
         >
+          {/* Responsive Sources */}
+          <source src="/hero_portrait.mp4" type="video/mp4" media="(max-width: 639px)" />
+          <source src="/hero_post.mp4" type="video/mp4" media="(max-width: 1023px)" />
           <source src="/hero.mp4" type="video/mp4" />
         </motion.video>
 
@@ -91,7 +94,7 @@ export default function Hero() {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-6xl md:text-8xl font-syne font-bold tracking-tighter uppercase text-black/80 drop-shadow-sm mb-6 text-center px-6"
+                className="text-6xl md:text-8xl font-syne font-bold tracking-tighter uppercase text-foreground/80 drop-shadow-sm mb-6 text-center px-6"
               >
                 SIXTENET
               </motion.div>
@@ -99,7 +102,7 @@ export default function Hero() {
                 initial={{ y: 60, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-black/60 text-lg md:text-xl font-medium tracking-widest uppercase text-center px-6"
+                className="text-foreground/60 text-lg md:text-xl font-medium tracking-widest uppercase text-center px-6"
               >
                 AI SYSTEMS, AUTOMATION & DIGITAL EXPERIENCES
               </motion.p>
