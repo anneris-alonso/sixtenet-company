@@ -51,7 +51,29 @@ export default function Impact() {
         {/* Collage Area (Left) */}
         <div className="w-full lg:w-1/2 relative h-[500px] md:h-[700px] flex items-center justify-center mb-16 lg:mb-0">
           
-{/* Main Back Card (Story Simulation) */}
+          {/* Left Square Card (Website Video) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50, rotate: 0 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="absolute z-0 left-4 md:left-8 top-12 md:top-24 w-32 h-32 md:w-56 md:h-56 rounded-[2rem] bg-foreground/5 backdrop-blur-md border border-foreground/10 shadow-xl overflow-hidden"
+          >
+            <div className="absolute top-4 left-4 z-10 w-8 h-8 rounded-xl bg-background/50 flex items-center justify-center shadow-sm backdrop-blur-md text-foreground">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+            </div>
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="w-full h-full object-cover rounded-[2rem]"
+              src="/impact/website.mp4"
+            />
+          </motion.div>
+
+          {/* Main Back Card (Story Simulation) */}
           <motion.div 
             initial={{ opacity: 0, y: 50, rotate: 3 }}
             whileInView={{ opacity: 1, y: 0, rotate: 3 }}
@@ -81,61 +103,6 @@ export default function Impact() {
             </div>
           </motion.div>
 
-          {/* Left Square Card (Website Video) */}
-          {/*<motion.div 
-            initial={{ opacity: 0, x: -50, rotate: 0 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="absolute z-0 left-4 md:left-8 top-12 md:top-24 w-32 h-32 md:w-56 md:h-56 rounded-[2rem] bg-foreground/5 backdrop-blur-md border border-foreground/10 shadow-xl overflow-hidden"
-          >
-            <div className="absolute top-4 left-4 z-10 w-8 h-8 rounded-xl bg-background/50 flex items-center justify-center shadow-sm backdrop-blur-md text-foreground">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-            </div>
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              className="w-full h-full object-cover rounded-[2rem]"
-              src="/impact/website.mp4"
-            />
-          </motion.div>*/}
-
-          {/* Main Back Card (Story Simulation) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50, rotate: 3 }}
-            whileInView={{ opacity: 1, y: 0, rotate: 3 }}
-            transition={{ duration: 0.8 }}
-            className="absolute z-10 w-48 h-72 md:w-80 md:h-[32rem] rounded-[2.5rem] bg-background border border-foreground/10 overflow-hidden shadow-2xl flex flex-col right-12 md:right-20 top-10 md:top-16"
-          >
-            <div className="absolute top-4 right-4 z-10 bg-primary text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg backdrop-blur-md">
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              16:45
-            </div>
-            {/* Progress bar top */}
-            <div className="absolute top-4 left-4 right-24 z-10 h-1 bg-white/30 rounded-full overflow-hidden">
-                <div className="w-1/2 h-full bg-white rounded-full" />
-            </div>
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              className="w-full h-full object-cover rounded-[2.5rem]"
-              src="/impact/story.mp4"
-            />
-            {/* Player controls mock */}
-            <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center justify-between gap-3 opacity-90">
-              <div className="h-1.5 flex-1 bg-background/50 rounded-full overflow-hidden backdrop-blur-sm">
-                <div className="w-1/3 h-full bg-background rounded-full" />
-              </div>
-              <div className="w-6 h-6 rounded-full border-2 border-background shadow-sm" />
-              <div className="w-6 h-6 rounded-full border-2 border-background shadow-sm" />
-            </div>
-          </motion.div>
-
           {/* Bottom Left Card (N8N Save Icon Card) */}
           <motion.div 
             initial={{ opacity: 0, y: 50, rotate: -3 }}
@@ -150,8 +117,8 @@ export default function Impact() {
             </div>
             <div className="flex-1 rounded-xl overflow-hidden relative border border-foreground/5 bg-foreground/5">
               <img 
-                src="/impact/n8n.jpg" 
-                alt="n8n automation" 
+                src="/impact/digital_marketing.png" 
+                alt="Digital marketing automation" 
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
@@ -169,8 +136,8 @@ export default function Impact() {
             className="absolute z-30 bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 md:translate-x-0 w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-background shadow-2xl overflow-hidden bg-background"
           >
             <img 
-              src="/impact/apps.jpg" 
-              alt="Apps" 
+              src="/impact/data.jpg" 
+              alt="data analytics" 
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -202,7 +169,6 @@ export default function Impact() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="absolute top-1/2 -right-8 md:-right-20 w-32 h-32 md:w-48 md:h-48 drop-shadow-2xl pointer-events-none z-20"
           >
-            <img src="/glass_elements/glass_icon_2.png" alt="3D Glass Element" className="w-full h-full object-contain" />
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, x: 40, filter: "blur(12px)" }}
