@@ -29,7 +29,7 @@ function GlassCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative rounded-[20px] overflow-hidden border border-foreground/[0.1] bg-card/10 backdrop-blur-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] group hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] hover:-translate-y-2 transition-all duration-700 ${className}`}
+      className={`relative rounded-[20px] overflow-hidden border border-white/50 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_20px_40px_-10px_rgba(0,0,0,0.05)] bg-white/30 dark:bg-white/5 backdrop-blur-3xl group hover:shadow-[inset_0_1px_2px_rgba(255,255,255,1),_0_30px_60px_-15px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-700 ${className}`}
     >
       {/* Multi-color Mesh Glow Background */}
       <div 
@@ -53,7 +53,7 @@ function GlassCard({
         </div>
 
         {/* UI Text Box (Highly Transparent Glass with Depth) */}
-        <div className={`${horizontal ? 'w-full md:w-[55%]' : 'mt-auto'} bg-background/30 backdrop-blur-md p-8 rounded-[20px] border border-white/50 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.15)] group-hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2)] group-hover:bg-background/40 transition-all duration-500`}>
+        <div className={`${horizontal ? 'w-full md:w-[55%]' : 'mt-auto'} bg-white/60 dark:bg-card/40 backdrop-blur-md p-8 rounded-[20px] border border-white/80 shadow-[0_10px_30px_rgba(0,0,0,0.08)] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500`}>
           <h4 className="text-2xl md:text-3xl font-sans font-bold text-foreground mb-3">{title}</h4>
           <p className="text-base text-foreground/80 leading-relaxed font-medium">{subtitle}</p>
         </div>

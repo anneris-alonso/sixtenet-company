@@ -34,7 +34,7 @@ export default function Team() {
       nextSlide();
     }, 5000);
     return () => clearInterval(timer);
-  }, [nextSlide]);
+  }, [nextSlide, activeIndex]);
 
   const progress = ((activeIndex + 1) / teamMembers.length) * 100;
 
@@ -50,6 +50,12 @@ export default function Team() {
 
   return (
     <section className="py-32 bg-background border-t border-foreground/5 relative overflow-hidden" id="team">
+      {/* Decorative Holographic Blurs */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute top-[10%] right-[-10%] w-[50%] h-[70%] bg-gradient-to-l from-indigo-100/60 via-purple-50/30 to-transparent blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[60%] bg-gradient-to-r from-cyan-100/50 via-blue-50/20 to-transparent blur-[120px] rounded-full" />
+      </div>
+
       <motion.div 
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
@@ -83,14 +89,15 @@ export default function Team() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="relative aspect-[3/4] w-full overflow-hidden border border-foreground/10 glassmorphism shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] grayscale rounded-[20px]"
+                className="relative aspect-[3/4] w-full overflow-hidden border border-white/60 bg-white/20 backdrop-blur-3xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_30px_60px_-15px_rgba(0,0,0,0.15)] rounded-[20px] group"
               >
                 <img
                   src={activeMember.image}
                   alt={activeMember.name}
-                  className="w-full h-full object-cover grayscale brightness-90 contrast-110"
+                  className="w-full h-full object-cover grayscale brightness-[0.95] contrast-[1.05] group-hover:scale-105 transition-transform duration-1000"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-60" />
+                {/* Bottom frosted glass fade to focus on the face */}
+                <div className="absolute bottom-0 left-0 w-full h-[40%] bg-white/20 backdrop-blur-md [mask-image:linear-gradient(to_top,black_10%,transparent_100%)] pointer-events-none" />
               </motion.div>
             </AnimatePresence>
           </div>
@@ -116,7 +123,7 @@ export default function Team() {
                     <h3 className="text-3xl md:text-8xl font-sans font-bold bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter mb-2">
                       {firstName}
                     </h3>
-                    <h3 className="text-3xl md:text-8xl font-sans font-bold text-gray-200 tracking-tighter opacity-50">
+                    <h3 className="text-3xl md:text-8xl font-sans font-bold text-foreground/10 tracking-tighter">
                       {lastName}
                     </h3>
                   </div>
@@ -137,14 +144,15 @@ export default function Team() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className="flex-none w-[calc(33.33%-16px)] aspect-[3/4] relative overflow-hidden group border border-foreground/5 grayscale hover:grayscale-0 transition-all duration-700 rounded-[20px]"
+                    className="flex-none w-[calc(33.33%-16px)] aspect-[3/4] relative overflow-hidden group border border-white/50 bg-white/20 shadow-[0_10px_20px_rgba(0,0,0,0.05)] transition-all duration-700 rounded-[20px]"
                   >
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 grayscale"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 blur-[2px] group-hover:blur-0 transition-all duration-700"
                     />
-                    <div className="absolute inset-0 bg-background/10 group-hover:bg-transparent transition-colors duration-500" />
+                    {/* Soft white wash that clears on hover */}
+                    <div className="absolute inset-0 bg-white/40 group-hover:bg-transparent transition-all duration-700" />
                   </motion.button>
                 ))}
               </div>
@@ -203,8 +211,7 @@ export default function Team() {
         </div>
       </motion.div>
 
-      {/* Decorative Blur */}
-      <div className="absolute top-[20%] right-[-5%] w-1/3 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      {/* Decorative blurs removed as they are now handled globally behind the content */}
 
     </section>
   );

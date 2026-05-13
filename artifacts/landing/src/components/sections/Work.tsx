@@ -44,6 +44,12 @@ export default function Work() {
 
   return (
     <section className="relative py-32 bg-background overflow-hidden" id="work">
+      {/* Soft Background Glow for Glass Refraction */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[60%] bg-gradient-to-r from-cyan-100/60 via-blue-50/30 to-transparent blur-[120px] rounded-full" />
+        <div className="absolute bottom-[10%] right-[-10%] w-[60%] h-[70%] bg-gradient-to-l from-pink-100/40 via-purple-50/20 to-transparent blur-[120px] rounded-full" />
+      </div>
+
       <SectionReveal className="container mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
@@ -57,7 +63,7 @@ export default function Work() {
         </div>
 
         {/* Feature Switcher Layout - Wrapped in a Container */}
-        <div className="bg-foreground/5 rounded-[20px] p-4 md:p-6 flex flex-col lg:flex-row gap-4 items-center border border-foreground/[0.04]">
+        <div className="bg-white/30 dark:bg-white/5 backdrop-blur-3xl border border-white/50 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_20px_40px_-10px_rgba(0,0,0,0.05)] rounded-[20px] p-4 md:p-6 flex flex-col lg:flex-row gap-4 items-center">
           
           {/* Left Column: Interactive Tabs - NARROWER */}
           <div className="w-full lg:w-[35%] flex flex-col gap-1 relative">
@@ -69,7 +75,7 @@ export default function Work() {
                   {isActive && (
                     <motion.div 
                       layoutId="activeTabBg"
-                      className="absolute inset-0 bg-background shadow-sm rounded-[20px] border border-foreground/[0.08] overflow-hidden"
+                      className="absolute inset-0 bg-white/60 dark:bg-card/40 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.08)] rounded-[20px] border border-white/80 overflow-hidden"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     >
                       {/* Internal Mesh Glow — Iridescent highlights (Vibrant for Light Theme) */}

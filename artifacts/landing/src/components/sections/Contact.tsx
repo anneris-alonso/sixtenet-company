@@ -161,8 +161,8 @@ export default function Contact() {
             {/* Holographic Glow Behind Form */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-cyan-400 via-indigo-300 to-pink-400 blur-[100px] rounded-full pointer-events-none opacity-70 -z-10" />
 
-            {/* Editorial Form Container (Sweet Spot Glassmorphism) */}
-            <div className="bg-white/50 dark:bg-card/40 backdrop-blur-3xl border border-white/60 p-8 md:p-12 relative z-10 overflow-hidden group shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 rounded-[20px]">
+            {/* Editorial Form Container (Premium Glassmorphism) */}
+            <div className="bg-white/30 dark:bg-white/5 backdrop-blur-3xl border border-white/50 p-8 md:p-12 relative z-10 overflow-hidden group shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_30px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 rounded-[20px]">
 
               <AnimatePresence mode="wait">
                 {isSuccess ? (
@@ -193,7 +193,7 @@ export default function Contact() {
                             {...register("name")}
                             placeholder="ALICE WONDERLAND"
                             disabled={isSubmitting}
-                            className={`bg-transparent border border-foreground/10 focus-visible:ring-1 focus-visible:ring-primary px-6 h-14 rounded-[20px] font-sans text-lg placeholder:text-foreground/20 shadow-none transition-all duration-300 ${errors.name ? 'ring-1 ring-red-500/50' : ''
+                            className={`bg-white/40 dark:bg-black/10 border border-white/60 focus-visible:ring-1 focus-visible:ring-primary px-6 h-14 rounded-[20px] font-sans text-lg placeholder:text-foreground/30 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] transition-all duration-300 ${errors.name ? 'ring-1 ring-red-500/50' : ''
                               }`}
                           />
                           {errors.name && (
@@ -214,7 +214,7 @@ export default function Contact() {
                             type="email"
                             placeholder="hello@example.com"
                             disabled={isSubmitting}
-                            className={`bg-transparent border border-foreground/10 focus-visible:ring-1 focus-visible:ring-primary px-6 h-14 rounded-[20px] font-sans text-lg placeholder:text-foreground/20 shadow-none transition-all duration-300 ${errors.email ? 'ring-1 ring-red-500/50' : ''
+                            className={`bg-white/40 dark:bg-black/10 border border-white/60 focus-visible:ring-1 focus-visible:ring-primary px-6 h-14 rounded-[20px] font-sans text-lg placeholder:text-foreground/30 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] transition-all duration-300 ${errors.email ? 'ring-1 ring-red-500/50' : ''
                               }`}
                           />
                           {errors.email && (
@@ -235,7 +235,7 @@ export default function Contact() {
                           {...register("message")}
                           placeholder="Tell us about the scope, timeline, and vision..."
                           disabled={isSubmitting}
-                          className={`bg-transparent border border-foreground/10 focus-visible:ring-1 focus-visible:ring-primary px-6 pt-6 min-h-[150px] rounded-[20px] font-sans text-lg placeholder:text-foreground/20 shadow-none resize-none transition-all duration-300 ${errors.message ? 'ring-1 ring-red-500/50' : ''
+                          className={`bg-white/40 dark:bg-black/10 border border-white/60 focus-visible:ring-1 focus-visible:ring-primary px-6 pt-6 min-h-[150px] rounded-[20px] font-sans text-lg placeholder:text-foreground/30 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] resize-none transition-all duration-300 ${errors.message ? 'ring-1 ring-red-500/50' : ''
                             }`}
                         />
                         {errors.message && (
@@ -249,7 +249,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full h-16 flex items-center justify-between px-8 bg-foreground/5 border border-foreground/10 hover:bg-white/10 text-foreground rounded-full uppercase tracking-[0.2em] font-bold transition-all duration-500 hover:scale-[1.02] group shadow-xl"
+                      className="w-full h-16 flex items-center justify-between px-8 bg-white/60 dark:bg-white/10 border border-white/80 hover:bg-white/80 backdrop-blur-md text-foreground rounded-full uppercase tracking-[0.2em] font-bold transition-all duration-500 hover:scale-[1.02] group shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
                     >
                       <span className="text-sm">
                         {isSubmitting ? "Sending..." : "Contact Us"}
