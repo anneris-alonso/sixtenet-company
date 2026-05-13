@@ -53,8 +53,13 @@ const packages = [
 
 export default function Packages() {
   return (
-    <section className="py-32 border-t border-foreground/5" id="packages">
-      <SectionReveal className="container mx-auto px-4 md:px-8">
+    <section className="py-32 border-t border-foreground/5 relative overflow-hidden bg-background" id="packages">
+      {/* Giant Soft Background Glow (Top Center) to give the glass something to refract */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute top-[-30%] left-1/4 w-[50%] h-[80%] bg-gradient-to-b from-cyan-200/50 via-blue-100/30 to-transparent blur-[120px] rounded-full" />
+      </div>
+      
+      <SectionReveal className="container mx-auto px-4 md:px-8 relative z-10">
 
         {/* Header */}
         <div className="mb-16 md:mb-24">
@@ -90,17 +95,21 @@ export default function Packages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className={`group relative flex flex-col p-8 md:p-10 rounded-[20px] shadow-sm border transition-all duration-700 overflow-hidden hover:-translate-y-1 ${
+              className={`group relative flex flex-col p-8 md:p-10 rounded-[20px] shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_20px_40px_-10px_rgba(0,0,0,0.05)] border overflow-hidden hover:-translate-y-2 hover:shadow-[inset_0_1px_2px_rgba(255,255,255,1),_0_30px_60px_-15px_rgba(0,0,0,0.12)] transition-all duration-700 backdrop-blur-3xl bg-white/40 dark:bg-white/5 hover:bg-white/50 ${
                 pkg.highlight
-                  ? "bg-primary/10 border-primary/30 shadow-primary/10"
-                  : "bg-card border-foreground/[0.08]"
+                  ? "border-primary/30 hover:border-primary/50"
+                  : "border-white/60"
               }`}
             >
               {/* Internal Mesh Glow - Corner-based iridescent highlights */}
               <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                className={`absolute inset-0 transition-opacity duration-700 pointer-events-none ${pkg.highlight ? "opacity-0 group-hover:opacity-100" : "opacity-0 group-hover:opacity-100"}`}
                 style={{
-                  background: `
+                  background: pkg.highlight ? `
+                    radial-gradient(circle at 0% 0%, rgba(123, 212, 234, 0.25) 0%, transparent 60%),
+                    radial-gradient(circle at 0% 100%, rgba(244, 143, 177, 0.2) 0%, transparent 60%),
+                    radial-gradient(circle at 100% 100%, rgba(179, 157, 219, 0.2) 0%, transparent 60%)
+                  ` : `
                     radial-gradient(circle at 0% 0%, rgba(123, 212, 234, 0.15) 0%, transparent 50%),
                     radial-gradient(circle at 0% 100%, rgba(244, 143, 177, 0.12) 0%, transparent 50%),
                     radial-gradient(circle at 100% 100%, rgba(179, 157, 219, 0.1) 0%, transparent 50%)
@@ -108,8 +117,12 @@ export default function Packages() {
                 }}
               />
 
-              {/* Package number */}
-              <p className="text-xs font-mono text-foreground/20 mb-6">{pkg.id}</p>
+              {/* Number — large background watermark */}
+              <span className={`absolute top-2 right-4 text-[120px] font-sans font-black leading-none select-none transition-colors duration-500 ${
+                pkg.highlight ? "text-primary/[0.05] group-hover:text-primary/[0.08]" : "text-foreground/[0.03] group-hover:text-foreground/[0.06]"
+              }`}>
+                {pkg.id}
+              </span>
 
               {/* Name */}
               <h3 className={`text-xl md:text-2xl font-sans font-bold uppercase tracking-tight mb-2 leading-tight ${pkg.highlight ? "text-primary" : "text-foreground"}`}>
