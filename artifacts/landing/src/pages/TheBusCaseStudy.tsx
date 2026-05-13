@@ -69,7 +69,7 @@ export default function TheBusCaseStudy() {
                   ))}
                 </div>
                 <a
-                  href="https://thebusmiami.com/"
+                  href="https://thebus.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

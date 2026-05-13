@@ -69,7 +69,7 @@ export default function NuroxCaseStudy() {
                   ))}
                 </div>
                 <a
-                  href="https://nurox.com/"
+                  href="https://nurox.ai/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 block"
