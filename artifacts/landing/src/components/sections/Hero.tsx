@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Instagram, Youtube, Facebook } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Youtube, Facebook, Shield, Cpu, ChevronRight, ArrowUpRight } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence, useTransform } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 
@@ -88,7 +88,7 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.5 } }}
               transition={{ duration: 1.5 }}
-              className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/5 backdrop-blur-md"
+              className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-white/5 backdrop-blur-md"
             >
               <motion.div
                 initial={{ y: 100, opacity: 0 }}
@@ -109,6 +109,113 @@ export default function Hero() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* --- NEW: INTERACTIVE DASHBOARD HUD --- */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-20">
+          
+          {/* Left Side: Main Text & CTAs */}
+          <motion.div 
+            className="absolute left-[5rem] lg:left-[6%] bottom-[4%] lg:bottom-[4%] flex flex-col gap-6 pointer-events-auto"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-7xl font-sans font-light text-white leading-tight drop-shadow-lg">
+                Innovation <br/><span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">& Security</span>
+              </h1>
+              <p className="text-white/80 max-w-sm text-sm md:text-base font-light drop-shadow-md">
+                We are at the forefront of changing business stage technology, integrating AI and secure systems.
+              </p>
+            </div>
+            <div className="flex gap-4 mt-2">
+              <a href="#work" className="px-6 py-3 bg-[#3fa6ec] hover:bg-[#3fa6ec]/90 text-white rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-3 transition-all shadow-[0_0_20px_rgba(63,166,236,0.4)] hover:shadow-[0_0_30px_rgba(63,166,236,0.6)] hover:scale-105 group">
+                See Our Work 
+                <div className="bg-white rounded-full p-2 group-hover:translate-x-1 transition-transform">
+                  <ChevronRight size={16} className="text-[#3fa6ec]"/>
+                </div>
+              </a>
+              <a href="#contact" className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/20 transition-all hover:scale-105 shadow-xl inline-flex items-center justify-center">
+                Contact us
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Side: Floating Glass Cards */}
+          <motion.div
+            className="absolute right-[2%] lg:right-[3%] bottom-[2%] lg:bottom-[4%] hidden md:flex items-end gap-6 pointer-events-auto"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Card 1: System Security */}
+            <motion.div 
+              className="relative w-48 p-6 rounded-3xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl flex flex-col justify-end group cursor-pointer hover:bg-white/15 transition-colors"
+              style={{ height: "180px" }}
+            >
+              {/* Arrow Icon */}
+              <div className="absolute top-5 right-5 text-white/30 group-hover:text-white/80 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all">
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </div>
+              <div className="mb-auto p-2 bg-white/10 rounded-[10px] w-max border border-white/10 group-hover:scale-110 transition-transform duration-500">
+                <Shield className="w-6 h-6 text-white drop-shadow-md" strokeWidth={1.5} />
+              </div>
+              {/*<div className="bg-white/20 px-3 py-1.5 rounded-full w-max mb-3 border border-white/10">
+                <span className="text-[10px] text-white font-bold uppercase tracking-widest">System Security</span>
+              </div>*/}
+              <p className="text-xs text-white/80 font-light leading-relaxed">AI ensures total operational protection</p>
+            </motion.div>
+
+            {/* Card 2: AI Agent */}
+            <motion.div 
+              className="relative w-56 p-6 rounded-3xl bg-white/20 backdrop-blur-3xl border border-white/40 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] flex flex-col group cursor-pointer hover:bg-white/25 transition-colors"
+              style={{ height: "240px" }}
+            >
+              {/* Arrow Icon */}
+              <div className="absolute top-5 right-5 text-white/30 group-hover:text-white/80 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all">
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </div>
+              <div className="mb-auto w-10 h-10 rounded-[10px] bg-gradient-to-tr from-[#3fa6ec] to-indigo-400 flex items-center justify-center shadow-[0_0_20px_rgba(63,166,236,0.5)] group-hover:scale-110 transition-transform duration-500">
+                <Cpu className="w-5 h-5 text-white drop-shadow-md" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-white font-sans font-bold mb-3 text-xl tracking-tight">Integrated AI Agent</h3>
+              <p className="text-sm text-white/80 font-light leading-relaxed">Intelligent autonomous agents for personalized client experiences.</p>
+            </motion.div>
+
+            {/* Card 3: Metrics */}
+            <div className="relative">
+              {/* Floating Avatars */}
+              <motion.div 
+                className="absolute -top-20 right-0 flex items-center gap-3 p-2 pr-4 rounded-full bg-white/10 backdrop-blur-2xl border border-white/30 shadow-xl"
+              >
+                <div className="flex -space-x-3">
+                  {[1,2,3].map(i => (
+                    <div key={i} className="w-10 h-10 rounded-full border-[3px] border-[#3fa6ec]/30 overflow-hidden bg-black/50">
+                      <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="user" className="w-full h-full opacity-90" />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-white/70 uppercase tracking-widest font-bold leading-none mb-1">Active Clients</span>
+                  <span className="text-sm text-white font-bold leading-none">+323</span>
+                </div>
+              </motion.div>
+
+              {/* Main Stats Card */}
+              <motion.div 
+                className="relative w-64 p-6 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl flex flex-col justify-center group cursor-pointer hover:bg-white/15 transition-colors"
+                style={{ height: "180px" }}
+              >
+                {/* Arrow Icon */}
+                <div className="absolute top-5 right-5 text-white/30 group-hover:text-white/80 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all">
+                  <ArrowUpRight size={18} strokeWidth={2} />
+                </div>
+                <h2 className="text-6xl font-light text-white mb-3 font-sans tracking-tighter group-hover:scale-105 origin-left transition-transform duration-500">44<span className="text-4xl text-white/60 font-light">%</span></h2>
+                <p className="text-xs text-white/70 font-light leading-relaxed">Join us in redefining the future of operations with innovative AI solutions.</p>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Floating Vertical Glass Bar (Socials) */}
@@ -129,12 +236,12 @@ export default function Hero() {
             }}
           >
             {/* Icons */}
-            <div className="flex flex-col items-center gap-6 text-foreground/80">
-              <a href="#linkedin" className="hover:text-primary transition-colors hover:scale-110 transform"><Linkedin size={20} strokeWidth={2} /></a>
-              <a href="#twitter" className="hover:text-primary transition-colors hover:scale-110 transform"><Twitter size={20} strokeWidth={2} /></a>
-              <a href="#instagram" className="hover:text-primary transition-colors hover:scale-110 transform"><Instagram size={20} strokeWidth={2} /></a>
-              <a href="#youtube" className="hover:text-primary transition-colors hover:scale-110 transform"><Youtube size={20} strokeWidth={2} /></a>
-              <a href="#facebook" className="hover:text-primary transition-colors hover:scale-110 transform"><Facebook size={20} strokeWidth={2} /></a>
+            <div className="flex flex-col items-center gap-6 text-[#3fa6ec]">
+              <a href="#linkedin" className="hover:text-[#3fa6ec]/70 transition-colors hover:scale-110 transform"><Linkedin size={20} strokeWidth={2} /></a>
+              <a href="#twitter" className="hover:text-[#3fa6ec]/70 transition-colors hover:scale-110 transform"><Twitter size={20} strokeWidth={2} /></a>
+              <a href="#instagram" className="hover:text-[#3fa6ec]/70 transition-colors hover:scale-110 transform"><Instagram size={20} strokeWidth={2} /></a>
+              <a href="#youtube" className="hover:text-[#3fa6ec]/70 transition-colors hover:scale-110 transform"><Youtube size={20} strokeWidth={2} /></a>
+              <a href="#facebook" className="hover:text-[#3fa6ec]/70 transition-colors hover:scale-110 transform"><Facebook size={20} strokeWidth={2} /></a>
             </div>
           </motion.div>
         )}

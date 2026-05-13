@@ -109,7 +109,7 @@ export default function Navbar() {
               key={item.name} 
               href={item.href} 
               onClick={(e) => handleNavClick(e as any, item.href)}
-              className="text-base font-semibold tracking-wide uppercase text-foreground/90 hover:text-primary transition-colors"
+              className="text-base font-semibold tracking-wide uppercase text-[#3fa6ec] hover:text-[#3fa6ec]/70 transition-colors"
             >
               {item.name}
             </Link>
