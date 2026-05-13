@@ -213,7 +213,7 @@ export default function TheBusCaseStudy() {
                   { title: "Behavioral Analysis", desc: "Optimizing interaction timing via engagement signals.", icon: MousePointer2 },
                   { title: "Performance Tuning", desc: "High-end visuals without sacrificing load times.", icon: LineChart }
                 ].map((feature, i) => (
-                  <div key={i} className="group relative p-8 border border-foreground/[0.08] bg-card/50 backdrop-blur-sm transition-all duration-700 rounded-[20px] shadow-sm overflow-hidden hover:-translate-y-1">
+                  <div key={i} className="group relative p-8 border border-white/60 bg-white/40 dark:bg-white/5 backdrop-blur-3xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_20px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[inset_0_1px_2px_rgba(255,255,255,1),_0_30px_60px_-15px_rgba(0,0,0,0.12)] transition-all duration-700 rounded-[20px] overflow-hidden hover:-translate-y-2">
                     {/* Internal Mesh Glow - Corner-based iridescent highlights */}
                     <div 
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"

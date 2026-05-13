@@ -211,7 +211,7 @@ export default function NuroxCaseStudy() {
                   { title: "DB Optimization", desc: "High-performance PostgreSQL tuning for heavy load.", icon: Database },
                   { title: "Observability Pipeline", desc: "Real-time monitoring with ELK stack & Grafana.", icon: Server }
                 ].map((feature, i) => (
-                  <div key={i} className="group relative p-8 border border-foreground/[0.08] bg-card/50 backdrop-blur-sm transition-all duration-700 rounded-[20px] shadow-sm overflow-hidden hover:-translate-y-1">
+                  <div key={i} className="group relative p-8 border border-white/60 bg-white/40 dark:bg-white/5 backdrop-blur-3xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_20px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[inset_0_1px_2px_rgba(255,255,255,1),_0_30px_60px_-15px_rgba(0,0,0,0.12)] transition-all duration-700 rounded-[20px] overflow-hidden hover:-translate-y-2">
                     {/* Internal Mesh Glow - Corner-based iridescent highlights */}
                     <div 
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
@@ -259,11 +259,23 @@ export default function NuroxCaseStudy() {
                 </div>
               </div>
               <SectionReveal delay={0.4}>
-                <div className="bg-primary/10 border border-primary/20 p-12 space-y-8 glass-morphism rounded-[20px] shadow-sm">
-                  <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground">Insight</p>
-                  <p className="text-3xl md:text-5xl font-sans font-bold text-foreground leading-tight">
-                    The best systems don’t just scale. They <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">adapt without breaking.</span>
-                  </p>
+                <div className="bg-white/30 dark:bg-white/5 backdrop-blur-3xl border border-white/50 p-12 space-y-8 rounded-[20px] shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_30px_60px_-15px_rgba(0,0,0,0.1)] relative overflow-hidden group">
+                  {/* Subtle iridescent hover glow */}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{
+                      background: `
+                        radial-gradient(circle at 100% 0%, rgba(123, 212, 234, 0.15) 0%, transparent 60%),
+                        radial-gradient(circle at 0% 100%, rgba(244, 143, 177, 0.1) 0%, transparent 60%)
+                      `
+                    }}
+                  />
+                  <div className="relative z-10">
+                    <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground">Insight</p>
+                    <p className="text-3xl md:text-5xl font-sans font-bold text-foreground leading-tight">
+                      The best systems don’t just scale. They <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">adapt without breaking.</span>
+                    </p>
+                  </div>
                 </div>
               </SectionReveal>
             </div>
