@@ -37,8 +37,13 @@ const tenets = [
 
 export default function Tenets() {
   return (
-    <section className="py-32 border-t border-foreground/5" id="tenets">
-      <SectionReveal className="container mx-auto px-4 md:px-8">
+    <section className="py-32 border-t border-foreground/5 relative overflow-hidden bg-background" id="tenets">
+      {/* Giant Soft Background Glow to give the glass something to refract */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute top-[-20%] left-[-10%] w-[120%] h-[120%] bg-gradient-to-br from-cyan-100/60 via-blue-50/20 to-pink-100/60 blur-[120px] rounded-[100%]" />
+      </div>
+      
+      <SectionReveal className="container mx-auto px-4 md:px-8 relative z-10">
 
         {/* Header */}
         <div className="mb-16 md:mb-24">
@@ -75,7 +80,7 @@ export default function Tenets() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="group relative bg-card p-10 md:p-12 flex flex-col justify-between min-h-[300px] transition-all duration-700 rounded-[20px] shadow-sm border border-foreground/[0.08] overflow-hidden hover:-translate-y-1"
+              className="group relative bg-white/40 dark:bg-white/5 backdrop-blur-3xl p-10 md:p-12 flex flex-col justify-between min-h-[300px] transition-all duration-700 rounded-[20px] shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_20px_40px_-10px_rgba(0,0,0,0.05)] border border-white/60 overflow-hidden hover:-translate-y-2 hover:shadow-[inset_0_1px_2px_rgba(255,255,255,1),_0_30px_60px_-15px_rgba(0,0,0,0.12)] hover:bg-white/50"
             >
               {/* Internal Mesh Glow - Corner-based iridescent highlights */}
               <div 
@@ -90,7 +95,7 @@ export default function Tenets() {
               />
 
               {/* Number — large background watermark */}
-              <span className="absolute -top-4 right-4 text-[120px] font-sans font-black text-foreground/[0.03] leading-none select-none group-hover:text-foreground/[0.06] transition-colors duration-500">
+              <span className="absolute top-2 right-4 text-[120px] font-sans font-black text-foreground/[0.03] leading-none select-none group-hover:text-foreground/[0.06] transition-colors duration-500">
                 {tenet.id}
               </span>
 

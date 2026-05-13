@@ -105,8 +105,13 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-32 border-t border-foreground/5" id="expertise">
-      <SectionReveal className="container mx-auto px-4 md:px-8">
+    <section className="py-32 border-t border-foreground/5 relative overflow-hidden bg-background" id="expertise">
+      {/* Giant Soft Background Glow (Bottom Right) to give the glass something to refract */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute bottom-[-20%] right-[-10%] w-[120%] h-[120%] bg-gradient-to-tl from-pink-100/60 via-purple-50/20 to-cyan-100/60 blur-[120px] rounded-[100%]" />
+      </div>
+      
+      <SectionReveal className="container mx-auto px-4 md:px-8 relative z-10">
 
         {/* Header */}
         <div className="mb-16 md:mb-24">
@@ -142,7 +147,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group relative bg-card p-7 flex flex-col gap-6 transition-all duration-700 rounded-[20px] shadow-sm border border-foreground/[0.08] overflow-hidden hover:-translate-y-1"
+              className="group relative bg-white/40 dark:bg-white/5 backdrop-blur-3xl p-7 flex flex-col gap-6 transition-all duration-700 rounded-[20px] shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_20px_40px_-10px_rgba(0,0,0,0.05)] border border-white/60 overflow-hidden hover:-translate-y-2 hover:shadow-[inset_0_1px_2px_rgba(255,255,255,1),_0_30px_60px_-15px_rgba(0,0,0,0.12)] hover:bg-white/50"
             >
               {/* Internal Mesh Glow - Corner-based iridescent highlights */}
               <div 
@@ -155,12 +160,14 @@ export default function Services() {
                   `
                 }}
               />
-              {/* Icon + number */}
-              <div className="flex items-center justify-between">
+              {/* Number — large background watermark */}
+              <span className="absolute top-2 right-4 text-[120px] font-sans font-black text-foreground/[0.03] leading-none select-none group-hover:text-foreground/[0.06] transition-colors duration-500">
+                {service.id}
+              </span>
+
+              {/* Icon */}
+              <div className="flex items-center relative z-10">
                 <service.icon className="text-primary" size={24} strokeWidth={1.5} />
-                <span className="text-xs font-mono text-foreground/20 group-hover:text-primary/50 transition-colors duration-500">
-                  {service.id}
-                </span>
               </div>
 
               {/* Title */}
