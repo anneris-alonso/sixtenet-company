@@ -4,39 +4,59 @@ import { Link } from "wouter";
 import { ArrowUpRight } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 
-// Animación de contador con entrada suave
-function Counter({ from, to, label, suffix = "" }: { from: number, to: number, label: string, suffix?: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [count, setCount] = useState(from);
-
-  useEffect(() => {
-    if (!isInView) return;
-    let start = from;
-    const duration = 1800;
-    const stepTime = Math.abs(Math.floor(duration / (to - from)));
-    const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === to) clearInterval(timer);
-    }, stepTime);
-    return () => clearInterval(timer);
-  }, [isInView, from, to]);
-
+function GlassCard({ 
+  title, 
+  subtitle, 
+  iconSrc, 
+  gradients, 
+  pattern,
+  delay = 0,
+  className = "",
+  horizontal = false
+}: { 
+  title: string, 
+  subtitle: string, 
+  iconSrc: string, 
+  gradients: string, 
+  pattern: React.ReactNode,
+  delay?: number,
+  className?: string,
+  horizontal?: boolean
+}) {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+    <motion.div 
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-      className="flex flex-col gap-3 border-l-2 border-primary pl-6"
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={`relative rounded-[20px] overflow-hidden border border-foreground/[0.1] bg-card/10 backdrop-blur-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] group hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] hover:-translate-y-2 transition-all duration-700 ${className}`}
     >
-      <div className="text-5xl md:text-7xl font-sans font-bold tabular-nums">
-        {count}{suffix}
-      </div>
-      <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-bold">
-        {label}
+      {/* Multi-color Mesh Glow Background */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-100 mix-blend-normal transition-opacity duration-700"
+        style={{ background: gradients }}
+      />
+
+      {/* Dynamic Pattern Overlay */}
+      {pattern}
+
+      <div className={`relative z-10 p-6 md:p-8 flex h-full ${horizontal ? 'flex-col md:flex-row items-center gap-8' : 'flex-col'}`}>
+        {/* Floating Icon/Image */}
+        <div className={`flex items-center justify-center ${horizontal ? 'w-full md:w-1/2 min-h-[140px]' : 'flex-1 min-h-[160px] mb-8'}`}>
+          <motion.img 
+            src={iconSrc} 
+            alt={title}
+            className={`${horizontal ? 'w-40 h-40 md:w-56 md:h-56' : 'w-40 h-40 md:w-48 md:h-48'} object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)]`}
+            whileHover={{ y: -15, scale: 1.15, rotate: horizontal ? -5 : 8 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+          />
+        </div>
+
+        {/* UI Text Box (Highly Transparent Glass with Depth) */}
+        <div className={`${horizontal ? 'w-full md:w-[55%]' : 'mt-auto'} bg-background/30 backdrop-blur-md p-8 rounded-[20px] border border-white/50 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.15)] group-hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2)] group-hover:bg-background/40 transition-all duration-500`}>
+          <h4 className="text-2xl md:text-3xl font-sans font-bold text-foreground mb-3">{title}</h4>
+          <p className="text-base text-foreground/80 leading-relaxed font-medium">{subtitle}</p>
+        </div>
       </div>
     </motion.div>
   );
@@ -76,11 +96,11 @@ export default function About() {
           className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent pointer-events-none"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-32 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           
           {/* LEFT — Entra desde la izquierda */}
           <motion.div
-            className="lg:col-span-3"
+            className="lg:col-span-7 xl:col-span-6"
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -100,7 +120,7 @@ export default function About() {
                     variants={lineVariants}
                   >
                     {i === 1 ? (
-                      <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(0, 0, 0, 0.15)" }}>
+                      <span className="text-transparent" style={{ WebkitTextStroke: "2px rgba(15, 23, 42, 0.4)" }}>
                         {line}
                       </span>
                     ) : i === 2 ? (
@@ -151,19 +171,50 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT — Entra desde la derecha */}
-          <motion.div
-            className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-x-16 lg:gap-x-40 gap-y-24 lg:gap-y-64 self-center pt-8"
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-          >
-            <Counter from={0} to={20} suffix="+" label="Projects Delivered" />
-            <Counter from={0} to={15} suffix="+" label="Industry Awards" />
-            <Counter from={0} to={1} label="Years Active" />
-            <Counter from={0} to={40} suffix="+" label="Global Clients" />
-          </motion.div>
+          {/* RIGHT — Bento Box Glass Cards */}
+          <div className="lg:col-span-5 xl:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-6 relative pt-12 lg:pt-0">
+            
+            {/* Wide Card (Spans 2 columns) - SYSTEMS */}
+            <GlassCard 
+              title="Systems Engineering"
+              subtitle="We replace fragmented tools with cohesive digital infrastructure, ensuring your entire operation communicates flawlessly."
+              iconSrc="/glass_elements/glass_icon_color_2.png"
+              gradients="radial-gradient(circle at 0% 0%, rgba(123, 212, 234, 0.6) 0%, transparent 60%), radial-gradient(circle at 100% 100%, rgba(244, 143, 177, 0.5) 0%, transparent 60%)"
+              pattern={
+                <div className="absolute inset-0 pointer-events-none opacity-[0.12]" style={{ backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+              }
+              delay={0.2}
+              className="md:col-span-2 min-h-[320px]"
+              horizontal={true}
+            />
+
+            {/* Square Card 1 - GROWTH */}
+            <GlassCard 
+              title="Growth Mechanics"
+              subtitle="We don't run isolated campaigns; we engineer automated engines designed for sustainable, predictable scale."
+              iconSrc="/glass_elements/glass_icon_color_4.png"
+              gradients="radial-gradient(circle at 100% 0%, rgba(250, 218, 137, 0.5) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(179, 157, 219, 0.6) 0%, transparent 70%)"
+              pattern={
+                <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'radial-gradient(circle, currentColor 1.5px, transparent 1px)', backgroundSize: '24px 24px' }} />
+              }
+              delay={0.4}
+              className="min-h-[420px]"
+            />
+
+            {/* Square Card 2 - CONTROL */}
+            <GlassCard 
+              title="Absolute Control"
+              subtitle="Turning operational chaos into crystal-clear visibility through data-driven orchestration and tracking."
+              iconSrc="/glass_elements/glass_icon_shine_1.png"
+              gradients="radial-gradient(circle at 50% 100%, rgba(123, 212, 234, 0.7) 0%, transparent 70%), radial-gradient(circle at 0% 0%, rgba(244, 143, 177, 0.4) 0%, transparent 60%)"
+              pattern={
+                <div className="absolute inset-0 pointer-events-none opacity-[0.06]" style={{ backgroundImage: 'linear-gradient(45deg, currentColor 1px, transparent 1px), linear-gradient(-45deg, currentColor 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
+              }
+              delay={0.6}
+              className="min-h-[420px] mt-0 md:mt-12" // Stagger the second square card down slightly!
+            />
+
+          </div>
         </div>
       </SectionReveal>
     </section>

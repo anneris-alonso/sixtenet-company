@@ -168,7 +168,7 @@ export default function Impact() {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 1.0, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="glass-morphism rounded-[20px] p-8 max-w-xl shadow-sm relative border border-foreground/[0.08]"
+            className="bg-white/20 backdrop-blur-3xl rounded-[20px] p-8 max-w-xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.9),_0_30px_60px_-15px_rgba(0,0,0,0.1)] relative border border-white/50"
           >
             <p className="text-lg md:text-2xl font-bold leading-relaxed text-foreground">
               We don't deliver services.<br />

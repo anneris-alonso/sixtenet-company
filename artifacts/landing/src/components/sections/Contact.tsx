@@ -158,8 +158,11 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            {/* Editorial Form Container */}
-            <div className="bg-card border border-foreground/[0.08] p-8 md:p-12 relative overflow-hidden group shadow-xl transition-all duration-500 rounded-[20px]">
+            {/* Holographic Glow Behind Form */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-cyan-400 via-indigo-300 to-pink-400 blur-[100px] rounded-full pointer-events-none opacity-70 -z-10" />
+
+            {/* Editorial Form Container (Sweet Spot Glassmorphism) */}
+            <div className="bg-white/50 dark:bg-card/40 backdrop-blur-3xl border border-white/60 p-8 md:p-12 relative z-10 overflow-hidden group shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 rounded-[20px]">
 
               <AnimatePresence mode="wait">
                 {isSuccess ? (
