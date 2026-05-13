@@ -191,7 +191,7 @@ export default function Contact() {
                         <div className="relative">
                           <Input
                             {...register("name")}
-                            placeholder="ALICE WONDERLAND"
+                            placeholder="Adam..."
                             disabled={isSubmitting}
                             className={`bg-white/40 dark:bg-black/10 border border-white/60 focus-visible:ring-1 focus-visible:ring-primary px-6 h-14 rounded-[20px] font-sans text-lg placeholder:text-foreground/30 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] transition-all duration-300 ${errors.name ? 'ring-1 ring-red-500/50' : ''
                               }`}

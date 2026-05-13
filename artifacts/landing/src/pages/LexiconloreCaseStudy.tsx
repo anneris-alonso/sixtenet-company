@@ -262,18 +262,19 @@ export default function LexiconloreCaseStudy() {
                 </div>
               </div>
               <SectionReveal delay={0.4}>
-                <div className="bg-white/30 dark:bg-white/5 backdrop-blur-3xl border border-white/50 p-12 space-y-8 rounded-[20px] shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_30px_60px_-15px_rgba(0,0,0,0.1)] relative overflow-hidden group">
+                <div className="bg-white/30 dark:bg-white/5 backdrop-blur-3xl border border-white/50 p-12 rounded-[20px] shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),_0_30px_60px_-15px_rgba(0,0,0,0.1)] relative overflow-hidden group">
                   {/* Subtle iridescent hover glow */}
                   <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    className="absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                     style={{
                       background: `
-                        radial-gradient(circle at 100% 0%, rgba(123, 212, 234, 0.15) 0%, transparent 60%),
-                        radial-gradient(circle at 0% 100%, rgba(244, 143, 177, 0.1) 0%, transparent 60%)
+                        radial-gradient(at 100% 0%, rgba(123, 212, 234, 0.25) 0%, transparent 80%),
+                        radial-gradient(at 0% 100%, rgba(244, 143, 177, 0.2) 0%, transparent 80%),
+                        radial-gradient(at 50% 50%, rgba(179, 157, 219, 0.1) 0%, transparent 80%)
                       `
                     }}
                   />
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex flex-col gap-8">
                     <p className="text-xs font-bold tracking-[0.3em] uppercase text-muted-foreground">Insight</p>
                     <p className="text-3xl md:text-5xl font-sans font-bold text-foreground leading-tight">
                       If your system depends on people, it doesn’t scale. <span className="italic bg-gradient-to-r from-orange-300 via-pink-400 to-indigo-400 bg-clip-text text-transparent pr-2">If it scales, it’s a system.</span>
